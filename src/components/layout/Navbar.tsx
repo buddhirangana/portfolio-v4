@@ -7,6 +7,7 @@ import { Menu, X, Github, Linkedin, Twitter, Command, Terminal, Satellite, Zap, 
 const NAV_LINKS = [
     { name: "About", href: "#about", tag: "PROFILE_V2" },
     { name: "Experience", href: "#experience", tag: "HISTORY_LOG" },
+    { name: "Education", href: "#education", tag: "ACAD_ARCHIVE" },
     { name: "Projects", href: "#projects", tag: "RESEARCH_DATA" },
     { name: "Contact", href: "#contact", tag: "UPLINK_COMM" },
 ];
