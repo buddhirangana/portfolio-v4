@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Award, ExternalLink, Calendar, ShieldCheck, Fingerprint, Lock, Shield, Activity, Database } from "lucide-react";
+import { motion, useInView, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { Award, ExternalLink, Calendar, ShieldCheck, Fingerprint, Lock, Shield, Activity, Database, ChevronDown, ChevronUp, Zap } from "lucide-react";
 
 const CERTIFICATIONS = [
     {
@@ -31,11 +31,90 @@ const CERTIFICATIONS = [
         id: "GCP-DL-5544",
         hash: "0x994D...K99",
         status: "ACTIVE"
-    }
+    },
+    {
+        title: "Google Analytics Individual Qualification",
+        issuer: "Google",
+        date: "2023",
+        link: "#",
+        id: "GAIQ-7712",
+        hash: "0x33AC...P71",
+        status: "VALIDATED"
+    },
+    {
+        title: "HubSpot Content Marketing Certification",
+        issuer: "HubSpot Academy",
+        date: "2023",
+        link: "#",
+        id: "HUB-CM-4421",
+        hash: "0x77FF...B30",
+        status: "CERTIFIED"
+    },
+    {
+        title: "Digital Marketing Fundamentals",
+        issuer: "Google Digital Garage",
+        date: "2022",
+        link: "#",
+        id: "GDG-DM-8831",
+        hash: "0xA12E...S04",
+        status: "ACTIVE"
+    },
+    {
+        title: "WordPress Development Certification",
+        issuer: "Udemy / Automattic",
+        date: "2022",
+        link: "#",
+        id: "WP-DEV-3390",
+        hash: "0xD99C...W88",
+        status: "VALIDATED"
+    },
+    {
+        title: "JavaScript Algorithms & Data Structures",
+        issuer: "freeCodeCamp",
+        date: "2022",
+        link: "#",
+        id: "FCC-JS-6614",
+        hash: "0xBB44...J22",
+        status: "CERTIFIED"
+    },
+    {
+        title: "Responsive Web Design Certification",
+        issuer: "freeCodeCamp",
+        date: "2021",
+        link: "#",
+        id: "FCC-RWD-2200",
+        hash: "0x5C1A...R55",
+        status: "ACTIVE"
+    },
+    {
+        title: "PHP & MySQL Web Development",
+        issuer: "Udemy",
+        date: "2021",
+        link: "#",
+        id: "UDM-PHP-9902",
+        hash: "0x6E3B...M14",
+        status: "VALIDATED"
+    },
+    {
+        title: "SEO Fundamentals",
+        issuer: "SEMrush Academy",
+        date: "2021",
+        link: "#",
+        id: "SEM-SEO-1145",
+        hash: "0x8A7D...Q39",
+        status: "CERTIFIED"
+    },
 ];
+
+const INITIAL_COUNT = 3;
 
 export default function CertificationsSection() {
     const sectionRef = useRef(null);
+    const [showAll, setShowAll] = useState(false);
+
+    const visibleCerts = showAll ? CERTIFICATIONS : CERTIFICATIONS.slice(0, INITIAL_COUNT);
+    const hiddenCount = CERTIFICATIONS.length - INITIAL_COUNT;
+
     return (
         <section id="certifications" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
             {/* Background Architecture */}
@@ -47,6 +126,7 @@ export default function CertificationsSection() {
             </div>
 
             <div className="section-container relative z-10">
+                {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -58,7 +138,7 @@ export default function CertificationsSection() {
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Professional Verification</span>
                         </div>
                         <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none mb-4">
-                            Credentials & <span className="text-white/20 italic font-light">Seals</span>
+                            Credentials &amp; <span className="text-white/20 italic font-light">Seals</span>
                         </h2>
                     </motion.div>
 
@@ -75,11 +155,102 @@ export default function CertificationsSection() {
                     </motion.div>
                 </div>
 
+                {/* Counter Badge */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center gap-4 mb-12"
+                >
+                    <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl border border-white/5 bg-white/[0.02]">
+                        <Zap size={12} className="text-theme-primary" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30">
+                            {CERTIFICATIONS.length} Credentials Indexed
+                        </span>
+                        <span className="ml-2 text-[10px] font-bold text-theme-primary font-mono">
+                            [{showAll ? CERTIFICATIONS.length : INITIAL_COUNT} / {CERTIFICATIONS.length}]
+                        </span>
+                    </div>
+                </motion.div>
+
+                {/* Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {CERTIFICATIONS.map((cert, i) => (
-                        <Card key={cert.title} cert={cert} index={i} />
-                    ))}
+                    <AnimatePresence mode="popLayout">
+                        {visibleCerts.map((cert, i) => (
+                            <motion.div
+                                key={cert.id}
+                                layout
+                                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: i < INITIAL_COUNT ? 0 : (i - INITIAL_COUNT) * 0.08,
+                                    layout: { duration: 0.4 }
+                                }}
+                            >
+                                <Card cert={cert} index={i} />
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
                 </div>
+
+                {/* View More / Show Less Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-16"
+                >
+                    <motion.button
+                        onClick={() => setShowAll((prev) => !prev)}
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="group relative flex items-center gap-5 px-12 py-6 rounded-[2rem] border border-white/10 bg-white/[0.03] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all duration-500 overflow-hidden"
+                    >
+                        {/* Shimmer */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                        <span className="relative z-10 flex flex-col items-start">
+                            <span className="text-[8px] font-bold text-theme-primary uppercase tracking-[0.5em] mb-1">
+                                {showAll ? "Collapse_View" : `+${hiddenCount}_More_Available`}
+                            </span>
+                            <span className="text-sm font-bold text-white/60 group-hover:text-white transition-colors uppercase tracking-[0.2em]">
+                                {showAll ? "Show Less Credentials" : "View All Certifications"}
+                            </span>
+                        </span>
+
+                        <motion.div
+                            animate={{ rotate: showAll ? 180 : 0 }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className="w-12 h-12 rounded-2xl bg-white/5 border border-white/5 group-hover:border-theme-primary/30 group-hover:bg-theme-primary/10 transition-all duration-500 flex items-center justify-center text-white/30 group-hover:text-theme-primary"
+                        >
+                            <ChevronDown size={20} />
+                        </motion.div>
+                    </motion.button>
+                </motion.div>
+
+                {/* Progress Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="flex justify-center mt-8 gap-2"
+                >
+                    {CERTIFICATIONS.map((_, i) => (
+                        <motion.div
+                            key={i}
+                            animate={{
+                                width: i < (showAll ? CERTIFICATIONS.length : INITIAL_COUNT) ? 24 : 6,
+                                backgroundColor: i < (showAll ? CERTIFICATIONS.length : INITIAL_COUNT)
+                                    ? "var(--theme-primary)"
+                                    : "rgba(255,255,255,0.1)"
+                            }}
+                            transition={{ duration: 0.4, delay: i * 0.03 }}
+                            className="h-[3px] rounded-full"
+                        />
+                    ))}
+                </motion.div>
             </div>
         </section>
     );
@@ -119,9 +290,6 @@ function Card({ cert, index }: { cert: any; index: number }) {
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="group relative h-[500px]"
         >

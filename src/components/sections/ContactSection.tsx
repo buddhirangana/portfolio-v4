@@ -7,6 +7,8 @@ import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCh
 export default function ContactSection() {
     const sectionRef = useRef(null);
     const [focusedField, setFocusedField] = useState<string | null>(null);
+    // Generate a stable TX_ID once on the client to avoid SSR/client hydration mismatch
+    const [txId] = useState(() => Math.random().toString(16).substring(2, 10).toUpperCase());
 
     return (
         <section id="contact" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
@@ -224,7 +226,7 @@ export default function ContactSection() {
                                     </div>
                                 </div>
                                 <div className="text-[9px] font-mono font-bold text-white/40">
-                                    TX_ID: {Math.random().toString(16).substring(2, 10).toUpperCase()}
+                                    TX_ID: {txId}
                                 </div>
                             </div>
 
