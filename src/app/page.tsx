@@ -4,7 +4,7 @@ import ToolsSection from "@/components/sections/ToolsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import CertificationsSection from "@/components/sections/CertificationsSection";
-import NewsSection from "@/components/sections/NewsSection";
+import GallerySection from "@/components/sections/GallerySection";
 import ContactSection from "@/components/sections/ContactSection";
 import ParticleBackground from "@/components/ui/ParticleBackground";
 
@@ -23,7 +23,7 @@ export default function Home() {
         <ExperienceSection />
         <ProjectsSection />
         <CertificationsSection />
-        <NewsSection />
+        <GallerySection />
         <ContactSection />
       </div>
     </div>
