@@ -6,6 +6,8 @@
    CSS Custom Properties (Design Tokens)
    ============================================= */
 :root {
+  /* Dark background alias used across sections */
+  --dark-400: #010409;
   /* Solar theme accent colors (Primary: #f8572a) */
   --theme-primary: #f8572a;
   --theme-secondary: #ff983d;
@@ -384,4 +386,69 @@ body {
 /* Glowing Text */
 .glow-text-primary {
   text-shadow: 0 0 20px rgba(248, 87, 42, 0.5);
+}
+
+/* =============================================
+   Hero HUD Hex/Dot Grid
+   ============================================= */
+.hero-hex-grid {
+  background-image:
+    radial-gradient(circle, rgba(248, 87, 42, 0.35) 1px, transparent 1px),
+    linear-gradient(rgba(248, 87, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 87, 42, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px, 80px 80px;
+}
+
+/* =============================================
+   Glitch Title Effect
+   ============================================= */
+@keyframes glitch-clip-1 {
+  0%   { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
+  20%  { clip-path: inset(70% 0 5%  0); transform: translate( 4px, 0); }
+  40%  { clip-path: inset(40% 0 45% 0); transform: translate(-3px, 0); }
+  60%  { clip-path: inset(80% 0 2%  0); transform: translate( 3px, 0); }
+  80%  { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
+}
+
+@keyframes glitch-clip-2 {
+  0%   { clip-path: inset(60% 0 20% 0); transform: translate( 3px, 0); }
+  25%  { clip-path: inset(5%  0 70% 0); transform: translate(-3px, 0); }
+  50%  { clip-path: inset(45% 0 40% 0); transform: translate( 4px, 0); }
+  75%  { clip-path: inset(2%  0 80% 0); transform: translate(-4px, 0); }
+  100% { clip-path: inset(60% 0 20% 0); transform: translate( 3px, 0); }
+}
+
+.hero-glitch-text {
+  position: relative;
+}
+
+.hero-glitch-text::before,
+.hero-glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: white;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.hero-glitch-text::before {
+  color: rgba(248, 87, 42, 0.7);
+  animation: glitch-clip-1 8s infinite linear;
+  opacity: 0;
+}
+
+.hero-glitch-text::after {
+  color: rgba(255, 152, 61, 0.5);
+  animation: glitch-clip-2 8s infinite linear 0.5s;
+  opacity: 0;
+}
+
+.hero-glitch-text:hover::before,
+.hero-glitch-text:hover::after {
+  opacity: 1;
 }

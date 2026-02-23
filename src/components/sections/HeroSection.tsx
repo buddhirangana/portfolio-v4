@@ -1,304 +1,567 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { Github, Linkedin, Twitter, ArrowRight, Zap, Cpu, Activity, Globe } from "lucide-react";
+import {
+    motion, useScroll, useTransform, useSpring,
+    useMotionValue, AnimatePresence
+} from "framer-motion";
+import { Github, Linkedin, Twitter, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap } from "lucide-react";
 
+// ── Typewriter roles ────────────────────────────────────────────────────────────
+const ROLES = [
+    "Full-Stack Engineer",
+    "UI/UX Architect",
+    "Digital Entrepreneur",
+    "WordPress Expert",
+    "Tech Blogger",
+];
+
+// ── Radar sweep component (pure CSS via motion) ────────────────────────────────
+function RadarSweep() {
+    return (
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 origin-center"
+                style={{
+                    background: "conic-gradient(from 0deg, transparent 0deg, rgba(248,87,42,0.25) 40deg, transparent 80deg)"
+                }}
+            />
+        </div>
+    );
+}
+
+// ── Concentric animated ring ───────────────────────────────────────────────────
+function Ring({ r, duration, dir = 1, dash = "1 4" }: { r: number; duration: number; dir?: number; dash?: string }) {
+    return (
+        <motion.circle
+            cx={50} cy={50} r={r}
+            fill="none"
+            stroke="rgba(248,87,42,0.25)"
+            strokeWidth={0.15}
+            strokeDasharray={dash}
+            animate={{ rotate: 360 * dir }}
+            transition={{ duration, repeat: Infinity, ease: "linear" }}
+            style={{ transformOrigin: "50px 50px" }}
+        />
+    );
+}
+
+// ── Ping dot on orbit ──────────────────────────────────────────────────────────
+function OrbitDot({ radius, angle, speed }: { radius: number; angle: number; speed: number }) {
+    const rad = (angle * Math.PI) / 180;
+    const cx = 50 + radius * Math.cos(rad);
+    const cy = 50 + radius * Math.sin(rad);
+    return (
+        <motion.circle
+            cx={cx} cy={cy} r={0.8}
+            fill="rgba(248,87,42,0.9)"
+            animate={{ rotate: 360 }}
+            transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
+            style={{ transformOrigin: "50px 50px" }}
+            filter="url(#orangeGlow)"
+        />
+    );
+}
+
+// ── HUD Corner bracket ─────────────────────────────────────────────────────────
+function Corner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
+    const base = "absolute w-8 h-8 border-theme-primary/60";
+    const map = {
+        tl: "top-0 left-0 border-t-2 border-l-2",
+        tr: "top-0 right-0 border-t-2 border-r-2",
+        bl: "bottom-0 left-0 border-b-2 border-l-2",
+        br: "bottom-0 right-0 border-b-2 border-r-2",
+    };
+    return <div className={`${base} ${map[pos]}`} />;
+}
+
+// ── Animated data bar ──────────────────────────────────────────────────────────
+function DataBar({ label, value, delay }: { label: string; value: number; delay: number }) {
+    return (
+        <div className="flex flex-col gap-1">
+            <div className="flex justify-between items-center">
+                <span className="text-[7px] font-bold text-white/30 uppercase tracking-[0.3em]">{label}</span>
+                <span className="text-[7px] font-mono text-theme-primary">{value}%</span>
+            </div>
+            <div className="w-full h-[2px] bg-white/5 rounded-full overflow-hidden">
+                <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${value}%` }}
+                    transition={{ duration: 1.5, delay, ease: [0.16, 1, 0.3, 1] }}
+                    className="h-full bg-gradient-to-r from-theme-primary to-theme-secondary rounded-full shadow-[0_0_6px_rgba(248,87,42,0.8)]"
+                />
+            </div>
+        </div>
+    );
+}
+
+// ── Main HeroSection ───────────────────────────────────────────────────────────
 export default function HeroSection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll();
+    const [roleIndex, setRoleIndex] = useState(0);
+    const [mounted, setMounted] = useState(false);
 
-    // Mouse Parallax Logic
+    // Mouse parallax
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
+    const springCfg = { damping: 28, stiffness: 120 };
+    const hudX = useSpring(useTransform(mouseX, [-0.5, 0.5], [-18, 18]), springCfg);
+    const hudY = useSpring(useTransform(mouseY, [-0.5, 0.5], [-18, 18]), springCfg);
+    const bgX = useSpring(useTransform(mouseX, [-0.5, 0.5], [25, -25]), springCfg);
+    const bgY = useSpring(useTransform(mouseY, [-0.5, 0.5], [25, -25]), springCfg);
 
-    const springConfig = { damping: 25, stiffness: 150 };
-    const coreX = useSpring(useTransform(mouseX, [-0.5, 0.5], [-30, 30]), springConfig);
-    const coreY = useSpring(useTransform(mouseY, [-0.5, 0.5], [-30, 30]), springConfig);
-
-    const bgX = useSpring(useTransform(mouseX, [-0.5, 0.5], [20, -20]), springConfig);
-    const bgY = useSpring(useTransform(mouseY, [-0.5, 0.5], [20, -20]), springConfig);
+    const parallaxY = useTransform(scrollY, [0, 600], [0, 120]);
 
     useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            const { innerWidth, innerHeight } = window;
-            mouseX.set(e.clientX / innerWidth - 0.5);
-            mouseY.set(e.clientY / innerHeight - 0.5);
+        setMounted(true);
+        const onMove = (e: MouseEvent) => {
+            mouseX.set(e.clientX / window.innerWidth - 0.5);
+            mouseY.set(e.clientY / window.innerHeight - 0.5);
         };
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+        window.addEventListener("mousemove", onMove);
+        return () => window.removeEventListener("mousemove", onMove);
     }, [mouseX, mouseY]);
 
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const rotate = useTransform(scrollY, [0, 500], [0, 15]);
+    // Typewriter role cycling
+    useEffect(() => {
+        const id = setInterval(() => setRoleIndex(i => (i + 1) % ROLES.length), 2800);
+        return () => clearInterval(id);
+    }, []);
 
     return (
         <section
             ref={containerRef}
-            className="relative min-h-screen flex items-center justify-center pt-40 pb-20 overflow-hidden bg-dark-400"
+            id="home"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-400"
         >
-            {/* Ultra-Modern Background Layers */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute inset-0 grid-bg opacity-[0.08]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_var(--dark-400)_100%)] opacity-60" />
+            {/* ── Layered Background ── */}
+            <motion.div style={{ y: parallaxY }} className="absolute inset-0 pointer-events-none">
+                {/* Hex / dot grid */}
+                <div className="absolute inset-0 hero-hex-grid opacity-[0.07]" />
+                {/* Radial vignette */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,transparent_0%,#010409_100%)]" />
+                {/* Atmospheric blobs */}
+                <motion.div style={{ x: bgX, y: bgY }}
+                    className="absolute -top-40 -left-40 w-[900px] h-[900px] bg-theme-primary/8 blur-[250px] rounded-full" />
+                <motion.div
+                    style={{ x: useTransform(bgX, v => v * -1.3), y: useTransform(bgY, v => v * -1.3) }}
+                    className="absolute -bottom-40 -right-20 w-[700px] h-[700px] bg-theme-secondary/8 blur-[250px] rounded-full"
+                />
+            </motion.div>
 
-                {/* Parallax Atmospheric Nebulas */}
-                <motion.div
-                    style={{ x: bgX, y: bgY }}
-                    className="absolute top-[-10%] left-[-10%] w-[70rem] h-[70rem] bg-theme-primary/10 blur-[200px] rounded-full"
-                />
-                <motion.div
-                    style={{ x: useTransform(bgX, (v) => v * -1.2), y: useTransform(bgY, (v) => v * -1.2) }}
-                    className="absolute bottom-[-20%] right-[-10%] w-[60rem] h-[60rem] bg-theme-secondary/10 blur-[200px] rounded-full"
-                />
+            {/* ── HUD Scan Lines (full-width) ── */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+                {Array.from({ length: 20 }).map((_, i) => (
+                    <div key={i} className="absolute w-full h-px bg-white" style={{ top: `${(i + 1) * 5}%` }} />
+                ))}
             </div>
 
-            {/* Micro-Technical Readouts */}
-            <div className="absolute inset-0 pointer-events-none z-20">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="absolute top-1/4 left-10 hidden xl:flex flex-col gap-4"
-                >
-                    <div className="flex items-center gap-3">
-                        <Activity size={10} className="text-theme-primary" />
-                        <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.4em]">Latency: 0.04ms</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <Cpu size={10} className="text-theme-primary" />
-                        <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.4em]">Core: Optimized</span>
-                    </div>
-                </motion.div>
+            {/* ── Corner HUD Brackets (section-level) ── */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="absolute inset-8 pointer-events-none"
+            >
+                <Corner pos="tl" /><Corner pos="tr" /><Corner pos="bl" /><Corner pos="br" />
+                {/* Corner labels */}
+                <span className="absolute top-2 left-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">SYS::HERO_NODE</span>
+                <span className="absolute top-2 right-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">v2.4.0_STABLE</span>
+                <span className="absolute bottom-2 left-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">LOC: 6.94°N 79.86°E</span>
+                <span className="absolute bottom-2 right-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">ENC: AES-256</span>
+            </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                    className="absolute bottom-1/4 right-10 hidden xl:flex flex-col items-end gap-4"
-                >
-                    <div className="flex items-center gap-3">
-                        <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.4em]">Loc: 6.94° N, 79.86° E</span>
-                        <Globe size={10} className="text-theme-primary" />
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.4em]">Sync: Verified</span>
-                        <div className="w-1 h-1 rounded-full bg-theme-primary animate-ping" />
-                    </div>
-                </motion.div>
-            </div>
+            {/* ── Left HUD Panel ── */}
+            <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-30"
+            >
+                <div className="w-px h-24 bg-gradient-to-b from-transparent via-theme-primary/40 to-transparent mx-auto" />
 
-            <div className="section-container relative z-10 w-full px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                    {/* Left Content (Text) */}
-                    <div className="lg:col-span-8 flex flex-col items-start text-left">
-                        {/* Status Chip */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="flex items-center gap-4 px-5 py-2.5 rounded-2xl glass-card-premium border border-white/5 mb-12 group hover:border-theme-primary/40 transition-all cursor-crosshair"
-                        >
-                            <div className="flex items-center gap-2">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-primary opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-theme-primary"></span>
-                                </span>
-                                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
-                                    B.RANGANA // NODE_ACTIVE
-                                </span>
+                {/* System status readouts */}
+                <div className="flex flex-col gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md">
+                    {[
+                        { icon: Activity, label: "Neural_Link", val: "ACTIVE" },
+                        { icon: Cpu, label: "Core_Load", val: "12.4%" },
+                        { icon: Wifi, label: "Uplink_Sig", val: "99.8 dB" },
+                        { icon: Shield, label: "Threat_Level", val: "NULL" },
+                    ].map(({ icon: Icon, label, val }) => (
+                        <div key={label} className="flex items-center gap-3">
+                            <Icon size={10} className="text-theme-primary shrink-0" />
+                            <div className="flex flex-col">
+                                <span className="text-[6px] font-bold text-white/20 uppercase tracking-[0.3em]">{label}</span>
+                                <span className="text-[9px] font-mono text-theme-primary leading-none">{val}</span>
                             </div>
-                            <div className="w-px h-3 bg-white/10" />
-                            <span className="text-[9px] font-medium text-white/30 tracking-widest uppercase">v2.4.0_STABLE</span>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="w-px h-24 bg-gradient-to-b from-theme-primary/40 via-theme-primary/20 to-transparent mx-auto" />
+
+                {/* Performance bars */}
+                <div className="flex flex-col gap-3 p-5 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md min-w-[120px]">
+                    <DataBar label="PHP" value={92} delay={1.4} />
+                    <DataBar label="React" value={88} delay={1.6} />
+                    <DataBar label="Design" value={85} delay={1.8} />
+                    <DataBar label="DevOps" value={74} delay={2.0} />
+                </div>
+            </motion.div>
+
+            {/* ── Right HUD Panel ── */}
+            <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.4, duration: 0.8 }}
+                className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 items-end z-30"
+            >
+                <div className="w-px h-24 bg-gradient-to-b from-transparent via-theme-primary/40 to-transparent mx-auto" />
+
+                {/* Live metric cards */}
+                <div className="flex flex-col gap-3">
+                    {[
+                        { val: "50+", label: "Deployments" },
+                        { val: "06+", label: "Years Active" },
+                        { val: "99%", label: "Uptime SLA" },
+                    ].map(({ val, label }) => (
+                        <motion.div
+                            key={label}
+                            whileHover={{ x: -4 }}
+                            className="flex flex-col items-end gap-1 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
+                        >
+                            <span className="text-xl font-bold text-white tracking-tight">{val}</span>
+                            <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em]">{label}</span>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <div className="w-px h-24 bg-gradient-to-b from-theme-primary/40 via-theme-primary/20 to-transparent mx-auto" />
+
+                {/* Globe location mini display */}
+                <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md">
+                    <Globe size={12} className="text-theme-primary" />
+                    <div className="flex flex-col items-end">
+                        <span className="text-[8px] font-mono text-white/40">Colombo, LK</span>
+                        <div className="flex items-center gap-1 mt-0.5">
+                            <div className="w-1 h-1 rounded-full bg-theme-primary animate-pulse" />
+                            <span className="text-[6px] font-bold text-theme-primary uppercase tracking-widest">Online</span>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* ── Main Content ── */}
+            <div className="section-container relative z-10 w-full px-6 pt-28 pb-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                    {/* ── LEFT: Text Content ── */}
+                    <div className="lg:col-span-7 flex flex-col items-start">
+
+                        {/* System ID badge */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7 }}
+                            className="flex items-center gap-4 mb-10"
+                        >
+                            <div className="flex items-center gap-3 px-4 py-2 rounded-xl border border-theme-primary/20 bg-theme-primary/5">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-primary opacity-75" />
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-theme-primary" />
+                                </span>
+                                <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-theme-primary">B.RANGANA // NODE_ACTIVE</span>
+                            </div>
+                            <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl border border-white/5 bg-white/[0.02]">
+                                <span className="text-[9px] font-mono text-white/20">SYS_ID:</span>
+                                <span className="text-[9px] font-mono text-white/40">0x4BR_ARCH</span>
+                            </div>
                         </motion.div>
 
-                        {/* Title with Advanced Typography */}
-                        <div className="mb-10 lg:mb-14 relative group">
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                                <span className="block italic font-light text-theme-primary/80 mb-2 md:mb-4 lg:mb-6 text-4xl md:text-6xl lg:text-7xl tracking-tight">
-                                    Senior Creative
-                                </span>
-                                <h1 className="text-7xl md:text-[8rem] lg:text-[11rem] font-bold font-poppins tracking-tighter leading-[0.8] text-white relative">
-                                    ENGINEER
-                                    <motion.span
-                                        initial={{ width: 0 }}
-                                        animate={{ width: "100%" }}
-                                        transition={{ delay: 1, duration: 2 }}
-                                        className="absolute -bottom-4 left-0 h-[2px] bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent"
-                                    />
-                                </h1>
-                            </motion.div>
-                        </div>
-
-                        {/* Description & Socials */}
-                        <div className="flex flex-col md:flex-row items-start md:items-center gap-10 lg:gap-16 w-full max-w-4xl">
+                        {/* Glitch Title */}
+                        <div className="mb-6 relative">
                             <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-base md:text-xl text-white/40 leading-relaxed font-medium max-w-xl"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, delay: 0.1 }}
+                                className="text-3xl md:text-5xl lg:text-6xl italic font-light text-theme-primary/70 tracking-tight mb-2"
                             >
-                                Architecting high-fidelity digital experiences and
-                                <span className="text-white/80"> neural performance layers </span>
-                                for the next generation of industrial software systems.
+                                Senior Creative
                             </motion.p>
 
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 1, delay: 0.8 }}
-                                className="flex items-center gap-5 shrink-0"
+                            <motion.h1
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="hero-glitch-text text-[5rem] md:text-[8rem] lg:text-[10rem] font-bold font-poppins tracking-tighter leading-[0.85] text-white relative select-none"
+                                data-text="ENGINEER"
                             >
-                                {[Github, Linkedin, Twitter].map((Icon, i) => (
-                                    <motion.a
-                                        key={i}
-                                        whileHover={{ y: -8, scale: 1.1, backgroundColor: "rgba(248,87,42,0.1)" }}
-                                        href="#"
-                                        className="w-14 h-14 rounded-2xl glass-card-premium border border-white/5 flex items-center justify-center text-white/30 hover:text-theme-primary transition-all shadow-xl"
-                                    >
-                                        <Icon size={22} />
-                                    </motion.a>
-                                ))}
-                            </motion.div>
+                                ENGINEER
+                                <motion.span
+                                    initial={{ scaleX: 0 }}
+                                    animate={{ scaleX: 1 }}
+                                    transition={{ delay: 1.2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute -bottom-3 left-0 h-[3px] w-full origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                                />
+                            </motion.h1>
                         </div>
 
-                        {/* CTA Buttons */}
+                        {/* Typewriter cycling subtitle */}
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="flex items-center gap-3 mb-10 h-8"
+                        >
+                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">ROLE://</span>
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={roleIndex}
+                                    initial={{ y: 16, opacity: 0, filter: "blur(6px)" }}
+                                    animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                                    exit={{ y: -16, opacity: 0, filter: "blur(6px)" }}
+                                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                    className="text-base md:text-lg font-bold text-white tracking-tight"
+                                >
+                                    {ROLES[roleIndex]}
+                                </motion.span>
+                            </AnimatePresence>
+                            <motion.span
+                                animate={{ opacity: [1, 0, 1] }}
+                                transition={{ duration: 0.8, repeat: Infinity }}
+                                className="w-0.5 h-5 bg-theme-primary rounded-full"
+                            />
+                        </motion.div>
+
+                        {/* Description */}
+                        <motion.p
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="mt-16 flex flex-col sm:flex-row items-center gap-8"
+                            className="text-base md:text-lg text-white/35 leading-relaxed font-medium max-w-lg mb-12"
                         >
-                            <a href="#projects" className="group relative px-14 py-6 bg-theme-primary rounded-[2rem] text-sm font-bold uppercase tracking-widest text-white overflow-hidden shadow-[0_30px_60px_rgba(248,87,42,0.3)] transition-all hover:scale-105 active:scale-95">
-                                <span className="relative z-10 flex items-center gap-4">
-                                    Initiate Recon <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
+                            Architecting high-fidelity digital experiences and{" "}
+                            <span className="text-white/70 font-semibold">neural performance layers</span>{" "}
+                            for the next generation of industrial software systems.
+                        </motion.p>
+
+                        {/* CTAs */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 24 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-14"
+                        >
+                            <a
+                                href="#projects"
+                                className="group relative px-10 py-5 bg-theme-primary rounded-[1.75rem] text-xs font-bold uppercase tracking-[0.25em] text-white overflow-hidden shadow-[0_20px_50px_rgba(248,87,42,0.35)] hover:scale-105 active:scale-95 transition-transform duration-300"
+                            >
+                                <span className="relative z-10 flex items-center gap-3">
+                                    Initiate Recon
+                                    <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                             </a>
-                            <a href="#contact" className="px-12 py-6 rounded-[2rem] glass-card-premium border border-white/10 text-xs font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white hover:border-white/20 transition-all flex items-center gap-3 group">
-                                <span className="w-1.5 h-1.5 rounded-full bg-theme-primary/50 group-hover:bg-theme-primary transition-colors" />
+                            <a
+                                href="#contact"
+                                className="flex items-center gap-3 px-10 py-5 rounded-[1.75rem] border border-white/10 bg-white/[0.03] hover:border-theme-primary/40 hover:bg-theme-primary/5 text-xs font-bold uppercase tracking-[0.25em] text-white/50 hover:text-white transition-all duration-400 group"
+                            >
+                                <span className="w-1.5 h-1.5 rounded-full bg-theme-primary/40 group-hover:bg-theme-primary transition-colors" />
                                 Mission Brief
                             </a>
                         </motion.div>
+
+                        {/* Social links */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.9 }}
+                            className="flex items-center gap-4"
+                        >
+                            <span className="text-[7px] font-bold text-white/15 uppercase tracking-[0.5em]">Uplink</span>
+                            <div className="w-8 h-px bg-white/10" />
+                            {[
+                                { Icon: Github, href: "#", label: "GIT" },
+                                { Icon: Linkedin, href: "#", label: "LI" },
+                                { Icon: Twitter, href: "#", label: "X" },
+                            ].map(({ Icon, href, label }) => (
+                                <motion.a
+                                    key={label}
+                                    whileHover={{ y: -6, scale: 1.15 }}
+                                    href={href}
+                                    className="w-11 h-11 rounded-xl glass-card-premium border border-white/5 hover:border-theme-primary/30 hover:bg-theme-primary/10 flex items-center justify-center text-white/25 hover:text-theme-primary transition-all duration-400"
+                                >
+                                    <Icon size={18} />
+                                </motion.a>
+                            ))}
+                        </motion.div>
                     </div>
 
-                    {/* Right Content (Cyber Hub Core) - Desktop Only */}
+                    {/* ── RIGHT: JARVIS HUD Orb ── */}
                     <motion.div
-                        style={{ x: coreX, y: coreY }}
-                        className="hidden lg:col-span-4 lg:flex flex-col items-center justify-center relative z-30"
+                        style={{ x: hudX, y: hudY }}
+                        className="hidden lg:col-span-5 lg:flex items-center justify-center relative"
                     >
-                        {/* Atmospheric Hub Glows */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-theme-primary/15 blur-[160px] rounded-full" />
-
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, scale: 0.7 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative w-full max-w-[520px] aspect-square flex items-center justify-center group"
+                            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative w-[460px] h-[460px] flex items-center justify-center"
                         >
-                            {/* Kinetic Orbital rings */}
-                            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
-                                <motion.circle
-                                    cx="50" cy="50" r="49"
-                                    fill="none"
-                                    stroke="var(--theme-primary)"
-                                    strokeWidth="0.08"
-                                    strokeDasharray="1 6"
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-                                />
-                                <motion.circle
-                                    cx="50" cy="50" r="45"
-                                    fill="none"
-                                    stroke="white"
-                                    strokeWidth="0.05"
-                                    className="opacity-10"
-                                    strokeDasharray="4 2"
-                                    animate={{ rotate: -360 }}
-                                    transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-                                />
+                            {/* Outer ambient glow */}
+                            <div className="absolute inset-0 bg-theme-primary/10 blur-[80px] rounded-full" />
+
+                            {/* Radar / Ring SVG */}
+                            <svg
+                                viewBox="0 0 100 100"
+                                className="absolute inset-0 w-full h-full"
+                            >
+                                <defs>
+                                    <filter id="orangeGlow">
+                                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur" />
+                                            <feMergeNode in="SourceGraphic" />
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+
+                                {/* Concentric rings */}
+                                <Ring r={48} duration={60} dir={1} dash="1 5" />
+                                <Ring r={43} duration={40} dir={-1} dash="3 3" />
+                                <Ring r={37} duration={25} dir={1} dash="0.5 3" />
+                                <Ring r={30} duration={18} dir={-1} dash="2 4" />
+                                <Ring r={22} duration={12} dir={1} dash="1 2" />
+
+                                {/* Cross-hair lines */}
+                                <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
+                                <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
+
+                                {/* Orbit dots */}
+                                <OrbitDot radius={43} angle={30} speed={18} />
+                                <OrbitDot radius={37} angle={120} speed={12} />
+                                <OrbitDot radius={30} angle={220} speed={8} />
+                                <OrbitDot radius={22} angle={310} speed={5} />
                             </svg>
 
-                            {/* Center Power Nucleus */}
-                            <div className="relative w-64 h-64 flex items-center justify-center">
-                                <motion.div
-                                    animate={{ scale: [1, 1.25, 1], opacity: [0.3, 0.6, 0.3] }}
-                                    transition={{ duration: 4, repeat: Infinity }}
-                                    className="absolute w-full h-full bg-theme-primary/20 blur-3xl rounded-full"
-                                />
+                            {/* Radar sweep layer */}
+                            <div className="absolute inset-[4%] rounded-full overflow-hidden">
+                                <RadarSweep />
+                            </div>
 
-                                <div className="relative w-36 h-36 rounded-full glass-card-premium border border-theme-primary/40 flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-700 shadow-2xl">
-                                    <Zap size={44} className="text-theme-primary animate-pulse filter drop-shadow-[0_0_15px_rgba(248,87,42,0.8)]" />
-                                    <motion.div
-                                        animate={{ rotate: 360 }}
-                                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-0 bg-[conic-gradient(from_0deg,_transparent_0%,_rgba(248,87,42,0.05)_50%,_transparent_100%)]"
-                                    />
-                                </div>
-
-                                {/* Orbital Energy Dots */}
-                                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-                                    <motion.div
+                            {/* Inner radar tick marks */}
+                            <div className="absolute inset-0">
+                                {Array.from({ length: 12 }).map((_, i) => (
+                                    <div
                                         key={i}
-                                        initial={{ rotate: angle }}
-                                        animate={{ rotate: angle + 360 }}
-                                        transition={{ duration: 25 + i * 2, repeat: Infinity, ease: "linear" }}
-                                        className="absolute w-full h-full flex items-center justify-end"
+                                        className="absolute top-1/2 left-1/2 w-full h-px origin-left"
+                                        style={{ transform: `rotate(${i * 30}deg) translateY(-50%)` }}
                                     >
-                                        <div className="w-1.5 h-1.5 rounded-full bg-theme-primary shadow-[0_0_15px_rgba(248,87,42,0.8)]" />
-                                    </motion.div>
+                                        <div className="absolute right-0 w-2 h-px bg-theme-primary/20" />
+                                    </div>
                                 ))}
                             </div>
 
-                            {/* Holographic Identity Badge */}
+                            {/* Center nucleus */}
+                            <div className="relative w-48 h-48 flex items-center justify-center z-10">
+                                {/* Pulse rings */}
+                                {[1, 2, 3].map(i => (
+                                    <motion.div
+                                        key={i}
+                                        className="absolute inset-0 rounded-full border border-theme-primary/20"
+                                        animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
+                                        transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }}
+                                    />
+                                ))}
+
+                                {/* Core circle */}
+                                <div className="relative w-28 h-28 rounded-full bg-dark-400 border-2 border-theme-primary/40 flex flex-col items-center justify-center overflow-hidden shadow-[0_0_40px_rgba(248,87,42,0.3),inset_0_0_40px_rgba(248,87,42,0.05)]">
+                                    {/* Conic spin */}
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0"
+                                        style={{ background: "conic-gradient(from 0deg, transparent 0%, rgba(248,87,42,0.08) 50%, transparent 100%)" }}
+                                    />
+                                    <Zap size={32} className="text-theme-primary relative z-10 filter drop-shadow-[0_0_12px_rgba(248,87,42,0.9)]" />
+                                    <span className="text-[7px] font-bold text-theme-primary/60 uppercase tracking-[0.3em] relative z-10 mt-1">ONLINE</span>
+                                </div>
+                            </div>
+
+                            {/* HUD corner brackets on the orb */}
+                            <div className="absolute inset-8 pointer-events-none">
+                                <Corner pos="tl" /><Corner pos="tr" /><Corner pos="bl" /><Corner pos="br" />
+                            </div>
+
+                            {/* Floating data tags */}
                             <motion.div
-                                initial={{ opacity: 0, x: 40 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 1, duration: 1.2 }}
-                                className="absolute -right-16 bottom-0 p-10 rounded-[4rem] bg-dark-400/80 backdrop-blur-3xl border border-white/5 shadow-2xl z-20 hidden xl:block"
+                                animate={{ y: [-6, 6, -6] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -top-4 right-8 px-4 py-2 rounded-xl bg-dark-400/80 border border-white/5 backdrop-blur-md"
                             >
-                                <div className="flex flex-col gap-3">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-theme-primary" />
-                                        <span className="text-[10px] font-bold text-theme-primary uppercase tracking-[0.4em]">Node // 0X-ARCH</span>
-                                    </div>
-                                    <h4 className="text-4xl font-bold text-white tracking-tighter">B. RANGANA</h4>
-                                    <div className="grid grid-cols-2 gap-8 mt-6 pt-6 border-t border-white/5">
-                                        <div className="flex flex-col">
-                                            <span className="text-xl font-bold text-white">06+ YRS</span>
-                                            <span className="text-[8px] font-bold text-white/30 uppercase tracking-widest mt-1">Exp Cycle</span>
-                                        </div>
-                                        <div className="flex flex-col text-right">
-                                            <span className="text-xl font-bold text-theme-primary">50+</span>
-                                            <span className="text-[8px] font-bold text-white/30 uppercase tracking-widest mt-1">Deployments</span>
-                                        </div>
-                                    </div>
+                                <span className="text-[8px] font-mono text-theme-primary">SIG: LOCKED</span>
+                            </motion.div>
+
+                            <motion.div
+                                animate={{ y: [6, -6, 6] }}
+                                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                                className="absolute -bottom-4 left-8 px-4 py-2 rounded-xl bg-dark-400/80 border border-white/5 backdrop-blur-md"
+                            >
+                                <span className="text-[8px] font-mono text-theme-primary">FREQ: 2.4GHz</span>
+                            </motion.div>
+
+                            <motion.div
+                                animate={{ x: [-5, 5, -5] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                className="absolute top-1/2 -right-8 -translate-y-1/2 px-4 py-2 rounded-xl bg-dark-400/80 border border-white/5 backdrop-blur-md"
+                            >
+                                <div className="flex flex-col gap-1">
+                                    <span className="text-[6px] font-bold text-white/20 uppercase tracking-widest">Node</span>
+                                    <span className="text-[9px] font-mono text-theme-primary">0X-ARCH</span>
                                 </div>
                             </motion.div>
+                        </motion.div>
+
+                        {/* Identity card below orb */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.4, duration: 0.8 }}
+                            className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-max px-10 py-5 rounded-[2rem] bg-dark-400/80 border border-white/5 backdrop-blur-xl shadow-2xl"
+                        >
+                            <div className="flex items-center gap-8">
+                                <div className="flex flex-col">
+                                    <span className="text-[7px] font-bold text-theme-primary uppercase tracking-[0.5em] mb-1">Operator</span>
+                                    <span className="text-lg font-bold text-white tracking-tighter">BUDDHI RANGANA</span>
+                                </div>
+                                <div className="w-px h-10 bg-white/5" />
+                                <div className="flex flex-col">
+                                    <span className="text-[7px] font-bold text-white/20 uppercase tracking-widest mb-1">Clearance</span>
+                                    <span className="text-sm font-mono text-theme-primary">LEVEL_5_ARCH</span>
+                                </div>
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
             </div>
 
-            {/* Scroll Indication Readout */}
+            {/* ── Bottom Scroll Indicator ── */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.5 }}
-                className="absolute bottom-10 left-10 flex items-center gap-4 hidden xl:flex"
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 z-20"
             >
-                <div className="flex flex-col gap-1">
-                    <span className="text-[8px] font-bold text-white/20 uppercase tracking-[0.5em]">Scroll to Nave</span>
-                    <motion.div
-                        animate={{ height: [24, 48, 24], opacity: [0.1, 0.3, 0.1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-px bg-theme-primary self-start"
-                    />
-                </div>
+                <span className="text-[7px] font-bold text-white/15 uppercase tracking-[0.6em]">Scroll to Navigate</span>
+                <motion.div
+                    animate={{ y: [0, 10, 0], opacity: [0.3, 0.8, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-px h-10 bg-gradient-to-b from-theme-primary/60 to-transparent"
+                />
             </motion.div>
-        </section >
+        </section>
     );
 }
