@@ -438,19 +438,19 @@ export default function HeroSection() {
                             </div>
 
                             {/* Center nucleus */}
-                            <div className="relative w-48 h-48 flex items-center justify-center z-10">
+                            <div className="relative w-[240px] h-[240px] flex items-center justify-center z-10">
                                 {/* Pulse rings */}
                                 {[1, 2, 3].map(i => (
                                     <motion.div
                                         key={i}
                                         className="absolute inset-0 rounded-full border border-theme-primary/20"
-                                        animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
+                                        animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0, 0.4] }}
                                         transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }}
                                     />
                                 ))}
 
                                 {/* Holographic Avatar Core */}
-                                <div className="relative w-36 h-36 rounded-full bg-theme-primary/5 border border-theme-primary/30 flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(248,87,42,0.2),inset_0_0_30px_rgba(248,87,42,0.1)] group">
+                                <div className="relative w-[200px] h-[200px] rounded-full bg-theme-primary/5 border border-theme-primary/30 flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(248,87,42,0.2),inset_0_0_30px_rgba(248,87,42,0.1)] group">
                                     
                                     {/* Base tint */}
                                     <div className="absolute inset-0 bg-theme-primary/20 mix-blend-overlay z-10" />
@@ -464,9 +464,10 @@ export default function HeroSection() {
 
                                     {/* Avatar Image */}
                                     <img 
-                                        src="/images/buddhi-img.png" 
+                                        // src="/images/buddhi-img.png" 
+                                        src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
                                         alt="Avatar Hologram" 
-                                        className="w-full h-full object-cover filter contrast-125 grayscale brightness-110 drop-shadow-[0_0_10px_rgba(248,87,42,0.5)] relative z-0 transition-transform duration-700 group-hover:scale-110" 
+                                        className="w-[200px] h-auto object-cover filter contrast-125 grayscale brightness-110 drop-shadow-[0_0_10px_rgba(248,87,42,0.5)] relative z-0 transition-transform duration-700 group-hover:scale-110" 
                                     />
 
                                     {/* Conic spin for extra tech radar feel over the avatar */}
