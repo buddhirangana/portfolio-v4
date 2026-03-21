@@ -2,10 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Instagram, Facebook, Mail, ArrowUp, Command, Terminal, Cpu } from "lucide-react";
+import { Github, Linkedin, Instagram, Facebook, Mail, ArrowUp, Command, Terminal, Cpu } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
-const TikTokIcon = ({ size = 18 }: { size?: number }) => (
+const TikTokIcon = ({ size = 24 }: { size?: number }) => (
     <svg 
         width={size} 
         height={size} 
@@ -17,6 +17,13 @@ const TikTokIcon = ({ size = 18 }: { size?: number }) => (
         strokeLinejoin="round"
     >
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+);
+
+// ── Custom X (Twitter) Icon ───────────────────────────────────────────────────
+const XIcon = ({ size = 16 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 2.395H4.293l13.314 18.255z" />
     </svg>
 );
 
@@ -56,7 +63,7 @@ export default function Footer() {
                             {[
                                 { icon: Github, href: "https://github.com/itbuddhi", label: "GIT", iconSize: 20 },
                                 { icon: Linkedin, href: "https://www.linkedin.com/in/itbuddhi/", label: "LINKED", iconSize: 18 },
-                                { icon: Twitter, href: "#", label: "X_SOC", iconSize: 18 },
+                                { icon: XIcon, href: "#", label: "X_SOC", iconSize: 18 },
                                 { icon: Instagram, href: "#", label: "INSTA", iconSize: 19 },
                                 { icon: Facebook, href: "#", label: "FB", iconSize: 18 },
                                 { icon: TikTokIcon, href: "#", label: "TIKTOK", iconSize: 18 },

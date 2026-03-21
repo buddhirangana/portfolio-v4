@@ -5,7 +5,7 @@ import {
     motion, useScroll, useTransform, useSpring,
     useMotionValue, AnimatePresence
 } from "framer-motion";
-import { Github, Linkedin, Twitter, Instagram, Facebook, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap } from "lucide-react";
+import { Github, Linkedin, Instagram, Facebook, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 16 }: { size?: number }) => (
@@ -20,6 +20,13 @@ const TikTokIcon = ({ size = 16 }: { size?: number }) => (
         strokeLinejoin="round"
     >
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+);
+
+// ── Custom X (Twitter) Icon ───────────────────────────────────────────────────
+const XIcon = ({ size = 16 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 2.395H4.293l13.314 18.255z" />
     </svg>
 );
 
@@ -307,7 +314,7 @@ export default function HeroSection() {
                                 {[
                                     { Icon: Github, href: "#", label: "GIT" },
                                     { Icon: Linkedin, href: "#", label: "LI" },
-                                    { Icon: Twitter, href: "#", label: "X" },
+                                    { Icon: XIcon, href: "#", label: "X" },
                                     { Icon: Instagram, href: "#", label: "IG" },
                                     { Icon: Facebook, href: "#", label: "FB" },
                                     { Icon: TikTokIcon, href: "#", label: "TT" },
