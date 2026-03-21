@@ -42,7 +42,7 @@ export default function ContactSection() {
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-8 text-right"
+                        className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
                     >
                         <div className="hidden md:block">
                             <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Stability: 99.8%</div>
@@ -60,7 +60,7 @@ export default function ContactSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             className="max-w-md"
                         >
-                            <p className="text-xl text-white/50 leading-relaxed font-medium mb-12">
+                            <p className="text-xl text-white/50 leading-relaxed font-medium mb-12 text-center lg:text-left">
                                 Architecting high-performance digital futures. Select your preferred <span className="text-white">transmission protocol</span> to initiate synchronization.
                             </p>
 
@@ -95,7 +95,7 @@ export default function ContactSection() {
 
                         <div className="pt-12 border-t border-white/5">
                             <div className="flex flex-col gap-6">
-                                <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-4 justify-center lg:justify-start">
                                     <div className="flex gap-1">
                                         {[1, 1, 1, 0, 0].map((v, i) => (
                                             <motion.div
@@ -108,7 +108,7 @@ export default function ContactSection() {
                                     </div>
                                     <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Neural Link Optimized</span>
                                 </div>
-                                <div className="flex items-center gap-4 opacity-20">
+                                <div className="flex items-center gap-4 opacity-20 justify-center lg:justify-start">
                                     <Cpu size={12} />
                                     <span className="text-[8px] font-mono tracking-widest uppercase">Encryption_Cycle: 4096-BIT_STABLE</span>
                                 </div>

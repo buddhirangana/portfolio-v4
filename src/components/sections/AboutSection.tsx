@@ -186,9 +186,9 @@ export default function AboutSection() {
                         className="lg:col-span-5"
                     >
                         <div className="glass-card-premium rounded-[3rem] p-12 h-full border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent">
-                            <div className="flex items-center gap-3 mb-12">
+                            <div className="flex items-center justify-center lg:justify-start gap-3 mb-12">
                                 <Cpu size={20} className="text-theme-primary" />
-                                <h4 className="text-sm font-bold uppercase tracking-[0.4em] text-white/40">Logic Cores</h4>
+                                <h4 className="text-sm font-bold items-center lg:items-start uppercase tracking-[0.4em] text-white/40">Logic Cores</h4>
                             </div>
 
                             <div className="space-y-12">

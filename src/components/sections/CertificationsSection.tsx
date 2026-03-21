@@ -146,7 +146,7 @@ export default function CertificationsSection() {
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-6 text-right"
+                        className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
                     >
                         <div>
                             <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Status: Encrypted</div>
@@ -161,7 +161,7 @@ export default function CertificationsSection() {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="flex items-center gap-4 mb-12"
+                    className="flex justify-center md:justify-start items-center gap-4 mb-12"
                 >
                     <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl border border-white/5 bg-white/[0.02]">
                         <Zap size={12} className="text-theme-primary" />

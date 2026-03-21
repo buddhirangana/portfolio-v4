@@ -22,8 +22,8 @@ export default function Footer() {
             <div className="section-container relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-32">
                     {/* Brand Meta */}
-                    <div className="md:col-span-5">
-                        <div className="flex items-center gap-4 mb-10">
+                    <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+                        <div className="flex items-center justify-center md:justify-start gap-4 mb-10">
                             <div className="w-12 h-12 rounded-2xl bg-theme-primary flex items-center justify-center text-white shadow-2xl">
                                 <Command size={24} />
                             </div>
@@ -32,11 +32,11 @@ export default function Footer() {
                             </h3>
                         </div>
 
-                        <p className="text-xl text-white/40 max-w-sm leading-relaxed mb-12 font-medium">
+                        <p className="text-xl text-white/40 max-w-sm leading-relaxed mb-12 font-medium mx-auto md:mx-0">
                             Architecting high-performance digital systems with <span className="text-white">radical engineering</span> principles.
                         </p>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-center md:justify-start gap-4">
                             {[
                                 { icon: Github, href: "https://github.com/itbuddhi", label: "GIT" },
                                 { icon: Linkedin, href: "https://www.linkedin.com/in/itbuddhi/", label: "LINKED" },
@@ -59,14 +59,24 @@ export default function Footer() {
                     </div>
 
                     {/* Navigation Channels */}
-                    <div className="md:col-span-3">
+                    <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
                         <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ CHANNELS ]</h4>
-                        <ul className="space-y-6">
-                            {["About", "Projects", "Experience", "Contact"].map((link) => (
+                        <ul className="space-y-8">
+                            {["About", "Projects", "Experience", "Contact"].map((link, i) => (
                                 <li key={link}>
-                                    <a href={`#${link.toLowerCase()}`} className="group flex items-center gap-4 text-sm font-bold text-white/40 hover:text-white transition-all">
-                                        <div className="w-0 h-[1px] bg-theme-primary group-hover:w-4 transition-all duration-500" />
-                                        {link.toUpperCase()}
+                                    <a
+                                        href={`#${link.toLowerCase()}`}
+                                        className="group flex items-center justify-center md:justify-start gap-6 text-sm font-bold text-white/40 hover:text-white transition-all duration-300"
+                                    >
+                                        <div className="flex flex-col items-center md:items-start">
+                                            <span className="text-[8px] font-mono text-theme-primary/30 group-hover:text-theme-primary transition-colors mb-1 tracking-widest">
+                                                CH_0{i + 1}
+                                            </span>
+                                            <span className="tracking-[0.2em] relative">
+                                                {link.toUpperCase()}
+                                                <div className="absolute -bottom-2 left-0 right-0 h-px bg-theme-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+                                            </span>
+                                        </div>
                                     </a>
                                 </li>
                             ))}
@@ -74,15 +84,15 @@ export default function Footer() {
                     </div>
 
                     {/* System Endpoint */}
-                    <div className="md:col-span-4">
+                    <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
                         <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ ENDPOINT ]</h4>
-                        <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] mb-8">
-                            <div className="flex items-center gap-3 mb-6">
+                        <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] mb-8 w-full max-w-sm">
+                            <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
                                 <Terminal size={14} className="text-theme-primary" />
                                 <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Access Node v4.0</span>
                             </div>
                             <p className="text-white font-bold text-lg mb-1">Colombo, Sri Lanka</p>
-                            <p className="text-white/30 text-xs font-mono">EST_CONNECTION: SECURE</p>
+                            <p className="text-white/30 text-xs font-mono lowercase">EST_CONNECTION: SECURE</p>
                         </div>
                         <div className="flex items-center gap-4 px-6 py-3 rounded-full bg-theme-primary/10 border border-theme-primary/20 w-fit">
                             <div className="w-2 h-2 rounded-full bg-theme-primary animate-pulse" />
@@ -92,12 +102,12 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-12">
-                    <div className="flex flex-col gap-2">
+                <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
+                    <div className="flex flex-col items-center md:items-start gap-2">
                         <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.5em]">
                             © {currentYear} — BUDDHI RANGANA FOUNDRY
                         </p>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-center md:justify-start gap-4">
                             <span className="text-[7px] font-mono text-white/10 uppercase">Architectural_v2.4_Stable</span>
                             <Cpu size={10} className="text-white/10" />
                         </div>

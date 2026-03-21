@@ -181,7 +181,7 @@ export default function ProjectsSection() {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="flex items-center gap-8"
+                        className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
                     >
                         <div className="text-left md:text-right">
                             <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">
@@ -200,7 +200,7 @@ export default function ProjectsSection() {
                     className="mb-16"
                 >
                     <LayoutGroup id="project-filters">
-                        <div className="flex flex-wrap gap-2 md:gap-3">
+                        <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-3">
                             {FILTERS.map((filter) => {
                                 const Icon = filter.icon;
                                 const isActive = activeFilter === filter.key;
