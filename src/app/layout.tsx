@@ -8,6 +8,7 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import ChatBot from "@/components/ui/ChatBot";
 
 // Load Inter and Poppins from Google Fonts with CSS variable exposure
 const inter = Inter({
@@ -113,6 +114,7 @@ export default function RootLayout({
             <Navbar />
             <main id="main-content">{children}</main>
             <Footer />
+            <ChatBot />
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
