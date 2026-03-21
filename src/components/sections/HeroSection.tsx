@@ -232,7 +232,7 @@ export default function HeroSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                     {/* ── LEFT: Text Content ── */}
-                    <div className="lg:col-span-7 flex flex-col items-start">
+                    <div className="lg:col-span-7 flex flex-col items-start order-2 lg:order-1 mt-12 lg:mt-0">
 
                         {/* System ID badge */}
                         <motion.div
@@ -376,14 +376,17 @@ export default function HeroSection() {
                     {/* ── RIGHT: JARVIS HUD Orb ── */}
                     <motion.div
                         style={{ x: hudX, y: hudY }}
-                        className="hidden lg:col-span-5 lg:flex items-center justify-center relative"
+                        className="lg:col-span-5 flex flex-col items-center justify-center relative order-1 lg:order-2 w-full mt-4 lg:mt-0 mb-20 lg:mb-0"
                     >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.7 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative w-[460px] h-[460px] flex items-center justify-center"
-                        >
+                        <div className="relative flex items-center justify-center w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[460px] lg:h-[460px]">
+                            {/* Dedicated static scaling wrapper to protect against framer-motion override */}
+                            <div className="absolute scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center flex items-center justify-center w-[460px] h-[460px]">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.7 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                                    className="relative w-full h-full flex items-center justify-center"
+                                >
                             {/* Outer ambient glow */}
                             <div className="absolute inset-0 bg-theme-primary/10 blur-[80px] rounded-full" />
 
@@ -485,54 +488,62 @@ export default function HeroSection() {
 
 
 
-                            {/* Floating data tags */}
-                            <motion.div
-                                animate={{ y: [-6, 6, -6] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-4 right-8 px-4 py-2 rounded-xl bg-dark-400/80 border border-white/5 backdrop-blur-md"
-                            >
-                                <span className="text-[8px] font-mono text-theme-primary">SIG: LOCKED</span>
-                            </motion.div>
-
-                            <motion.div
-                                animate={{ y: [6, -6, 6] }}
-                                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                                className="absolute -bottom-4 left-8 px-4 py-2 rounded-xl bg-dark-400/80 border border-white/5 backdrop-blur-md"
-                            >
-                                <span className="text-[8px] font-mono text-theme-primary">FREQ: 2.4GHz</span>
-                            </motion.div>
-
-                            <motion.div
-                                animate={{ x: [-5, 5, -5] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute top-1/2 -right-8 -translate-y-1/2 px-4 py-2 rounded-xl bg-dark-400/80 border border-white/5 backdrop-blur-md"
-                            >
-                                <div className="flex flex-col gap-1">
-                                    <span className="text-[6px] font-bold text-white/20 uppercase tracking-widest">Node</span>
-                                    <span className="text-[9px] font-mono text-theme-primary">0X-ARCH</span>
-                                </div>
-                            </motion.div>
-                        </motion.div>
-
-                        {/* Identity card below orb */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.4, duration: 0.8 }}
-                            className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-max px-10 py-5 rounded-[2rem] bg-dark-400/80 border border-white/5 backdrop-blur-xl shadow-2xl"
-                        >
-                            <div className="flex items-center gap-8">
-                                <div className="flex flex-col">
-                                    <span className="text-[7px] font-bold text-theme-primary uppercase tracking-[0.5em] mb-1">Operator</span>
-                                    <span className="text-lg font-bold text-white tracking-tighter">BUDDHI RANGANA</span>
-                                </div>
-                                <div className="w-px h-10 bg-white/5" />
-                                <div className="flex flex-col">
-                                    <span className="text-[7px] font-bold text-white/20 uppercase tracking-widest mb-1">Clearance</span>
-                                    <span className="text-sm font-mono text-theme-primary">LEVEL_5_ARCH</span>
-                                </div>
+                            {/* Floating Skill Tags Array */}
+                            {[
+                                { label: ".NET Core", top: "2%", left: "50%", offsetX: "-50%" },
+                                { label: "React", top: "18%", right: "8%" },
+                                { label: "Django", top: "52%", right: "-4%" },
+                                { label: "Cloud ☁", bottom: "16%", right: "5%" },
+                                { label: "5+ Yrs", bottom: "16%", left: "5%" },
+                                { label: "NestJS", top: "52%", left: "-4%" },
+                                { label: "NextJS", top: "18%", left: "8%" }
+                            ].map((skill, i) => (
+                                <motion.div
+                                    key={skill.label}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1, y: [-4, 4, -4], x: skill.offsetX || 0 }}
+                                    transition={{ 
+                                        opacity: { delay: i * 0.1, duration: 0.8 },
+                                        scale: { delay: i * 0.1, duration: 0.8 },
+                                        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+                                        x: { duration: 0 }
+                                    }}
+                                    style={{ top: skill.top, left: skill.left, right: skill.right, bottom: skill.bottom }}
+                                    className="absolute px-5 py-2.5 rounded-[1.25rem] bg-dark-400/90 border border-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(248,87,42,0.15)] flex items-center justify-center cursor-default z-30"
+                                >
+                                    <span className="text-[12px] font-bold text-white/90 hover:text-theme-primary transition-colors whitespace-nowrap">{skill.label}</span>
+                                </motion.div>
+                            ))}
+                                </motion.div>
                             </div>
-                        </motion.div>
+                        </div>
+
+                        {/* Lower Stats Widget (Years | Projects | Countries) */}
+                        <div className="absolute -bottom-16 sm:-bottom-20 lg:-bottom-12 w-full flex justify-center z-40 px-4">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1.4, duration: 0.8 }}
+                                className="w-full sm:w-max max-w-[420px] sm:max-w-none px-4 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6 rounded-3xl lg:rounded-[2rem] bg-dark-400/90 border border-white/5 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center"
+                            >
+                                <div className="flex items-center justify-between gap-3 sm:gap-6 lg:gap-10 w-full">
+                                    <div className="flex flex-col items-center flex-1">
+                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">5<span className="text-sm lg:text-xl">+</span></span>
+                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Years Exp.</span>
+                                    </div>
+                                    <div className="w-px h-8 lg:h-12 bg-white/10 shrink-0" />
+                                    <div className="flex flex-col items-center flex-1">
+                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">10<span className="text-sm lg:text-xl">+</span></span>
+                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Projects</span>
+                                    </div>
+                                    <div className="w-px h-8 lg:h-12 bg-white/10 shrink-0" />
+                                    <div className="flex flex-col items-center flex-1">
+                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">2</span>
+                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Countries</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 </div>
             </div>
