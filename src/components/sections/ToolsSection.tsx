@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
     Code2,
     Database,
@@ -174,16 +174,16 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: {},
     visible: {
         transition: { staggerChildren: 0.08 },
     },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
     hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 };
 
 export default function ToolsSection() {
@@ -228,7 +228,7 @@ export default function ToolsSection() {
                         <motion.div
                             key={category.id}
                             variants={cardVariants}
-                            className="group relative rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-sm p-6 hover:border-white/15 hover:bg-white/[0.06] transition-all duration-500 overflow-hidden flex flex-col gap-5"
+                            className="group relative rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-sm p-6 hover:border-white/15 hover:bg-white/[0.06] transition-all duration-500 overflow-hidden flex flex-col gap-5 outline-none"
                         >
                             {/* Card accent glow */}
                             <div
@@ -262,7 +262,7 @@ export default function ToolsSection() {
                                 {category.skills.map((skill) => (
                                     <div
                                         key={skill.name}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default"
+                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-transparent hover:border-theme-primary/60 hover:bg-white/10 hover:shadow-[0_0_8px_rgba(248,87,42,0.25)] transition-all duration-300 cursor-default outline-none"
                                     >
                                         <skill.icon
                                             size={12}
