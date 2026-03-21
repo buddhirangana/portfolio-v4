@@ -449,17 +449,36 @@ export default function HeroSection() {
                                     />
                                 ))}
 
-                                {/* Core circle */}
-                                <div className="relative w-28 h-28 rounded-full bg-dark-400 border-2 border-theme-primary/40 flex flex-col items-center justify-center overflow-hidden shadow-[0_0_40px_rgba(248,87,42,0.3),inset_0_0_40px_rgba(248,87,42,0.05)]">
-                                    {/* Conic spin */}
+                                {/* Holographic Avatar Core */}
+                                <div className="relative w-36 h-36 rounded-full bg-theme-primary/5 border border-theme-primary/30 flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(248,87,42,0.2),inset_0_0_30px_rgba(248,87,42,0.1)] group">
+                                    
+                                    {/* Base tint */}
+                                    <div className="absolute inset-0 bg-theme-primary/20 mix-blend-overlay z-10" />
+
+                                    {/* Hologram scanline fx */}
+                                    <motion.div
+                                        animate={{ y: ["-100%", "200%"] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 w-full h-12 bg-gradient-to-b from-transparent via-theme-primary/30 to-transparent z-20 pointer-events-none"
+                                    />
+
+                                    {/* Avatar Image */}
+                                    <img 
+                                        src="/images/buddhi-img.png" 
+                                        alt="Avatar Hologram" 
+                                        className="w-full h-full object-cover filter contrast-125 grayscale brightness-110 drop-shadow-[0_0_10px_rgba(248,87,42,0.5)] relative z-0 transition-transform duration-700 group-hover:scale-110" 
+                                    />
+
+                                    {/* Conic spin for extra tech radar feel over the avatar */}
                                     <motion.div
                                         animate={{ rotate: 360 }}
-                                        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-0"
-                                        style={{ background: "conic-gradient(from 0deg, transparent 0%, rgba(248,87,42,0.08) 50%, transparent 100%)" }}
+                                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 z-30 opacity-60 pointer-events-none mix-blend-screen"
+                                        style={{ background: "conic-gradient(from 0deg, transparent 0%, rgba(248,87,42,0.2) 20%, transparent 60%)" }}
                                     />
-                                    <Zap size={32} className="text-theme-primary relative z-10 filter drop-shadow-[0_0_12px_rgba(248,87,42,0.9)]" />
-                                    <span className="text-[7px] font-bold text-theme-primary/60 uppercase tracking-[0.3em] relative z-10 mt-1">ONLINE</span>
+                                    
+                                    {/* Glass rim reflection */}
+                                    <div className="absolute inset-0 rounded-full border border-white/10 z-30 pointer-events-none" />
                                 </div>
                             </div>
 
