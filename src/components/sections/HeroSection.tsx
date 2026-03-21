@@ -171,65 +171,6 @@ export default function HeroSection() {
             </div>
 
 
-            {/* ── Left HUD Panel ── */}
-            <motion.div
-                initial={{ opacity: 0, x: -40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 z-30"
-            >
-                <div className="w-px h-24 bg-gradient-to-b from-transparent via-theme-primary/40 to-transparent mx-auto" />
-
-                <div className="flex flex-col gap-4">
-                    {[
-                        { icon: Activity, label: "Neural_Link", val: "ACTIVE" },
-                        { icon: Cpu, label: "Core_Load", val: "12.4%" },
-                        { icon: Wifi, label: "Uplink_Sig", val: "99.8 dB" },
-                        { icon: Shield, label: "Threat_Level", val: "NULL" },
-                    ].map(({ icon: Icon, label, val }) => (
-                        <div key={label} className="flex items-center gap-4 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 backdrop-blur-sm hover:bg-white/[0.05] transition-colors">
-                            <Icon size={12} className="text-theme-primary shrink-0 opacity-70" />
-                            <div className="flex flex-col">
-                                <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em]">{label}</span>
-                                <span className="text-[10px] font-mono text-theme-primary leading-none mt-1">{val}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="w-px h-24 bg-gradient-to-b from-theme-primary/40 via-theme-primary/20 to-transparent mx-auto" />
-            </motion.div>
-
-            {/* ── Right HUD Panel ── */}
-            <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.4, duration: 0.8 }}
-                className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 items-end z-30"
-            >
-                <div className="w-px h-24 bg-gradient-to-b from-transparent via-theme-primary/40 to-transparent mx-auto" />
-
-                {/* Live metric cards */}
-                <div className="flex flex-col gap-4">
-                    {[
-                        { val: "50+", label: "Deployments" },
-                        { val: "06+", label: "Years Active" },
-                        { val: "99%", label: "Uptime SLA" },
-                    ].map(({ val, label }) => (
-                        <motion.div
-                            key={label}
-                            whileHover={{ x: -6 }}
-                            className="flex flex-col items-end gap-1 px-6 py-4 rounded-xl bg-dark-400/80 border border-white/10 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.3)] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all group"
-                        >
-                            <span className="text-2xl font-bold text-white tracking-tighter group-hover:text-theme-primary transition-colors">{val}</span>
-                            <span className="text-[8px] font-bold text-white/30 uppercase tracking-[0.4em] group-hover:text-white/60 transition-colors">{label}</span>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <div className="w-px h-24 bg-gradient-to-b from-theme-primary/40 via-theme-primary/20 to-transparent mx-auto" />
-            </motion.div>
-
             {/* ── Main Content ── */}
             <div className="section-container relative z-10 w-full px-6 pt-16 pb-12 lg:pt-28 lg:pb-20">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
