@@ -89,10 +89,24 @@ export default function ChatBot() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(true)}
-                className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[100] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-theme-primary text-white shadow-[0_0_15px_rgba(248,87,42,0.4)] flex items-center justify-center transition-all ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
+                className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[100] w-16 h-16 sm:w-16 sm:h-16 rounded-full bg-theme-primary text-white shadow-[0_0_25px_rgba(248,87,42,0.5)] flex items-center justify-center transition-all ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
             >
-                <div className="absolute inset-0 rounded-full animate-ping bg-theme-primary/40 -z-10" />
-                <Bot size={22} className="sm:w-6 sm:h-6" />
+                {/* Attention Glows & Layered Pulses */}
+                <div className="absolute inset-0 rounded-full animate-[ping_3s_infinite] bg-theme-primary/40 -z-10" />
+                <div className="absolute inset-0 rounded-full animate-[ping_3s_infinite_1s] bg-theme-primary/20 -z-10" />
+                <div className="absolute inset-[-8px] rounded-full animate-pulse bg-theme-primary/15 -z-20 blur-xl" />
+                
+                {/* Shine Sweep Effect */}
+                <div className="absolute inset-0 rounded-full overflow-hidden">
+                    <motion.div 
+                        initial={{ x: "-150%", skewX: -45 }}
+                        animate={{ x: "150%" }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", repeatDelay: 1.5 }}
+                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                    />
+                </div>
+
+                <Bot size={32} className="w-8 h-8 sm:w-9 sm:h-9 relative z-10" />
             </motion.button>
 
             {/* ── Chat Window ── */}
