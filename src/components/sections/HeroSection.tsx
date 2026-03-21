@@ -49,10 +49,17 @@ function Ring({ r, duration, dir = 1, dash = "1 4" }: { r: number; duration: num
 }
 
 // ── Ping dot on orbit ──────────────────────────────────────────────────────────
-function OrbitDot({ radius, angle, speed }: { radius: number; angle: number; speed: number }) {
-    const rad = (angle * Math.PI) / 180;
-    const cx = 50 + radius * Math.cos(rad);
-    const cy = 50 + radius * Math.sin(rad);
+// cx/cy are pre-computed as static literals to avoid Math.sin/cos floating-point
+// precision divergence between Node.js and browser V8 (would cause attribute hydration mismatch).
+// Formula: cx = 50 + radius * cos(angle°), cy = 50 + radius * sin(angle°)
+const ORBIT_DOTS: { cx: number; cy: number; speed: number }[] = [
+    { cx: 87.239,  cy: 71.5,   speed: 18 }, // radius=43, angle=30°
+    { cx: 31.5,    cy: 82.043, speed: 12 }, // radius=37, angle=120°
+    { cx: 27.019,  cy: 30.716, speed: 8  }, // radius=30, angle=220°
+    { cx: 64.141,  cy: 33.147, speed: 5  }, // radius=22, angle=310°
+];
+
+function OrbitDot({ cx, cy, speed }: { cx: number; cy: number; speed: number }) {
     return (
         <motion.circle
             cx={cx} cy={cy} r={0.8}
@@ -440,11 +447,10 @@ export default function HeroSection() {
                                 <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
                                 <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
 
-                                {/* Orbit dots */}
-                                <OrbitDot radius={43} angle={30} speed={18} />
-                                <OrbitDot radius={37} angle={120} speed={12} />
-                                <OrbitDot radius={30} angle={220} speed={8} />
-                                <OrbitDot radius={22} angle={310} speed={5} />
+                                {/* Orbit dots — positions precomputed to avoid SSR/client Math.sin/cos float divergence */}
+                                {ORBIT_DOTS.map((dot, i) => (
+                                    <OrbitDot key={i} {...dot} />
+                                ))}
                             </svg>
 
                             {/* Radar sweep layer */}

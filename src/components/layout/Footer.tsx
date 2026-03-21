@@ -5,15 +5,11 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Mail, ArrowUp, Command, Terminal, Cpu } from "lucide-react";
 
 export default function Footer() {
-    const [mounted, setMounted] = React.useState(false);
-
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    const currentYear = 2026;
 
     return (
         <footer className="relative bg-dark-400 border-t border-white/5 pt-32 pb-16 overflow-hidden">
@@ -98,8 +94,8 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-12">
                     <div className="flex flex-col gap-2">
-                        <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.5em]" suppressHydrationWarning>
-                            © {new Date().getFullYear()} — BUDDHI RANGANA FOUNDRY
+                        <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.5em]">
+                            © {currentYear} — BUDDHI RANGANA FOUNDRY
                         </p>
                         <div className="flex items-center gap-4">
                             <span className="text-[7px] font-mono text-white/10 uppercase">Architectural_v2.4_Stable</span>

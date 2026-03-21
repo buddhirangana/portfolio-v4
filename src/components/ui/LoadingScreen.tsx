@@ -154,9 +154,14 @@ function BootLog({ progress }: { progress: number }) {
 
 // ─── Main LoadingScreen ────────────────────────────────────────────────────────
 export default function LoadingScreen() {
+    const [mounted, setMounted] = useState(false);
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(true);
     const [phase, setPhase] = useState<"boot" | "done">("boot");
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         // Accelerating progress: fast then slows near end
@@ -177,6 +182,8 @@ export default function LoadingScreen() {
         const id = requestTimeout(tick, 80);
         return () => clearTimeout(id);
     }, []);
+
+    if (!mounted) return null;
 
     // HUD corner bracket
     const Bracket = ({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) => {

@@ -15,6 +15,7 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const { scrollYProgress } = useScroll();
 
     const scaleX = useSpring(scrollYProgress, {
@@ -24,6 +25,7 @@ export default function Navbar() {
     });
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
@@ -94,11 +96,13 @@ export default function Navbar() {
                         </motion.button>
                     </div>
 
-                    {/* Progress Indicator (Fixed in Navbar) */}
-                    <motion.div
-                        style={{ scaleX }}
-                        className="absolute bottom-0 left-0 right-0 h-[1px] bg-theme-primary origin-left opacity-30"
-                    />
+                    {/* Progress Indicator (only after mount to avoid attribute hydration mismatch) */}
+                    {mounted && (
+                        <motion.div
+                            style={{ scaleX }}
+                            className="absolute bottom-0 left-0 right-0 h-[1px] bg-theme-primary origin-left opacity-30"
+                        />
+                    )}
 
                     {/* Mobile Toggle */}
                     <button

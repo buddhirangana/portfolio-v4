@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCheck, Activity, Globe, Cpu } from "lucide-react";
 
 export default function ContactSection() {
     const sectionRef = useRef(null);
     const [focusedField, setFocusedField] = useState<string | null>(null);
-    // Generate a stable TX_ID once on the client to avoid SSR/client hydration mismatch
-    const [txId] = useState(() => Math.random().toString(16).substring(2, 10).toUpperCase());
+    // Generate TX_ID only on the client (after mount) to avoid SSR/client hydration mismatch
+    const [txId, setTxId] = useState<string>("--------");
+
+    useEffect(() => {
+        setTxId(Math.random().toString(16).substring(2, 10).toUpperCase());
+    }, []);
 
     return (
         <section id="contact" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
