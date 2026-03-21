@@ -207,26 +207,26 @@ export default function CertificationsSection() {
                         onClick={() => setShowAll((prev) => !prev)}
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.97 }}
-                        className="group relative flex items-center gap-5 px-12 py-6 rounded-[2rem] border border-white/10 bg-white/[0.03] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all duration-500 overflow-hidden"
+                        className="group relative flex items-center gap-5 px-10 py-5 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all duration-500 overflow-hidden"
                     >
                         {/* Shimmer */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
                         <span className="relative z-10 flex flex-col items-start">
-                            <span className="text-[8px] font-bold text-theme-primary uppercase tracking-[0.5em] mb-1">
+                            <span className="text-[7px] font-bold text-theme-primary uppercase tracking-[0.5em] mb-1">
                                 {showAll ? "Collapse_View" : `+${hiddenCount}_More_Available`}
                             </span>
-                            <span className="text-sm font-bold text-white/60 group-hover:text-white transition-colors uppercase tracking-[0.2em]">
-                                {showAll ? "Show Less Credentials" : "View All Certifications"}
+                            <span className="text-[11px] md:text-xs font-bold text-white/60 group-hover:text-white transition-colors uppercase tracking-[0.2em]">
+                                {showAll ? "Show Less" : "View All Credentials"}
                             </span>
                         </span>
 
                         <motion.div
                             animate={{ rotate: showAll ? 180 : 0 }}
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="w-12 h-12 rounded-2xl bg-white/5 border border-white/5 group-hover:border-theme-primary/30 group-hover:bg-theme-primary/10 transition-all duration-500 flex items-center justify-center text-white/30 group-hover:text-theme-primary"
+                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 group-hover:border-theme-primary/30 group-hover:bg-theme-primary/10 transition-all duration-500 flex items-center justify-center text-white/30 group-hover:text-theme-primary"
                         >
-                            <ChevronDown size={20} />
+                            <ChevronDown size={18} />
                         </motion.div>
                     </motion.button>
                 </motion.div>

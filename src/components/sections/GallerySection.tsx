@@ -288,14 +288,14 @@ export default function GallerySection() {
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.97 }}
                         href="#"
-                        className="group flex items-center gap-5 px-12 py-6 rounded-[2rem] border border-white/10 bg-white/[0.02] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all duration-500"
+                        className="group flex items-center gap-4 px-8 py-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all duration-500"
                     >
-                        <Camera size={16} className="text-theme-primary" />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">
+                        <Camera size={14} className="text-theme-primary" />
+                        <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">
                             View Full Visual Archive
                         </span>
-                        <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/5 group-hover:bg-theme-primary group-hover:border-theme-primary flex items-center justify-center transition-all duration-500">
-                            <ChevronRight size={16} className="text-white/30 group-hover:text-white transition-colors" />
+                        <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 group-hover:bg-theme-primary group-hover:border-theme-primary flex items-center justify-center transition-all duration-500">
+                            <ChevronRight size={14} className="text-white/30 group-hover:text-white transition-colors" />
                         </div>
                     </motion.a>
                 </motion.div>

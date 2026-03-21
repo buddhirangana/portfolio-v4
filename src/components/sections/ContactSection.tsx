@@ -136,10 +136,9 @@ export default function ContactSection() {
                                 </div>
                                 <Wifi size={12} className="text-theme-primary animate-pulse" />
                             </div>
-
-                            <form className="space-y-10 relative z-10">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                    <div className="space-y-4">
+                            <form className="space-y-6 relative z-10">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="space-y-3">
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                             <label className="text-white/30 flex items-center gap-2">
                                                 <Terminal size={10} className="text-theme-primary" />
@@ -152,10 +151,10 @@ export default function ContactSection() {
                                             onBlur={() => setFocusedField(null)}
                                             type="text"
                                             placeholder="AGENT_NAME"
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 text-sm text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
                                         />
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3">
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                             <label className="text-white/30 flex items-center gap-2">
                                                 <ShieldCheck size={10} className="text-theme-primary" />
@@ -168,12 +167,12 @@ export default function ContactSection() {
                                             onBlur={() => setFocusedField(null)}
                                             type="email"
                                             placeholder="ENDPOINT@DNS.HOST"
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 text-sm text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
                                         />
                                     </div>
                                 </div>
 
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                         <label className="text-white/30 flex items-center gap-2">
                                             <Zap size={10} className="text-theme-primary" />
@@ -185,11 +184,11 @@ export default function ContactSection() {
                                         onBlur={() => setFocusedField(null)}
                                         type="text"
                                         placeholder="DIRECTIVE_SUBJECT_LINE"
-                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 text-sm text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
                                     />
                                 </div>
 
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                         <label className="text-white/30 flex items-center gap-2">
                                             <Activity size={10} className="text-theme-primary" />
@@ -199,21 +198,21 @@ export default function ContactSection() {
                                     <textarea
                                         onFocus={() => setFocusedField('message')}
                                         onBlur={() => setFocusedField(null)}
-                                        rows={6}
+                                        rows={5}
                                         placeholder="DATA_STREAM_CONTENT_ENCODING..."
-                                        className="w-full bg-white/5 border border-white/10 rounded-[2.5rem] px-8 py-8 text-sm text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none resize-none placeholder:text-white/10 font-bold tracking-wider leading-relaxed"
+                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none resize-none placeholder:text-white/10 font-bold tracking-wider leading-relaxed"
                                     />
                                 </div>
 
                                 <motion.button
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="w-full group relative overflow-hidden rounded-[3rem] bg-theme-primary text-white py-8 font-extrabold uppercase tracking-[0.5em] text-xs shadow-3xl shadow-theme-primary/30"
+                                    className="w-full group relative overflow-hidden rounded-2xl bg-theme-primary text-white py-5 font-extrabold uppercase tracking-[0.5em] text-[10px] shadow-3xl shadow-theme-primary/30"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-theme-primary to-theme-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <span className="relative z-10 flex items-center justify-center gap-6">
+                                    <span className="relative z-10 flex items-center justify-center gap-4">
                                         Initiate Data Transmission
-                                        <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                     </span>
                                 </motion.button>
                             </form>

@@ -386,13 +386,13 @@ export default function ProjectsSection() {
                                 onClick={() => setVisibleCount(prev => Math.min(prev + PAGE_SIZE, filteredProjects.length))}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="group bg-transparent border border-white/5 rounded-full px-16 py-6 flex items-center gap-6 hover:border-theme-primary transition-all duration-500"
+                                className="group bg-transparent border border-white/5 rounded-2xl px-10 py-5 flex items-center gap-5 hover:border-theme-primary transition-all duration-500"
                             >
-                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30 group-hover:text-theme-primary">
+                                <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30 group-hover:text-theme-primary">
                                     Expand Data Feed · {filteredProjects.length - visibleCount} Remaining
                                 </span>
-                                <div className="w-8 h-8 rounded-full bg-white/5 group-hover:bg-theme-primary flex items-center justify-center transition-all">
-                                    <Plus size={16} className="text-white/30 group-hover:text-white" />
+                                <div className="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-theme-primary flex items-center justify-center transition-all">
+                                    <Plus size={14} className="text-white/30 group-hover:text-white" />
                                 </div>
                             </motion.button>
                         </motion.div>
