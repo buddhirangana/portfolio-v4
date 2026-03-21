@@ -172,7 +172,7 @@ export default function HeroSection() {
 
 
             {/* ── Main Content ── */}
-            <div className="section-container relative z-10 w-full px-6 pt-16 pb-12 lg:pt-28 lg:pb-20">
+            <div className="section-container relative z-10 w-full px-6 pt-32 pb-12 lg:pt-40 lg:pb-20">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                     {/* ── LEFT: Text Content ── */}
