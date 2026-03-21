@@ -38,8 +38,8 @@ export default function Navbar() {
         >
             <div className="mx-auto max-w-7xl px-6 flex justify-center">
                 <div
-                    className={`relative flex items-center justify-between transition-all duration-700 ease-[0.16, 1, 0.3, 1] overflow-hidden ${isScrolled
-                        ? "w-full max-w-[1000px] px-8 py-3 bg-dark-400/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl"
+                    className={`relative flex items-center justify-between transition-all duration-700 ease-[0.16,1,0.3,1] ${isScrolled
+                        ? "w-full max-w-[1000px] px-6 py-3 bg-dark-400/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl"
                         : "w-full bg-transparent border-transparent"
                         }`}
                 >
@@ -62,12 +62,12 @@ export default function Navbar() {
                     </motion.a>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-2">
+                    <div className="hidden md:flex items-center gap-0">
                         {NAV_LINKS.map((link, i) => (
                             <motion.a
                                 key={link.name}
                                 href={link.href}
-                                className="px-5 py-2 group relative"
+                                className="px-3 py-2 group relative"
                             >
                                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 group-hover:text-white transition-colors">
                                     {link.name}
@@ -80,16 +80,16 @@ export default function Navbar() {
                     </div>
 
                     {/* Right Side Actions */}
-                    <div className="hidden md:flex items-center gap-8">
-                        <div className="flex items-center gap-4 border-r border-white/5 pr-8">
-                            <a href="#" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={18} /></a>
-                            <a href="#" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={18} /></a>
+                    <div className="hidden md:flex items-center gap-4">
+                        <div className="flex items-center gap-3 border-r border-white/5 pr-4">
+                            <a href="#" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={16} /></a>
+                            <a href="#" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
                         </div>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
-                            className="flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.4em] text-white"
+                            className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.4em] text-white whitespace-nowrap"
                         >
-                            <Terminal size={14} className="text-theme-primary" />
+                            <Terminal size={13} className="text-theme-primary shrink-0" />
                             Deploy CMD
                         </motion.button>
                     </div>
