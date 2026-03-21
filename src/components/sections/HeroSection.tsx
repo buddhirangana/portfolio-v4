@@ -160,23 +160,22 @@ export default function HeroSection() {
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-30"
+                className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 z-30"
             >
                 <div className="w-px h-24 bg-gradient-to-b from-transparent via-theme-primary/40 to-transparent mx-auto" />
 
-                {/* System status readouts */}
-                <div className="flex flex-col gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md">
+                <div className="flex flex-col gap-4">
                     {[
                         { icon: Activity, label: "Neural_Link", val: "ACTIVE" },
                         { icon: Cpu, label: "Core_Load", val: "12.4%" },
                         { icon: Wifi, label: "Uplink_Sig", val: "99.8 dB" },
                         { icon: Shield, label: "Threat_Level", val: "NULL" },
                     ].map(({ icon: Icon, label, val }) => (
-                        <div key={label} className="flex items-center gap-3">
-                            <Icon size={10} className="text-theme-primary shrink-0" />
+                        <div key={label} className="flex items-center gap-4 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 backdrop-blur-sm hover:bg-white/[0.05] transition-colors">
+                            <Icon size={12} className="text-theme-primary shrink-0 opacity-70" />
                             <div className="flex flex-col">
-                                <span className="text-[6px] font-bold text-white/20 uppercase tracking-[0.3em]">{label}</span>
-                                <span className="text-[9px] font-mono text-theme-primary leading-none">{val}</span>
+                                <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em]">{label}</span>
+                                <span className="text-[10px] font-mono text-theme-primary leading-none mt-1">{val}</span>
                             </div>
                         </div>
                     ))}
@@ -190,12 +189,12 @@ export default function HeroSection() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
-                className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 items-end z-30"
+                className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 items-end z-30"
             >
                 <div className="w-px h-24 bg-gradient-to-b from-transparent via-theme-primary/40 to-transparent mx-auto" />
 
                 {/* Live metric cards */}
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-4">
                     {[
                         { val: "50+", label: "Deployments" },
                         { val: "06+", label: "Years Active" },
@@ -203,36 +202,24 @@ export default function HeroSection() {
                     ].map(({ val, label }) => (
                         <motion.div
                             key={label}
-                            whileHover={{ x: -4 }}
-                            className="flex flex-col items-end gap-1 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
+                            whileHover={{ x: -6 }}
+                            className="flex flex-col items-end gap-1 px-6 py-4 rounded-xl bg-dark-400/80 border border-white/10 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.3)] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all group"
                         >
-                            <span className="text-xl font-bold text-white tracking-tight">{val}</span>
-                            <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em]">{label}</span>
+                            <span className="text-2xl font-bold text-white tracking-tighter group-hover:text-theme-primary transition-colors">{val}</span>
+                            <span className="text-[8px] font-bold text-white/30 uppercase tracking-[0.4em] group-hover:text-white/60 transition-colors">{label}</span>
                         </motion.div>
                     ))}
                 </div>
 
                 <div className="w-px h-24 bg-gradient-to-b from-theme-primary/40 via-theme-primary/20 to-transparent mx-auto" />
-
-                {/* Globe location mini display */}
-                <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md">
-                    <Globe size={12} className="text-theme-primary" />
-                    <div className="flex flex-col items-end">
-                        <span className="text-[8px] font-mono text-white/40">Colombo, LK</span>
-                        <div className="flex items-center gap-1 mt-0.5">
-                            <div className="w-1 h-1 rounded-full bg-theme-primary animate-pulse" />
-                            <span className="text-[6px] font-bold text-theme-primary uppercase tracking-widest">Online</span>
-                        </div>
-                    </div>
-                </div>
             </motion.div>
 
             {/* ── Main Content ── */}
-            <div className="section-container relative z-10 w-full px-6 pt-28 pb-20">
+            <div className="section-container relative z-10 w-full px-6 pt-16 pb-12 lg:pt-28 lg:pb-20">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                     {/* ── LEFT: Text Content ── */}
-                    <div className="lg:col-span-7 flex flex-col items-start order-2 lg:order-1 mt-12 lg:mt-0">
+                    <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-8 lg:mt-0">
 
                         {/* System ID badge */}
                         <motion.div
@@ -297,7 +284,7 @@ export default function HeroSection() {
                                     animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
                                     exit={{ y: -16, opacity: 0, filter: "blur(6px)" }}
                                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                                    className="text-base md:text-lg font-bold text-white tracking-tight"
+                                    className="text-base md:text-lg font-bold text-white tracking-tight text-center lg:text-left"
                                 >
                                     {ROLES[roleIndex]}
                                 </motion.span>
@@ -314,7 +301,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-base md:text-lg text-white/35 leading-relaxed font-medium max-w-lg mb-12"
+                            className="text-base md:text-lg text-white/35 leading-relaxed font-medium max-w-lg mb-12 mx-auto lg:mx-0"
                         >
                             Architecting high-fidelity digital experiences and{" "}
                             <span className="text-white/70 font-semibold">neural performance layers</span>{" "}
@@ -326,7 +313,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 24 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
-                            className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-14"
+                            className="flex flex-col sm:flex-row items-center lg:items-start sm:items-center gap-5 mb-14 w-full sm:w-auto"
                         >
                             <a
                                 href="#projects"
@@ -376,7 +363,7 @@ export default function HeroSection() {
                     {/* ── RIGHT: JARVIS HUD Orb ── */}
                     <motion.div
                         style={{ x: hudX, y: hudY }}
-                        className="lg:col-span-5 flex flex-col items-center justify-center relative order-1 lg:order-2 w-full mt-4 lg:mt-0 mb-20 lg:mb-0"
+                        className="lg:col-span-5 flex flex-col items-center justify-center relative order-1 lg:order-2 w-full mt-4 lg:mt-0 mb-12 lg:mb-0"
                     >
                         <div className="relative flex items-center justify-center w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[460px] lg:h-[460px]">
                             {/* Dedicated static scaling wrapper to protect against framer-motion override */}

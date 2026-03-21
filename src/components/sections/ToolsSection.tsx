@@ -188,7 +188,7 @@ const cardVariants: Variants = {
 
 export default function ToolsSection() {
     return (
-        <section id="tools" className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="tools" className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Grid bg */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
 
@@ -202,17 +202,16 @@ export default function ToolsSection() {
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="mb-20"
+                    className="mb-12 lg:mb-20 flex flex-col items-center lg:items-start text-center lg:text-left"
                 >
-                    <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
                         <Wrench size={14} className="text-theme-primary" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">
                             Technical Skillset
                         </span>
                     </div>
                     <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
-                        Skills &amp;{" "}
-                        <span className="text-white/20 italic font-light">Expertise</span>
+                        Digital <span className="text-white/20 italic font-light">Arsenal</span>
                     </h2>
                 </motion.div>
 

@@ -166,7 +166,7 @@ export default function EducationSection() {
     const rest = QUALIFICATIONS.slice(1);
 
     return (
-        <section id="education" className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="education" className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Faint grid */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
             {/* Ghost watermark */}
@@ -175,17 +175,18 @@ export default function EducationSection() {
             <div className="section-container relative z-10">
 
                 {/* ── Section Header ── */}
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-16">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
+                        className="flex flex-col items-center md:items-start"
                     >
-                        <div className="flex items-center gap-3 mb-5">
+                        <div className="flex items-center justify-center md:justify-start gap-3 mb-5">
                             <GraduationCap size={13} className="text-theme-primary" />
                             <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-theme-primary">Academic Archive</span>
-                            <div className="w-10 h-px bg-theme-primary/30" />
+                            <div className="w-10 h-px bg-theme-primary/30 hidden md:block" />
                         </div>
                         <h2 className="text-5xl md:text-7xl xl:text-8xl font-bold text-white tracking-tighter leading-none">
                             Education

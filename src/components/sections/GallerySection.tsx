@@ -226,7 +226,7 @@ export default function GallerySection() {
     const sectionRef = useRef(null);
 
     return (
-        <section id="gallery" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="gallery" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background */}
             <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />
             <div className="absolute right-[-2%] top-0 text-[15rem] font-bold text-white/[0.01] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
@@ -236,17 +236,18 @@ export default function GallerySection() {
             <div className="section-container relative z-10">
 
                 {/* ── Header ── */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-12">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 lg:mb-24 gap-12 text-center md:text-left w-full">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
+                        className="flex flex-col items-center md:items-start"
                     >
-                        <div className="flex items-center gap-4 mb-4">
+                        <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <Camera size={14} className="text-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Visual Archive</span>
                         </div>
-                        <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none mb-4">
+                        <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
                             Event <span className="text-white/20 italic font-light">Gallery</span>
                         </h2>
                         <p className="text-base text-white/30 font-medium max-w-md leading-relaxed mt-4">

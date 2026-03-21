@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Quote, UserCheck, Shield, Activity, Fingerprint, Command } from "lucide-react";
+import { Quote, UserCheck, Shield, Activity, Fingerprint, Command, ShieldCheck } from "lucide-react";
 
 const TESTIMONIALS = [
     {
@@ -33,7 +33,7 @@ export default function TestimonialsSection() {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section id="testimonials" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="testimonials" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Foundry Background Decals */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.02]">
                 <div className="absolute top-20 right-20 text-[10rem] font-bold uppercase select-none">VALIDATED_FDBK</div>
@@ -41,13 +41,15 @@ export default function TestimonialsSection() {
             </div>
 
             <div className="section-container relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="flex flex-col items-center md:items-start"
                     >
-                        <div className="flex items-center gap-4 mb-4">
-                            <UserCheck size={14} className="text-theme-primary" />
+                        <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
+                            <ShieldCheck size={14} className="text-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Signal Validation</span>
                         </div>
                         <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">

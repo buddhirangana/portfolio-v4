@@ -15,7 +15,7 @@ export default function ContactSection() {
     }, []);
 
     return (
-        <section id="contact" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="contact" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background Atmosphere & Foundry Decals */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-theme-primary/5 blur-[180px] rounded-full pointer-events-none opacity-40" />
 
@@ -24,12 +24,13 @@ export default function ContactSection() {
             </div>
 
             <div className="section-container relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-24">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        className="flex flex-col items-center md:items-start"
                     >
-                        <div className="flex items-center gap-4 mb-4">
+                        <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <MessageSquare size={14} className="text-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Communication Node</span>
                         </div>

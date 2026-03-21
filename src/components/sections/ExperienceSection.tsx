@@ -61,7 +61,7 @@ export default function ExperienceSection() {
     });
 
     return (
-        <section id="experience" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="experience" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background Data Decals */}
             <div className="absolute right-[-5%] top-1/4 text-[15rem] font-bold text-white/[0.01] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
                 FOUNDRY_LOGS_CORE_v2.4
@@ -72,12 +72,12 @@ export default function ExperienceSection() {
             </div>
 
             <div className="section-container relative z-10">
-                <div className="flex flex-col mb-24">
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left mb-12 lg:mb-24">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                     >
-                        <div className="flex items-center gap-4 mb-4">
+                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
                             <Terminal size={14} className="text-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Chronicle logs</span>
                         </div>

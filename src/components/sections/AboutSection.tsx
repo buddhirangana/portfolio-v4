@@ -83,7 +83,7 @@ export default function AboutSection() {
         <section
             id="about"
             ref={sectionRef}
-            className="relative py-32 overflow-hidden bg-dark-400"
+            className="relative py-20 lg:py-32 overflow-hidden bg-dark-400"
         >
             {/* Foundry Background Decals */}
             <motion.div
@@ -95,14 +95,14 @@ export default function AboutSection() {
 
             <div className="section-container relative z-10">
                 {/* Modernized Header */}
-                <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-24">
+                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 mb-12 lg:mb-24 text-center lg:text-left">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="max-w-2xl"
+                        className="max-w-2xl flex flex-col items-center lg:items-start"
                     >
-                        <div className="flex items-center gap-4 mb-6">
+                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 w-full">
                             <span className="w-12 h-[1px] bg-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Identity Profile</span>
                         </div>
@@ -154,9 +154,9 @@ export default function AboutSection() {
                                 </div>
                             </div>
 
-                            <div className="relative z-10 max-w-lg">
+                            <div className="relative z-10 max-w-lg flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0">
                                 <h3 className="text-3xl font-bold text-white mb-6">Buddhi Rangana</h3>
-                                <div className="flex gap-4 mb-8">
+                                <div className="flex justify-center lg:justify-start gap-4 mb-8">
                                     <span className="text-[9px] font-bold uppercase tracking-widest px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/40">SYSTEMS_ENGINEER</span>
                                     <span className="text-[9px] font-bold uppercase tracking-widest px-3 py-1 bg-theme-primary/10 border border-theme-primary/20 rounded-full text-theme-primary">LEVEL_06</span>
                                 </div>

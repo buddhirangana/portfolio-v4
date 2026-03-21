@@ -151,7 +151,7 @@ export default function ProjectsSection() {
     };
 
     return (
-        <section id="projects" ref={sectionRef} className="py-32 relative overflow-hidden bg-dark-400">
+        <section id="projects" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background Architecture */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
             <div className="absolute top-0 left-0 p-20 opacity-[0.01] text-[15rem] font-bold select-none pointer-events-none uppercase leading-none">
@@ -161,13 +161,14 @@ export default function ProjectsSection() {
             <div className="section-container relative z-10">
 
                 {/* ── Header ── */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10 mb-10 md:mb-16">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 md:gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
+                        className="flex flex-col items-center md:items-start"
                     >
-                        <div className="flex items-center gap-4 mb-4">
+                        <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <Database size={14} className="text-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Experimental Archive</span>
                         </div>
