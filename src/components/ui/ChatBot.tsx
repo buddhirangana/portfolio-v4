@@ -100,16 +100,16 @@ export default function ChatBot() {
                         className={`fixed bottom-8 right-8 z-[200] w-[calc(100vw-4rem)] sm:w-[400px] bg-dark-400 border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ${isMinimized ? 'h-20' : 'h-[600px] max-h-[80vh]'}`}
                     >
                         {/* Header */}
-                        <div className="p-6 bg-gradient-to-r from-theme-primary to-theme-secondary flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
-                                    <Bot size={24} />
+                        <div className="p-4 sm:p-5 bg-gradient-to-r from-theme-primary to-theme-secondary flex items-center justify-between shrink-0">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                                    <Bot size={22} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="font-bold text-white text-lg tracking-tight leading-none">{BOT_NAME}</span>
-                                    <div className="flex items-center gap-2 mt-1">
+                                    <span className="font-bold text-white text-base tracking-tight leading-none">{BOT_NAME}</span>
+                                    <div className="flex items-center gap-1.5 mt-1">
                                         <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                                        <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest">Online</span>
+                                        <span className="text-[9px] font-bold text-white/60 uppercase tracking-widest">Online</span>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,8 @@ export default function ChatBot() {
                             <>
                                 <div 
                                     ref={scrollRef}
-                                    className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar"
+                                    data-lenis-prevent
+                                    className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar overscroll-contain"
                                 >
                                     {messages.map((msg) => (
                                         <div 
@@ -156,42 +157,46 @@ export default function ChatBot() {
                                             </div>
                                         </div>
                                     ))}
+
+                                    {/* Suggestions Flowed into Chat */}
+                                    <div className="flex flex-col items-start gap-2 pt-4">
+                                        {SUGGESTIONS.map((s) => (
+                                            <button
+                                                key={s}
+                                                onClick={() => handleSend(s)}
+                                                className="px-5 py-2.5 rounded-full border border-theme-primary/15 bg-theme-primary/5 text-theme-primary text-[11px] font-medium hover:bg-theme-primary hover:text-white hover:border-theme-primary transition-all text-left w-fit shadow-sm"
+                                            >
+                                                {s}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
 
-                                {/* Suggestions */}
-                                <div className="px-6 py-2 overflow-x-auto no-scrollbar flex gap-2">
-                                    {SUGGESTIONS.map((s) => (
-                                        <button
-                                            key={s}
-                                            onClick={() => handleSend(s)}
-                                            className="px-4 py-2 rounded-full border border-theme-primary/30 bg-theme-primary/5 text-theme-primary text-[10px] font-medium hover:bg-theme-primary hover:text-white transition-all whitespace-nowrap"
-                                        >
-                                            {s}
-                                        </button>
-                                    ))}
-                                </div>
-
-                                {/* Input Area */}
-                                <div className="p-6">
+                                {/* Input Area Refined */}
+                                <div className="p-4 sm:p-6 bg-dark-400 border-t border-white/5">
                                     <form 
                                         onSubmit={(e) => { e.preventDefault(); handleSend(inputValue); }}
-                                        className="relative group"
+                                        className="flex flex-col gap-3"
                                     >
-                                        <input
-                                            value={inputValue}
-                                            onChange={(e) => setInputValue(e.target.value)}
-                                            placeholder="Ask me anything..."
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/20 pr-14 font-medium"
-                                        />
-                                        <button
-                                            type="submit"
-                                            className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-theme-primary text-white flex items-center justify-center hover:scale-105 transition-transform"
-                                        >
-                                            <Send size={16} />
-                                        </button>
-                                        <div className="flex justify-between mt-2 px-2">
-                                            <span className="text-[8px] font-mono text-white/15 uppercase tracking-widest">{inputValue.length}/500</span>
-                                            <span className="text-[8px] font-mono text-white/15 uppercase tracking-widest">Enter to send</span>
+                                        <div className="flex items-center gap-3">
+                                            <div className="flex-1 relative">
+                                                <input
+                                                    value={inputValue}
+                                                    onChange={(e) => setInputValue(e.target.value)}
+                                                    placeholder={`Ask about ${BOT_NAME}...`}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/20 font-medium"
+                                                />
+                                            </div>
+                                            <button
+                                                type="submit"
+                                                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 text-white/40 flex items-center justify-center hover:text-theme-primary hover:border-theme-primary/30 hover:bg-theme-primary/5 active:scale-95 transition-all shadow-lg"
+                                            >
+                                                <Send size={20} />
+                                            </button>
+                                        </div>
+                                        <div className="flex justify-between px-2">
+                                            <span className="text-[9px] font-mono text-white/10 uppercase tracking-widest">{inputValue.length}/500</span>
+                                            <span className="text-[9px] font-mono text-white/10 uppercase tracking-widest leading-none">Enter to send</span>
                                         </div>
                                     </form>
                                 </div>
