@@ -72,18 +72,6 @@ function OrbitDot({ cx, cy, speed }: { cx: number; cy: number; speed: number }) 
     );
 }
 
-// ── HUD Corner bracket ─────────────────────────────────────────────────────────
-function Corner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
-    const base = "absolute w-8 h-8 border-theme-primary/60";
-    const map = {
-        tl: "top-0 left-0 border-t-2 border-l-2",
-        tr: "top-0 right-0 border-t-2 border-r-2",
-        bl: "bottom-0 left-0 border-b-2 border-l-2",
-        br: "bottom-0 right-0 border-b-2 border-r-2",
-    };
-    return <div className={`${base} ${map[pos]}`} />;
-}
-
 // ── Animated data bar ──────────────────────────────────────────────────────────
 function DataBar({ label, value, delay }: { label: string; value: number; delay: number }) {
     return (
@@ -166,20 +154,6 @@ export default function HeroSection() {
                 ))}
             </div>
 
-            {/* ── Corner HUD Brackets (section-level) ── */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="absolute inset-8 pointer-events-none"
-            >
-                <Corner pos="tl" /><Corner pos="tr" /><Corner pos="bl" /><Corner pos="br" />
-                {/* Corner labels */}
-                <span className="absolute top-2 left-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">SYS::HERO_NODE</span>
-                <span className="absolute top-2 right-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">v2.4.0_STABLE</span>
-                <span className="absolute bottom-2 left-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">LOC: 6.94°N 79.86°E</span>
-                <span className="absolute bottom-2 right-10 text-[7px] font-mono text-theme-primary/40 uppercase tracking-[0.4em]">ENC: AES-256</span>
-            </motion.div>
 
             {/* ── Left HUD Panel ── */}
             <motion.div
@@ -209,14 +183,6 @@ export default function HeroSection() {
                 </div>
 
                 <div className="w-px h-24 bg-gradient-to-b from-theme-primary/40 via-theme-primary/20 to-transparent mx-auto" />
-
-                {/* Performance bars */}
-                <div className="flex flex-col gap-3 p-5 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md min-w-[120px]">
-                    <DataBar label="PHP" value={92} delay={1.4} />
-                    <DataBar label="React" value={88} delay={1.6} />
-                    <DataBar label="Design" value={85} delay={1.8} />
-                    <DataBar label="DevOps" value={74} delay={2.0} />
-                </div>
             </motion.div>
 
             {/* ── Right HUD Panel ── */}
@@ -497,10 +463,7 @@ export default function HeroSection() {
                                 </div>
                             </div>
 
-                            {/* HUD corner brackets on the orb */}
-                            <div className="absolute inset-8 pointer-events-none">
-                                <Corner pos="tl" /><Corner pos="tr" /><Corner pos="bl" /><Corner pos="br" />
-                            </div>
+
 
                             {/* Floating data tags */}
                             <motion.div
