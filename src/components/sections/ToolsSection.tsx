@@ -3,7 +3,7 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
 import { FaJava, FaCss3, FaPython, FaPhp, FaReact, FaNodeJs, FaWordpress, FaGitAlt } from "react-icons/fa";
-import { SiAndroidstudio, SiAngular, SiArduino, SiBootstrap, SiCanva, SiCloudflare, SiCplusplus, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGithub, SiGoogleanalytics, SiGooglechrome, SiGooglegemini, SiHeroku, SiHtml5, SiJavascript, SiJoomla, SiKotlin, SiLinux, SiMongodb, SiMysql, SiNextdotjs, SiNumpy, SiPandas, SiPostman, SiScikitlearn, SiShopify, SiStreamlit, SiSupabase, SiTailwindcss, SiTensorflow, SiTypescript, SiVercel } from "react-icons/si";
+import { SiAndroidstudio, SiAngular, SiArduino, SiBootstrap, SiCanva, SiCloudflare, SiCplusplus, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGithub, SiGoogleanalytics, SiGooglechrome, SiGooglegemini, SiHeroku, SiHtml5, SiJavascript, SiJoomla, SiKotlin, SiLinux, SiMongodb, SiMysql, SiNextdotjs, SiNumpy, SiPandas, SiPostman, SiScikitlearn, SiShopify, SiStreamlit, SiSupabase, SiTailwindcss, SiTensorflow, SiTypescript, SiVercel, SiVirtualbox } from "react-icons/si";
 import { Code2, Database, Globe, Smartphone, Cloud, Palette, BrainCircuit, Wrench } from "lucide-react";
 import { BsFillBarChartFill } from "react-icons/bs";
 import { GrOracle } from "react-icons/gr";
@@ -111,7 +111,8 @@ const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "Vercel", icon: SiVercel, color: "#ffffff" },
             { name: "Netlify", icon: BiLogoNetlify, color: "#00C7B7" },
             { name: "Heroku", icon: SiHeroku, color: "#9E70FF" },
-            { name: "Linux", icon: SiLinux, color: "#ffcc33" },
+            { name: "Linux", icon: SiLinux, color: "#FFCC33" },
+            { name: "Oracle VirtualBox", icon: SiVirtualbox, color: "#FFD154" },
             { name: "Cloudflare", icon: SiCloudflare, color: "#F38020" },
         ],
     },
