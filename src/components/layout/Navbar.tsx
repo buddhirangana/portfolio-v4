@@ -2,14 +2,30 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Menu, X, Github, Linkedin, Twitter, Command, Terminal, Satellite, Zap, Radio } from "lucide-react";
+import { Menu, X, Github, Linkedin, Twitter, Instagram, Facebook, Command, Terminal, Satellite, Zap, Radio, User, Briefcase, GraduationCap, Database, Mail, Cpu } from "lucide-react";
+
+// ── Custom TikTok Icon ────────────────────────────────────────────────────────
+const TikTokIcon = ({ size = 20 }: { size?: number }) => (
+    <svg 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+    >
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+);
 
 const NAV_LINKS = [
-    { name: "About", href: "#about", tag: "PROFILE_V2" },
-    { name: "Experience", href: "#experience", tag: "HISTORY_LOG" },
-    { name: "Education", href: "#education", tag: "ACAD_ARCHIVE" },
-    { name: "Projects", href: "#projects", tag: "RESEARCH_DATA" },
-    { name: "Contact", href: "#contact", tag: "UPLINK_COMM" },
+    { name: "About", href: "#about", tag: "PROFILE_V2", icon: User },
+    { name: "Experience", href: "#experience", tag: "HISTORY_LOG", icon: Briefcase },
+    { name: "Education", href: "#education", tag: "ACAD_ARCHIVE", icon: GraduationCap },
+    { name: "Projects", href: "#projects", tag: "RESEARCH_DATA", icon: Database },
+    { name: "Contact", href: "#contact", tag: "UPLINK_COMM", icon: Mail },
 ];
 
 export default function Navbar() {
@@ -123,57 +139,96 @@ export default function Navbar() {
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[110] bg-dark-400 p-6 flex flex-col md:hidden"
                     >
-                        <div className="flex justify-between items-center mb-10">
+                        {/* Background Decal */}
+                        <div className="absolute right-[-10%] top-1/4 text-[12rem] font-bold text-white/[0.02] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
+                            SYSTEM_NAV
+                        </div>
+
+                        <div className="flex items-center justify-between mb-12 relative z-10">
                             <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white">
-                                    <Command size={20} />
+                                <div className="w-12 h-12 rounded-2xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_30px_rgba(248,87,42,0.3)]">
+                                    <Command size={24} />
                                 </div>
-                                <span className="font-bold text-white tracking-widest uppercase text-xs">Menu Center</span>
+                                <div className="flex flex-col">
+                                    <span className="font-bold text-white tracking-[0.2em] uppercase text-xs leading-none">Command Center</span>
+                                    <span className="text-[8px] font-mono text-theme-primary mt-1">AX_PROTO_04</span>
+                                </div>
                             </div>
                             <button
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
+                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-theme-primary transition-colors"
                             >
                                 <X size={20} />
                             </button>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 flex-1">
-                            {NAV_LINKS.map((link, i) => (
-                                <motion.a
-                                    key={link.name}
-                                    href={link.href}
-                                    initial={{ scale: 0.9, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    transition={{ delay: i * 0.05 }}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] flex flex-col justify-end gap-2 group ${i === 0 ? "col-span-2 aspect-[2/1]" : "aspect-square"
-                                        }`}
-                                >
-                                    <span className="text-[8px] font-bold text-theme-primary uppercase tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-opacity">[{link.tag}]</span>
-                                    <span className="text-2xl font-bold text-white tracking-tighter">{link.name}</span>
-                                </motion.a>
-                            ))}
+                        <div className="flex flex-col gap-3 flex-1 relative z-10 overflow-y-auto pr-2 custom-scrollbar">
+                            {NAV_LINKS.map((link, i) => {
+                                const Icon = link.icon;
+                                return (
+                                    <motion.a
+                                        key={link.name}
+                                        href={link.href}
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="relative group flex items-center gap-5 p-4 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-theme-primary/5 hover:border-theme-primary/20 transition-all duration-500 overflow-hidden"
+                                    >
+                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-theme-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-center" />
+                                        
+                                        <div className="w-14 h-14 rounded-[1.25rem] bg-white/5 border border-white/10 flex items-center justify-center text-theme-primary/60 group-hover:bg-theme-primary group-hover:text-white group-hover:rotate-6 transition-all duration-500 shrink-0">
+                                            <Icon size={24} />
+                                        </div>
 
-                            <div className="col-span-2 p-8 rounded-[2rem] border border-white/5 bg-theme-primary/10 flex flex-col justify-between items-start mt-4">
-                                <div className="flex items-center gap-3">
-                                    <Satellite size={16} className="text-theme-primary" />
-                                    <span className="text-[9px] font-bold text-white uppercase tracking-[0.4em]">External Links</span>
-                                </div>
-                                <div className="flex gap-6 mt-8">
-                                    <Github size={24} className="text-white/40" />
-                                    <Linkedin size={24} className="text-white/40" />
-                                    <Twitter size={24} className="text-white/40" />
-                                </div>
-                            </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-[8px] font-bold text-theme-primary uppercase tracking-[0.4em] mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                                                [{link.tag}]
+                                            </span>
+                                            <span className="text-2xl font-bold text-white tracking-tighter group-hover:translate-x-1 transition-transform duration-500 lowercase first-letter:uppercase">
+                                                {link.name}
+                                            </span>
+                                        </div>
+
+                                        <div className="ml-auto opacity-0 group-hover:opacity-20 transition-opacity">
+                                            <Satellite size={32} className="rotate-45" />
+                                        </div>
+                                    </motion.a>
+                                );
+                            })}
                         </div>
 
-                        <div className="mt-8 py-3 px-6 flex justify-between items-center border border-white/10 rounded-2xl text-white/20">
-                            <div className="flex items-center gap-2">
-                                <Radio size={12} className="text-theme-primary animate-pulse" />
-                                <span className="text-[7px] font-bold uppercase tracking-[0.4em]">Signal: Secure</span>
+                        <div className="mt-6 relative z-10">
+                            <div className="flex flex-col gap-6 p-6 rounded-[2rem] border border-white/5 bg-white/[0.01]">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <Zap size={14} className="text-theme-primary" />
+                                        <span className="text-[9px] font-bold text-white uppercase tracking-[0.4em]">Integrated Nodes</span>
+                                    </div>
+                                    <span className="text-[8px] font-mono text-white/20">v2.4.0_Stable</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex gap-7">
+                                        {[
+                                            { icon: Github, href: "#" },
+                                            { icon: Linkedin, href: "#" },
+                                            { icon: Twitter, href: "#" },
+                                            { icon: Instagram, href: "#" },
+                                            { icon: Facebook, href: "#" },
+                                            { icon: TikTokIcon, href: "#" }
+                                        ].map((social, i) => (
+                                            <motion.a 
+                                                key={i} 
+                                                href={social.href}
+                                                whileHover={{ scale: 1.3, y: -4 }}
+                                                className="text-white/20 hover:text-theme-primary transition-all duration-300"
+                                            >
+                                                <social.icon size={20} />
+                                            </motion.a>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
-                            <span className="text-[7px] font-mono uppercase">Node_v2.4_ACT</span>
                         </div>
                     </motion.div>
                 )}

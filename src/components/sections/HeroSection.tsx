@@ -5,7 +5,23 @@ import {
     motion, useScroll, useTransform, useSpring,
     useMotionValue, AnimatePresence
 } from "framer-motion";
-import { Github, Linkedin, Twitter, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap } from "lucide-react";
+import { Github, Linkedin, Twitter, Instagram, Facebook, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap } from "lucide-react";
+
+// ── Custom TikTok Icon ────────────────────────────────────────────────────────
+const TikTokIcon = ({ size = 16 }: { size?: number }) => (
+    <svg 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+    >
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+);
 
 // ── Typewriter roles ────────────────────────────────────────────────────────────
 const ROLES = [
@@ -339,24 +355,32 @@ export default function HeroSection() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.9 }}
-                            className="flex items-center gap-4"
+                            className="flex flex-col lg:flex-row items-center gap-6"
                         >
-                            <span className="text-[7px] font-bold text-white/15 uppercase tracking-[0.5em]">Uplink</span>
-                            <div className="w-8 h-px bg-white/10" />
-                            {[
-                                { Icon: Github, href: "#", label: "GIT" },
-                                { Icon: Linkedin, href: "#", label: "LI" },
-                                { Icon: Twitter, href: "#", label: "X" },
-                            ].map(({ Icon, href, label }) => (
-                                <motion.a
-                                    key={label}
-                                    whileHover={{ y: -6, scale: 1.15 }}
-                                    href={href}
-                                    className="w-11 h-11 rounded-xl glass-card-premium border border-white/5 hover:border-theme-primary/30 hover:bg-theme-primary/10 flex items-center justify-center text-white/25 hover:text-theme-primary transition-all duration-400"
-                                >
-                                    <Icon size={18} />
+                            <div className="flex items-center gap-4 h-9">
+                                <span className="text-[7px] font-bold text-white/15 uppercase tracking-[0.5em]">Uplink</span>
+                                <div className="hidden sm:block w-8 h-px bg-white/10" />
+                            </div>
+
+                            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                                {[
+                                    { Icon: Github, href: "#", label: "GIT" },
+                                    { Icon: Linkedin, href: "#", label: "LI" },
+                                    { Icon: Twitter, href: "#", label: "X" },
+                                    { Icon: Instagram, href: "#", label: "IG" },
+                                    { Icon: Facebook, href: "#", label: "FB" },
+                                    { Icon: TikTokIcon, href: "#", label: "TT" },
+                                ].map(({ Icon, href, label }) => (
+                                    <motion.a
+                                        key={label}
+                                        whileHover={{ y: -6, scale: 1.15 }}
+                                        href={href}
+                                        className="w-9 h-9 rounded-xl glass-card-premium border border-white/5 hover:border-theme-primary/30 hover:bg-theme-primary/10 flex items-center justify-center text-white/25 hover:text-theme-primary transition-all duration-400"
+                                    >
+                                    <Icon size={16} />
                                 </motion.a>
                             ))}
+                            </div>
                         </motion.div>
                     </div>
 

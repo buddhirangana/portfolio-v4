@@ -2,7 +2,23 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, ArrowUp, Command, Terminal, Cpu } from "lucide-react";
+import { Github, Linkedin, Twitter, Instagram, Facebook, Mail, ArrowUp, Command, Terminal, Cpu } from "lucide-react";
+
+// ── Custom TikTok Icon ────────────────────────────────────────────────────────
+const TikTokIcon = ({ size = 18 }: { size?: number }) => (
+    <svg 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+    >
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+);
 
 export default function Footer() {
     const scrollToTop = () => {
@@ -36,12 +52,15 @@ export default function Footer() {
                             Architecting high-performance digital systems with <span className="text-white">radical engineering</span> principles.
                         </p>
 
-                        <div className="flex items-center justify-center md:justify-start gap-4">
+                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-8">
                             {[
-                                { icon: Github, href: "https://github.com/itbuddhi", label: "GIT" },
-                                { icon: Linkedin, href: "https://www.linkedin.com/in/itbuddhi/", label: "LINKED" },
-                                { icon: Twitter, href: "#", label: "X_SOC" },
-                                { icon: Mail, href: "mailto:info.buddhirangana@gmail.com", label: "MAIL" }
+                                { icon: Github, href: "https://github.com/itbuddhi", label: "GIT", iconSize: 20 },
+                                { icon: Linkedin, href: "https://www.linkedin.com/in/itbuddhi/", label: "LINKED", iconSize: 18 },
+                                { icon: Twitter, href: "#", label: "X_SOC", iconSize: 18 },
+                                { icon: Instagram, href: "#", label: "INSTA", iconSize: 19 },
+                                { icon: Facebook, href: "#", label: "FB", iconSize: 18 },
+                                { icon: TikTokIcon, href: "#", label: "TIKTOK", iconSize: 18 },
+                                { icon: Mail, href: "mailto:info.buddhirangana@gmail.com", label: "MAIL", iconSize: 18 }
                             ].map((item, i) => (
                                 <motion.a
                                     key={i}
@@ -49,8 +68,8 @@ export default function Footer() {
                                     href={item.href}
                                     className="flex flex-col items-center gap-2 group"
                                 >
-                                    <div className="w-14 h-14 rounded-2xl glass-card-premium border border-white/5 flex items-center justify-center text-white/30 group-hover:text-theme-primary group-hover:border-theme-primary/30 transition-all duration-500">
-                                        <item.icon size={22} />
+                                    <div className="w-12 h-12 rounded-2xl glass-card-premium border border-white/5 flex items-center justify-center text-white/30 group-hover:text-theme-primary group-hover:border-theme-primary/30 transition-all duration-500">
+                                        <item.icon size={item.iconSize} />
                                     </div>
                                     <span className="text-[7px] font-bold text-white/10 group-hover:text-theme-primary transition-colors tracking-[0.4em]">{item.label}</span>
                                 </motion.a>
