@@ -25,6 +25,7 @@ const BOT_TAGLINE = "Ask me about Buddhi Rangana...";
 export default function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
+    const [isTyping, setIsTyping] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [messages, setMessages] = useState<Message[]>([
         {
@@ -38,9 +39,12 @@ export default function ChatBot() {
 
     useEffect(() => {
         if (scrollRef.current) {
-            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+            scrollRef.current.scrollTo({
+                top: scrollRef.current.scrollHeight,
+                behavior: "smooth"
+            });
         }
-    }, [messages, isOpen]);
+    }, [messages, isOpen, isTyping]);
 
     const handleSend = (text: string) => {
         if (!text.trim()) return;
@@ -54,8 +58,9 @@ export default function ChatBot() {
 
         setMessages(prev => [...prev, userMsg]);
         setInputValue("");
+        setIsTyping(true);
 
-        // Simulate Bot Response
+        // Simulate Bot Thinking & Response
         setTimeout(() => {
             const botMsg: Message = {
                 id: (Date.now() + 1).toString(),
@@ -64,7 +69,8 @@ export default function ChatBot() {
                 timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             };
             setMessages(prev => [...prev, botMsg]);
-        }, 1000);
+            setIsTyping(false);
+        }, 1500);
     };
 
     const getBotResponse = (input: string): string => {
@@ -73,7 +79,7 @@ export default function ChatBot() {
         if (lower.includes("skill")) return "Buddhi is a Lead Developer specializing in Full-Stack Engineering. His core stack includes React, Next.js, PHP (Laravel/Wordpress), and Python for AI/Data science.";
         if (lower.includes("project")) return "He has built over 10+ major projects, including the DigiFox Agency Portal and TEC ROOM Blog. You can see his best work in the 'Technical Research' section!";
         if (lower.includes("contact") || lower.includes("hire")) return "You can reach Buddhi via email at info.buddhirangana@gmail.com or use the 'Establish Uplink' form at the bottom of the page.";
-        return "That's an interesting question! I'm still learning about Buddhi's full history, but I can definitely help with his skills, projects, or contact details.";
+        return "Hmm 🤔, I'm not sure about that one. Try asking about Buddhi's skills, experience, projects, education, or contact details. You can also use the quick suggestions below!";
     };
 
     return (
@@ -83,10 +89,10 @@ export default function ChatBot() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(true)}
-                className={`fixed bottom-8 right-8 z-[100] w-14 h-14 rounded-full bg-theme-primary text-white shadow-[0_0_20px_rgba(248,87,42,0.4)] flex items-center justify-center transition-all ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
+                className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[100] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-theme-primary text-white shadow-[0_0_15px_rgba(248,87,42,0.4)] flex items-center justify-center transition-all ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
             >
                 <div className="absolute inset-0 rounded-full animate-ping bg-theme-primary/40 -z-10" />
-                <MessageSquare size={24} />
+                <Bot size={22} className="sm:w-6 sm:h-6" />
             </motion.button>
 
             {/* ── Chat Window ── */}
@@ -97,19 +103,19 @@ export default function ChatBot() {
                         animate={{ opacity: 1, y: 0, scale: 1, x: 0 }}
                         exit={{ opacity: 0, y: 100, scale: 0.8, x: 20 }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className={`fixed bottom-8 right-8 z-[200] w-[calc(100vw-4rem)] sm:w-[400px] bg-dark-400 border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ${isMinimized ? 'h-20' : 'h-[600px] max-h-[80vh]'}`}
+                        className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[200] w-[calc(100vw-3rem)] sm:w-[400px] bg-black/80 backdrop-blur-2xl border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_25px_60px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col ${isMinimized ? 'h-16' : 'h-[600px] max-h-[80vh]'}`}
                     >
                         {/* Header */}
-                        <div className="p-4 sm:p-5 bg-gradient-to-r from-theme-primary to-theme-secondary flex items-center justify-between shrink-0">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
-                                    <Bot size={22} />
+                        <div className="p-3.5 sm:p-4 bg-gradient-to-r from-theme-primary to-theme-secondary flex items-center justify-between shrink-0">
+                            <div className="flex items-center gap-2.5 sm:gap-3">
+                                <div className="w-9 h-9 sm:w-9.5 sm:h-9.5 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                                    <Bot size={20} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="font-bold text-white text-base tracking-tight leading-none">{BOT_NAME}</span>
+                                    <span className="font-bold text-white text-sm sm:text-[15px] tracking-tight leading-none">{BOT_NAME}</span>
                                     <div className="flex items-center gap-1.5 mt-1">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                                        <span className="text-[9px] font-bold text-white/60 uppercase tracking-widest">Online</span>
+                                        <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse" />
+                                        <span className="text-[8px] font-bold text-white/60 uppercase tracking-widest">Online</span>
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +164,22 @@ export default function ChatBot() {
                                         </div>
                                     ))}
 
+                                    {/* Typing Indicator */}
+                                    {isTyping && (
+                                        <div className="flex justify-start">
+                                            <div className="flex gap-3 max-w-[85%]">
+                                                <div className="w-8 h-8 rounded-xl shrink-0 flex items-center justify-center bg-theme-primary/10 text-theme-primary">
+                                                    <Bot size={16} />
+                                                </div>
+                                                <div className="p-4 rounded-3xl bg-white/5 border border-white/5 flex gap-1.5 items-center">
+                                                    <motion.div animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0 }} className="w-1.5 h-1.5 rounded-full bg-gray-500" />
+                                                    <motion.div animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} className="w-1.5 h-1.5 rounded-full bg-gray-500" />
+                                                    <motion.div animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} className="w-1.5 h-1.5 rounded-full bg-gray-500" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
                                     {/* Suggestions Flowed into Chat */}
                                     <div className="flex flex-col items-start gap-2 pt-4">
                                         {SUGGESTIONS.map((s) => (
@@ -189,7 +211,7 @@ export default function ChatBot() {
                                             </div>
                                             <button
                                                 type="submit"
-                                                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 text-white/40 flex items-center justify-center hover:text-theme-primary hover:border-theme-primary/30 hover:bg-theme-primary/5 active:scale-95 transition-all shadow-lg"
+                                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white/40 flex items-center justify-center hover:text-theme-primary hover:border-theme-primary/30 hover:bg-theme-primary/5 active:scale-95 transition-all shadow-lg"
                                             >
                                                 <Send size={20} />
                                             </button>
