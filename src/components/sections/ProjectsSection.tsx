@@ -161,7 +161,7 @@ export default function ProjectsSection() {
             <div className="section-container relative z-10">
 
                 {/* ── Header ── */}
-                <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10 mb-10 md:mb-16">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -182,7 +182,7 @@ export default function ProjectsSection() {
                         transition={{ duration: 0.8 }}
                         className="flex items-center gap-8"
                     >
-                        <div className="text-right">
+                        <div className="text-left md:text-right">
                             <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">
                                 {filteredProjects.length} Projects Indexed
                             </div>
@@ -199,7 +199,7 @@ export default function ProjectsSection() {
                     className="mb-16"
                 >
                     <LayoutGroup id="project-filters">
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-2 md:gap-3">
                             {FILTERS.map((filter) => {
                                 const Icon = filter.icon;
                                 const isActive = activeFilter === filter.key;
@@ -210,7 +210,7 @@ export default function ProjectsSection() {
                                         whileHover={{ scale: 1.03 }}
                                         whileTap={{ scale: 0.97 }}
                                         className={`
-                                            relative flex items-center gap-3 px-6 py-3 rounded-2xl
+                                            relative flex items-center gap-2 px-4 py-2 md:gap-3 md:px-6 md:py-3 rounded-[1rem] md:rounded-2xl
                                             border transition-colors duration-300 overflow-hidden
                                             ${isActive
                                                 ? "border-theme-primary/50 text-white"
@@ -229,7 +229,7 @@ export default function ProjectsSection() {
                                         )}
 
                                         <Icon size={13} className={`relative z-10 transition-colors duration-300 ${isActive ? "text-theme-primary" : ""}`} />
-                                        <span className="relative z-10 text-[10px] font-bold uppercase tracking-[0.3em]">
+                                        <span className="relative z-10 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em]">
                                             {filter.label}
                                         </span>
 

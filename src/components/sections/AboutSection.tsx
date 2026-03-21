@@ -131,10 +131,10 @@ export default function AboutSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="lg:col-span-7 group"
                     >
-                        <div className="glass-card-premium rounded-[3rem] p-12 h-full border border-white/5 relative overflow-hidden flex flex-col justify-end min-h-[500px]">
+                        <div className="glass-card-premium rounded-[3rem] p-8 md:p-12 h-full border border-white/5 relative overflow-hidden flex flex-col justify-end min-h-[500px]">
                             {/* Scanning Animation Visual */}
-                            <div className="absolute top-0 right-0 p-12">
-                                <div className="relative w-40 h-40 group-hover:scale-105 transition-transform duration-700">
+                            <div className="relative mb-8 self-center md:absolute md:top-0 md:right-0 md:p-12 md:mb-0">
+                                <div className="relative w-32 h-32 md:w-40 md:h-40 group-hover:scale-105 transition-transform duration-700">
                                     <div className="absolute inset-0 rounded-3xl border border-theme-primary animate-pulse" />
                                     <div className="absolute inset-0 bg-theme-primary/10 rounded-3xl backdrop-blur-sm flex items-center justify-center overflow-hidden">
                                         <img

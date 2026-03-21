@@ -85,7 +85,7 @@ export default function ContactSection() {
                                                 <span className="text-[8px] font-bold uppercase tracking-widest text-white/20">[{item.label}]</span>
                                                 <span className="text-[7px] font-mono text-theme-primary/40">{item.metric}</span>
                                             </div>
-                                            <p className="text-white font-bold tracking-tight text-lg">{item.value}</p>
+                                            <p className="text-white font-bold tracking-tight text-base sm:text-lg break-all sm:break-normal">{item.value}</p>
                                         </div>
                                     </motion.div>
                                 ))}
