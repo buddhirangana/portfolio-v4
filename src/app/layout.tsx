@@ -25,13 +25,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://buddhirangana.github.io"),
+  metadataBase: new URL("https://buddhirangana.com"),
   title: {
     default: "Buddhi Rangana | Full-Stack Developer & Entrepreneur",
     template: "%s | Buddhi Rangana",
   },
   description:
-    "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger, and founder of DigiFox & TEC ROOM. Based in Colombo, Sri Lanka.",
+    "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox & TEC ROOM. Based in Colombo, Sri Lanka.",
   keywords: [
     "Buddhi Rangana",
     "Web Developer",
@@ -44,12 +44,12 @@ export const metadata: Metadata = {
     "WordPress Developer",
     "Digital Marketing",
   ],
-  authors: [{ name: "Buddhi Rangana", url: "https://buddhirangana.github.io" }],
+  authors: [{ name: "Buddhi Rangana", url: "https://buddhirangana.com" }],
   creator: "Buddhi Rangana",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://buddhirangana.github.io",
+    url: "https://buddhirangana.com",
     siteName: "Buddhi Rangana Portfolio",
     title: "Buddhi Rangana | Full-Stack Developer & Entrepreneur",
     description:
@@ -96,7 +96,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://buddhirangana.github.io" />
+        <link rel="canonical" href="https://buddhirangana.com" />
       </head>
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-dark-400 text-white overflow-x-hidden noise-overlay`}
