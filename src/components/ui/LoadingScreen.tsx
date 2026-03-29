@@ -51,7 +51,7 @@ export default function LoadingScreen() {
                             animate={{ clipPath: `inset(${100 - progress}% 0 0 0)` }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
                         >
-                            <img src="/loading-logo.png" alt="Buddhi Rangana's Logo" className="w-14 h-14 flex items-center justify-center shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
+                            <img src="/loading-logo.png" alt="Loading Logo" className="w-14 h-14 flex items-center justify-center shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
 
                         </motion.div>
 
