@@ -27,19 +27,27 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://buddhirangana.com"),
   title: {
-    default: "Buddhi Rangana | Full-Stack Developer & Entrepreneur",
+    default: "Buddhi Rangana | Aspiring Full-Stack Developer & Entrepreneur",
     template: "%s | Buddhi Rangana",
   },
   description:
-    "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox & TEC ROOM. Based in Colombo, Sri Lanka.",
+    "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
   keywords: [
     "Buddhi Rangana",
     "Web Developer",
+    "Aspiring Full-Stack Developer",
+    "AI/ML Enthusiast",
     "Full Stack Developer",
+    "WordPress Expert",
     "PHP Developer",
     "Entrepreneur",
+    "Founder of DigiFox Technologies",
+    "Founder of TEC ROOM",
     "DigiFox",
+    "DigiFox Technologies",
+    "DigiFox Technologies Founder",
     "TEC ROOM",
+    "TEC ROOM Founder",
     "Sri Lanka",
     "WordPress Developer",
     "Digital Marketing",
@@ -51,9 +59,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://buddhirangana.com",
     siteName: "Buddhi Rangana Portfolio",
-    title: "Buddhi Rangana | Full-Stack Developer & Entrepreneur",
+    title: "Buddhi Rangana | Aspiring Full-Stack Developer & Entrepreneur",
     description:
-      "Multi-talented entrepreneur, web developer, and founder of DigiFox & TEC ROOM. Building the future, one project at a time.",
+      "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
     images: [
       {
         url: "/og-image.png",
@@ -65,8 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Buddhi Rangana | Full-Stack Developer & Entrepreneur",
-    description: "Multi-talented entrepreneur, web developer, and founder of DigiFox & TEC ROOM.",
+    title: "Buddhi Rangana | Aspiring Full-Stack Developer & Entrepreneur",
+    description: "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
     images: ["/og-image.png"],
   },
   robots: {
