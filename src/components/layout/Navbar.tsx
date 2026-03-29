@@ -6,14 +6,14 @@ import { Menu, X, Github, Linkedin, Instagram, Facebook, Command, Terminal, Sate
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
-    <svg 
-        width={size} 
-        height={size} 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
         strokeLinejoin="round"
     >
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -74,9 +74,7 @@ export default function Navbar() {
                         className="flex items-center gap-4 group"
                         whileHover={{ scale: 1.02 }}
                     >
-                        <div className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]">
-                            <Command size={20} />
-                        </div>
+                        <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                         <div className="flex flex-col">
                             <span className="text-sm font-bold tracking-tighter text-white leading-none">BR // <span className="text-white/40 italic font-light">FOUNDRY</span></span>
                             <div className="flex items-center gap-2 mt-1">
@@ -183,7 +181,7 @@ export default function Navbar() {
                                         className="relative group flex items-center gap-5 p-4 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-theme-primary/5 hover:border-theme-primary/20 transition-all duration-500 overflow-hidden"
                                     >
                                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-theme-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-center" />
-                                        
+
                                         <div className="w-14 h-14 rounded-[1.25rem] bg-white/5 border border-white/10 flex items-center justify-center text-theme-primary/60 group-hover:bg-theme-primary group-hover:text-white group-hover:rotate-6 transition-all duration-500 shrink-0">
                                             <Icon size={24} />
                                         </div>
@@ -224,8 +222,8 @@ export default function Navbar() {
                                             { icon: Facebook, href: "#" },
                                             { icon: TikTokIcon, href: "#" }
                                         ].map((social, i) => (
-                                            <motion.a 
-                                                key={i} 
+                                            <motion.a
+                                                key={i}
                                                 href={social.href}
                                                 whileHover={{ scale: 1.3, y: -4 }}
                                                 className="text-white/20 hover:text-theme-primary transition-all duration-300"

@@ -47,9 +47,7 @@ export default function Footer() {
                     {/* Brand Meta */}
                     <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
                         <div className="flex items-center justify-center md:justify-start gap-4 mb-10">
-                            <div className="w-12 h-12 rounded-2xl bg-theme-primary flex items-center justify-center text-white shadow-2xl">
-                                <Command size={24} />
-                            </div>
+                            <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-12 h-12 rounded-2xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                             <h3 className="text-4xl font-bold text-white tracking-tighter">
                                 BR // <span className="text-white/20 italic font-light">CORP</span>
                             </h3>

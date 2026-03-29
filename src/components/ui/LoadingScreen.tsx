@@ -33,7 +33,7 @@ export default function LoadingScreen() {
             {loading && (
                 <motion.div
                     initial={{ opacity: 1 }}
-                    exit={{ 
+                    exit={{
                         opacity: 0,
                         transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
                     }}
@@ -44,19 +44,15 @@ export default function LoadingScreen() {
 
                     {/* Logo/Mark container */}
                     <div className="relative w-32 h-32 flex items-center justify-center">
-                        {/* Static base logo */}
-                        <div className="absolute font-poppins text-5xl font-extrabold text-white/5 tracking-tighter select-none">
-                            BR
-                        </div>
-
                         {/* Drawing logo */}
-                        <motion.div 
+                        <motion.div
                             className="relative z-10 font-poppins text-5xl font-extrabold text-theme-primary tracking-tighter select-none"
                             initial={{ clipPath: "inset(100% 0 0 0)" }}
                             animate={{ clipPath: `inset(${100 - progress}% 0 0 0)` }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
                         >
-                            BR
+                            <img src="/loading-logo.png" alt="Buddhi Rangana's Logo" className="w-14 h-14 flex items-center justify-center shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
+
                         </motion.div>
 
                         {/* Minimal orbiting dot */}
@@ -69,11 +65,12 @@ export default function LoadingScreen() {
                         </motion.div>
                     </div>
 
+
                     {/* Minimal Progress Info */}
                     <div className="mt-12 flex flex-col items-center gap-4 w-64">
                         {/* Thin progress line */}
                         <div className="w-full h-px bg-white/5 relative overflow-hidden">
-                            <motion.div 
+                            <motion.div
                                 className="absolute top-0 left-0 h-full bg-theme-primary shadow-[0_0_10px_rgba(248,87,42,0.5)]"
                                 initial={{ width: 0 }}
                                 animate={{ width: `${progress}%` }}
@@ -89,7 +86,7 @@ export default function LoadingScreen() {
                     </div>
 
                     {/* Subtle bottom message */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2 }}
