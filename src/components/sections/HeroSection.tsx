@@ -171,11 +171,11 @@ export default function HeroSection() {
             </motion.div>
 
             {/* ── HUD Scan Lines (full-width) ── */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+            {/* <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
                 {Array.from({ length: 20 }).map((_, i) => (
                     <div key={i} className="absolute w-full h-px bg-white" style={{ top: `${(i + 1) * 5}%` }} />
                 ))}
-            </div>
+            </div> */}
 
 
             {/* ── Main Content ── */}
