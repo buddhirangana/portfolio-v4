@@ -113,7 +113,7 @@ export default function Navbar() {
                             className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.4em] text-white whitespace-nowrap"
                         >
                             <Terminal size={13} className="text-theme-primary shrink-0" />
-                            Deploy CMD
+                            My Resume
                         </motion.button>
                     </div>
 

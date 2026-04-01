@@ -5,7 +5,7 @@ import {
     motion, useScroll, useTransform, useSpring,
     useMotionValue, AnimatePresence
 } from "framer-motion";
-import { Github, Linkedin, Instagram, Facebook, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap } from "lucide-react";
+import { Github, Linkedin, Instagram, Facebook, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap, Figma } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 16 }: { size?: number }) => (
@@ -314,6 +314,7 @@ export default function HeroSection() {
                                 {[
                                     { Icon: Github, href: "#", label: "GIT" },
                                     { Icon: Linkedin, href: "#", label: "LI" },
+                                    { Icon: Figma, href: "#", label: "FIGMA" },
                                     { Icon: XIcon, href: "#", label: "X" },
                                     { Icon: Instagram, href: "#", label: "IG" },
                                     { Icon: Facebook, href: "#", label: "FB" },

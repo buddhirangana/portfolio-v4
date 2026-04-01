@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Facebook, Mail, ArrowUp, Command, Terminal, Cpu } from "lucide-react";
+import { Github, Linkedin, Instagram, Facebook, Mail, ArrowUp, Command, Terminal, Cpu, Figma } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 24 }: { size?: number }) => (
@@ -61,11 +61,11 @@ export default function Footer() {
                             {[
                                 { icon: Github, href: "https://github.com/itbuddhi", label: "GIT", iconSize: 20 },
                                 { icon: Linkedin, href: "https://www.linkedin.com/in/itbuddhi/", label: "LINKED", iconSize: 18 },
+                                { icon: Figma, href: "#", label: "FIGMA", iconSize: 18 },
                                 { icon: XIcon, href: "#", label: "X_SOC", iconSize: 18 },
                                 { icon: Instagram, href: "#", label: "INSTA", iconSize: 19 },
                                 { icon: Facebook, href: "#", label: "FB", iconSize: 18 },
-                                { icon: TikTokIcon, href: "#", label: "TIKTOK", iconSize: 18 },
-                                { icon: Mail, href: "mailto:info.buddhirangana@gmail.com", label: "MAIL", iconSize: 18 }
+                                { icon: TikTokIcon, href: "#", label: "TIKTOK", iconSize: 18 }
                             ].map((item, i) => (
                                 <motion.a
                                     key={i}
