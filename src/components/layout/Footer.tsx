@@ -39,7 +39,7 @@ export default function Footer() {
             {/* Background Grid & Decals */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
             <div className="absolute left-0 bottom-0 p-20 opacity-[0.02] text-[15rem] font-bold select-none pointer-events-none uppercase">
-                Foundry
+                BUDDHI
             </div>
 
             <div className="section-container relative z-10">
@@ -49,7 +49,7 @@ export default function Footer() {
                         <div className="flex items-center justify-center md:justify-start gap-4 mb-10">
                             <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-12 h-12 rounded-2xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                             <h3 className="text-4xl font-bold text-white tracking-tighter">
-                                BR // <span className="text-white/20 italic font-light">CORP</span>
+                                Buddhi // <span className="text-white/20 italic font-normal">Rangana</span>
                             </h3>
                         </div>
 
@@ -59,13 +59,13 @@ export default function Footer() {
 
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-8">
                             {[
-                                { icon: Github, href: "https://github.com/itbuddhi", label: "GIT", iconSize: 20 },
-                                { icon: Linkedin, href: "https://www.linkedin.com/in/itbuddhi/", label: "LINKED", iconSize: 18 },
-                                { icon: Figma, href: "#", label: "FIGMA", iconSize: 18 },
-                                { icon: XIcon, href: "#", label: "X_SOC", iconSize: 18 },
-                                { icon: Instagram, href: "#", label: "INSTA", iconSize: 19 },
-                                { icon: Facebook, href: "#", label: "FB", iconSize: 18 },
-                                { icon: TikTokIcon, href: "#", label: "TIKTOK", iconSize: 18 }
+                                { icon: Github, href: "https://github.com/buddhirangana", label: "GIT", iconSize: 20 },
+                                { icon: Linkedin, href: "https://www.linkedin.com/in/buddhirangana", label: "LINKED", iconSize: 18 },
+                                { icon: Figma, href: "https://www.figma.com/@buddhirangana", label: "FIGMA", iconSize: 18 },
+                                { icon: XIcon, href: "https://x.com/buddhirangana", label: "X_SOC", iconSize: 18 },
+                                { icon: Instagram, href: "https://www.instagram.com/buddhirangana", label: "INSTA", iconSize: 19 },
+                                { icon: Facebook, href: "https://www.facebook.com/buddhi.rangana.official", label: "FB", iconSize: 18 },
+                                { icon: TikTokIcon, href: "https://www.tiktok.com/@buddhirangana#", label: "TIKTOK", iconSize: 18 }
                             ].map((item, i) => (
                                 <motion.a
                                     key={i}
