@@ -79,7 +79,7 @@ export default function Navbar() {
                             <span className="text-sm font-bold tracking-tighter text-white leading-none uppercase">Buddhi // <span className="text-white/40 font-normal uppercase italic">Rangana</span></span>
                             <div className="flex items-center gap-2 mt-1">
                                 <div className="w-1.5 h-1.5 rounded-full bg-theme-primary animate-pulse" />
-                                <span className="text-[7px] font-bold text-theme-primary tracking-[0.4em] uppercase">Entrepreneur</span>
+                                <span className="text-[7px] font-bold text-theme-primary tracking-[0.4em] uppercase">Portfolio</span>
                             </div>
                         </div>
                     </motion.a>

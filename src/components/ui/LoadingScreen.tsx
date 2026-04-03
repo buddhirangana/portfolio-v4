@@ -80,8 +80,8 @@ export default function LoadingScreen() {
 
                         {/* Tech readout */}
                         <div className="flex justify-between w-full">
-                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]">Initialising</span>
-                            <span className="text-[9px] font-mono text-theme-primary/80">{progress.toString().padStart(3, "0")}%</span>
+                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]">Loading</span>
+                            <span className="text-[9px] font-mono text-theme-primary/80">{progress.toString().padStart(3, "")}%</span>
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@ export default function LoadingScreen() {
                         transition={{ delay: 1.2 }}
                         className="absolute bottom-12 flex flex-col items-center gap-2"
                     >
-                        <span className="text-[8px] font-bold text-white/10 uppercase tracking-[0.8em]">Buddhi Rangana // Foundry</span>
+                        <span className="text-[8px] font-bold text-white/10 uppercase tracking-[0.8em]">Buddhi Rangana // Portfolio</span>
                         <div className="w-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                     </motion.div>
                 </motion.div>
