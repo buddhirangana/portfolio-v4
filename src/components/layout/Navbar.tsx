@@ -153,8 +153,8 @@ export default function Navbar() {
                             <div className="flex items-center gap-4">
                                 <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                                 <div className="flex flex-col">
-                                    <span className="font-bold text-white tracking-[0.2em] uppercase text-xs leading-none">Command Center</span>
-                                    <span className="text-[8px] font-mono text-theme-primary mt-1">AX_PROTO_04</span>
+                                    <span className="font-bold text-white tracking-[0.2em] uppercase text-xs leading-none">Buddhi Rangana</span>
+                                    <span className="text-[8px] font-mono text-theme-primary uppercase mt-1">Navigation Menu</span>
                                 </div>
                             </div>
                             <button
@@ -203,19 +203,19 @@ export default function Navbar() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
                                         <Zap size={14} className="text-theme-primary" />
-                                        <span className="text-[9px] font-bold text-white uppercase tracking-[0.4em]">Integrated Nodes</span>
+                                        <span className="text-[9px] font-bold text-white uppercase tracking-[0.4em]">Connect with me</span>
                                     </div>
-                                    <span className="text-[8px] font-mono text-white/20">v2.4.0_Stable</span>
+                                    <span className="text-[8px] font-mono text-white/20">Social Links</span>
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <div className="flex gap-7">
                                         {[
-                                            { icon: Github, href: "#" },
-                                            { icon: Linkedin, href: "#" },
-                                            { icon: XIcon, href: "#" },
-                                            { icon: Instagram, href: "#" },
-                                            { icon: Facebook, href: "#" },
-                                            { icon: TikTokIcon, href: "#" }
+                                            { icon: Github, href: "https://github.com/buddhirangana" },
+                                            { icon: Linkedin, href: "https://www.linkedin.com/in/buddhirangana" },
+                                            { icon: XIcon, href: "https://x.com/buddhirangana" },
+                                            { icon: Instagram, href: "https://www.instagram.com/buddhirangana" },
+                                            { icon: Facebook, href: "https://www.facebook.com/buddhi.rangana.official" },
+                                            { icon: TikTokIcon, href: "https://www.tiktok.com/@buddhirangana" }
                                         ].map((social, i) => (
                                             <motion.a
                                                 key={i}
