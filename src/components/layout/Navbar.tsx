@@ -28,11 +28,11 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 const NAV_LINKS = [
-    { name: "About", href: "#about", tag: "PROFILE_V2", icon: User },
-    { name: "Experience", href: "#experience", tag: "HISTORY_LOG", icon: Briefcase },
-    { name: "Education", href: "#education", tag: "ACAD_ARCHIVE", icon: GraduationCap },
-    { name: "Projects", href: "#projects", tag: "RESEARCH_DATA", icon: Database },
-    { name: "Contact", href: "#contact", tag: "UPLINK_COMM", icon: Mail },
+    { name: "About", href: "#about", icon: User },
+    { name: "Experience", href: "#experience", icon: Briefcase },
+    { name: "Education", href: "#education", icon: GraduationCap },
+    { name: "Projects", href: "#projects", icon: Database },
+    { name: "Contact", href: "#contact", icon: Mail },
 ];
 
 export default function Navbar() {
@@ -151,9 +151,7 @@ export default function Navbar() {
 
                         <div className="flex items-center justify-between mb-12 relative z-10">
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_30px_rgba(248,87,42,0.3)]">
-                                    <Command size={24} />
-                                </div>
+                                <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                                 <div className="flex flex-col">
                                     <span className="font-bold text-white tracking-[0.2em] uppercase text-xs leading-none">Command Center</span>
                                     <span className="text-[8px] font-mono text-theme-primary mt-1">AX_PROTO_04</span>
@@ -187,9 +185,6 @@ export default function Navbar() {
                                         </div>
 
                                         <div className="flex flex-col">
-                                            <span className="text-[8px] font-bold text-theme-primary uppercase tracking-[0.4em] mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-                                                [{link.tag}]
-                                            </span>
                                             <span className="text-2xl font-bold text-white tracking-tighter group-hover:translate-x-1 transition-transform duration-500 lowercase first-letter:uppercase">
                                                 {link.name}
                                             </span>
