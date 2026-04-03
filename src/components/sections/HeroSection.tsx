@@ -197,7 +197,7 @@ export default function HeroSection() {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-primary opacity-75" />
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-theme-primary" />
                                 </span>
-                                <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-theme-primary">B.RANGANA // NODE_ACTIVE</span>
+                                <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-theme-primary">Available for Work</span>
                             </div>
                             <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl border border-white/5 bg-white/[0.02]">
                                 <span className="text-[9px] font-mono text-white/20">SYS_ID:</span>
