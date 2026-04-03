@@ -70,16 +70,16 @@ export default function Navbar() {
                 >
                     {/* Brand */}
                     <motion.a
-                        href="#"
+                        href="/"
                         className="flex items-center gap-4 group"
                         whileHover={{ scale: 1.02 }}
                     >
                         <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                         <div className="flex flex-col">
-                            <span className="text-sm font-bold tracking-tighter text-white leading-none">BR // <span className="text-white/40 italic font-light">FOUNDRY</span></span>
+                            <span className="text-sm font-bold tracking-tighter text-white leading-none uppercase">Buddhi // <span className="text-white/40 font-normal uppercase italic">Rangana</span></span>
                             <div className="flex items-center gap-2 mt-1">
                                 <div className="w-1.5 h-1.5 rounded-full bg-theme-primary animate-pulse" />
-                                <span className="text-[7px] font-bold text-theme-primary tracking-[0.4em] uppercase">System_Stable</span>
+                                <span className="text-[7px] font-bold text-theme-primary tracking-[0.4em] uppercase">Entrepreneur</span>
                             </div>
                         </div>
                     </motion.a>
@@ -105,15 +105,16 @@ export default function Navbar() {
                     {/* Right Side Actions */}
                     <div className="hidden md:flex items-center gap-4">
                         <div className="flex items-center gap-3 border-r border-white/5 pr-4">
-                            <a href="#" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={16} /></a>
-                            <a href="#" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
+                            <a href="https://github.com/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={16} /></a>
+                            <a href="https://www.linkedin.com/in/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
                         </div>
                         <motion.button
+                            onClick={() => window.open("#", "_blank")}
                             whileHover={{ scale: 1.05 }}
                             className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.4em] text-white whitespace-nowrap"
                         >
                             <Terminal size={13} className="text-theme-primary shrink-0" />
-                            My Resume
+                            View Resume
                         </motion.button>
                     </div>
 
@@ -153,7 +154,7 @@ export default function Navbar() {
                             <div className="flex items-center gap-4">
                                 <img src="/br-logo.png" alt="Buddhi Rangana's Logo" className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(248,87,42,0.3)]" />
                                 <div className="flex flex-col">
-                                    <span className="font-bold text-white tracking-[0.2em] uppercase text-xs leading-none">Buddhi Rangana</span>
+                                    <span className="text-sm font-bold tracking-tighter text-white leading-none uppercase">Buddhi // <span className="text-white/40 font-normal uppercase italic">Rangana</span></span>
                                     <span className="text-[8px] font-mono text-theme-primary uppercase mt-1">Navigation Menu</span>
                                 </div>
                             </div>
