@@ -147,7 +147,7 @@ export default function Navbar() {
                     >
                         {/* Background Decal */}
                         <div className="absolute right-[-10%] top-1/4 text-[12rem] font-bold text-white/[0.02] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
-                            SYSTEM_NAV
+                            Navigation
                         </div>
 
                         <div className="flex items-center justify-between mb-12 relative z-10">
