@@ -1,22 +1,19 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import {
-    motion, useScroll, useTransform, useSpring,
-    useMotionValue, AnimatePresence
-} from "framer-motion";
-import { Github, Linkedin, Instagram, Facebook, ArrowRight, Cpu, Activity, Globe, Wifi, Shield, Zap, Figma } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
+import { Github, Linkedin, Instagram, Facebook, ArrowRight, Figma } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 16 }: { size?: number }) => (
-    <svg 
-        width={size} 
-        height={size} 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
         strokeLinejoin="round"
     >
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -32,11 +29,16 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
 
 // ── Typewriter roles ────────────────────────────────────────────────────────────
 const ROLES = [
-    "Full-Stack Engineer",
-    "UI/UX Architect",
-    "Digital Entrepreneur",
+    "Entrepreneur",
+    "Aspiring Full-Stack Developer",
+    "Founder of DigiFox Technologies",
+    "Founder of TEC ROOM",
+    "Web Developer",
     "WordPress Expert",
+    "UI/UX Designer",
+    "Graphic Designer",
     "Tech Blogger",
+    "Tech Enthusiastic",
 ];
 
 // ── Radar sweep component (pure CSS via motion) ────────────────────────────────
@@ -76,10 +78,10 @@ function Ring({ r, duration, dir = 1, dash = "1 4" }: { r: number; duration: num
 // precision divergence between Node.js and browser V8 (would cause attribute hydration mismatch).
 // Formula: cx = 50 + radius * cos(angle°), cy = 50 + radius * sin(angle°)
 const ORBIT_DOTS: { cx: number; cy: number; speed: number }[] = [
-    { cx: 87.239,  cy: 71.5,   speed: 18 }, // radius=43, angle=30°
-    { cx: 31.5,    cy: 82.043, speed: 12 }, // radius=37, angle=120°
-    { cx: 27.019,  cy: 30.716, speed: 8  }, // radius=30, angle=220°
-    { cx: 64.141,  cy: 33.147, speed: 5  }, // radius=22, angle=310°
+    { cx: 87.239, cy: 71.5, speed: 18 }, // radius=43, angle=30°
+    { cx: 31.5, cy: 82.043, speed: 12 }, // radius=37, angle=120°
+    { cx: 27.019, cy: 30.716, speed: 8 }, // radius=30, angle=220°
+    { cx: 64.141, cy: 33.147, speed: 5 }, // radius=22, angle=310°
 ];
 
 function OrbitDot({ cx, cy, speed }: { cx: number; cy: number; speed: number }) {
@@ -170,14 +172,6 @@ export default function HeroSection() {
                 />
             </motion.div>
 
-            {/* ── HUD Scan Lines (full-width) ── */}
-            {/* <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
-                {Array.from({ length: 20 }).map((_, i) => (
-                    <div key={i} className="absolute w-full h-px bg-white" style={{ top: `${(i + 1) * 5}%` }} />
-                ))}
-            </div> */}
-
-
             {/* ── Main Content ── */}
             <div className="section-container relative z-10 w-full px-6 pt-32 pb-12 lg:pt-40 lg:pb-20">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -213,17 +207,17 @@ export default function HeroSection() {
                                 transition={{ duration: 0.8, delay: 0.1 }}
                                 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl italic font-light text-theme-primary/70 tracking-tight mb-2"
                             >
-                                Senior Creative
+                                Hello, I'm
                             </motion.p>
 
                             <motion.h1
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="hero-glitch-text text-[3.5rem] sm:text-[5rem] md:text-[8rem] lg:text-[10rem] font-bold font-poppins tracking-tighter leading-[0.85] text-white relative select-none"
-                                data-text="ENGINEER"
+                                className="hero-glitch-text text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] font-bold font-poppins tracking-tighter leading-[0.85] text-white relative select-none pb-4 lg:pb-8 md:pb-7"
+                                data-text="Buddhi Rangana"
                             >
-                                ENGINEER
+                                Buddhi Rangana
                                 <motion.span
                                     initial={{ scaleX: 0 }}
                                     animate={{ scaleX: 1 }}
@@ -240,7 +234,7 @@ export default function HeroSection() {
                             transition={{ delay: 0.5 }}
                             className="flex items-center gap-3 mb-10 h-8"
                         >
-                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">ROLE://</span>
+                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">ROLES://</span>
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={roleIndex}
@@ -267,9 +261,8 @@ export default function HeroSection() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="text-base md:text-lg text-white/35 leading-relaxed font-medium max-w-lg mb-12 mx-auto lg:mx-0"
                         >
-                            Architecting high-fidelity digital experiences and{" "}
-                            <span className="text-white/70 font-semibold">neural performance layers</span>{" "}
-                            for the next generation of industrial software systems.
+                            Architecting high-performance digital systems powered by {" "}<span className="text-white/70 font-semibold">AI, cloud and scalable technologies.</span>{" "}
+                            I build intelligent solutions that don't just function — they evolve, adapt and lead.
                         </motion.p>
 
                         {/* CTAs */}
@@ -284,7 +277,7 @@ export default function HeroSection() {
                                 className="group relative px-10 py-5 bg-theme-primary rounded-[1.75rem] text-xs font-bold uppercase tracking-[0.25em] text-white overflow-hidden shadow-[0_20px_50px_rgba(248,87,42,0.35)] hover:scale-105 active:scale-95 transition-transform duration-300"
                             >
                                 <span className="relative z-10 flex items-center gap-3">
-                                    Initiate Recon
+                                    View Projects
                                     <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -294,7 +287,7 @@ export default function HeroSection() {
                                 className="flex items-center gap-3 px-10 py-5 rounded-[1.75rem] border border-white/10 bg-white/[0.03] hover:border-theme-primary/40 hover:bg-theme-primary/5 text-xs font-bold uppercase tracking-[0.25em] text-white/50 hover:text-white transition-all duration-400 group"
                             >
                                 <span className="w-1.5 h-1.5 rounded-full bg-theme-primary/40 group-hover:bg-theme-primary transition-colors" />
-                                Mission Brief
+                                Hire Me
                             </a>
                         </motion.div>
 
@@ -306,19 +299,19 @@ export default function HeroSection() {
                             className="flex flex-col lg:flex-row items-center gap-6"
                         >
                             <div className="flex items-center gap-4 h-9">
-                                <span className="text-[7px] font-bold text-white/15 uppercase tracking-[0.5em]">Uplink</span>
+                                <span className="text-[7px] font-bold text-white/15 uppercase tracking-[0.5em]">Connect</span>
                                 <div className="hidden sm:block w-8 h-px bg-white/10" />
                             </div>
 
                             <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                                 {[
-                                    { Icon: Github, href: "#", label: "GIT" },
-                                    { Icon: Linkedin, href: "#", label: "LI" },
-                                    { Icon: Figma, href: "#", label: "FIGMA" },
-                                    { Icon: XIcon, href: "#", label: "X" },
-                                    { Icon: Instagram, href: "#", label: "IG" },
-                                    { Icon: Facebook, href: "#", label: "FB" },
-                                    { Icon: TikTokIcon, href: "#", label: "TT" },
+                                    { Icon: Github, href: "https://github.com/buddhirangana", label: "GIT" },
+                                    { Icon: Linkedin, href: "https://www.linkedin.com/in/buddhirangana", label: "LINKED" },
+                                    { Icon: Figma, href: "https://www.figma.com/@buddhirangana", label: "FIGMA" },
+                                    { Icon: XIcon, href: "https://x.com/buddhirangana", label: "X" },
+                                    { Icon: Instagram, href: "https://www.instagram.com/buddhirangana", label: "IG" },
+                                    { Icon: Facebook, href: "https://www.facebook.com/buddhi.rangana.official", label: "FB" },
+                                    { Icon: TikTokIcon, href: "https://www.tiktok.com/@buddhirangana", label: "TT" },
                                 ].map(({ Icon, href, label }) => (
                                     <motion.a
                                         key={label}
@@ -326,9 +319,9 @@ export default function HeroSection() {
                                         href={href}
                                         className="w-9 h-9 rounded-xl glass-card-premium border border-white/5 hover:border-theme-primary/30 hover:bg-theme-primary/10 flex items-center justify-center text-white/25 hover:text-theme-primary transition-all duration-400"
                                     >
-                                    <Icon size={16} />
-                                </motion.a>
-                            ))}
+                                        <Icon size={16} />
+                                    </motion.a>
+                                ))}
                             </div>
                         </motion.div>
                     </div>
@@ -347,133 +340,132 @@ export default function HeroSection() {
                                     transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                                     className="relative w-full h-full flex items-center justify-center"
                                 >
-                            {/* Outer ambient glow */}
-                            <div className="absolute inset-0 bg-theme-primary/10 blur-[80px] rounded-full" />
+                                    {/* Outer ambient glow */}
+                                    <div className="absolute inset-0 bg-theme-primary/10 blur-[80px] rounded-full" />
 
-                            {/* Radar / Ring SVG */}
-                            <svg
-                                viewBox="0 0 100 100"
-                                className="absolute inset-0 w-full h-full"
-                            >
-                                <defs>
-                                    <filter id="orangeGlow">
-                                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-                                        <feMerge>
-                                            <feMergeNode in="coloredBlur" />
-                                            <feMergeNode in="SourceGraphic" />
-                                        </feMerge>
-                                    </filter>
-                                </defs>
-
-                                {/* Concentric rings */}
-                                <Ring r={48} duration={60} dir={1} dash="1 5" />
-                                <Ring r={43} duration={40} dir={-1} dash="3 3" />
-                                <Ring r={37} duration={25} dir={1} dash="0.5 3" />
-                                <Ring r={30} duration={18} dir={-1} dash="2 4" />
-                                <Ring r={22} duration={12} dir={1} dash="1 2" />
-
-                                {/* Cross-hair lines */}
-                                <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
-                                <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
-
-                                {/* Orbit dots — positions precomputed to avoid SSR/client Math.sin/cos float divergence */}
-                                {ORBIT_DOTS.map((dot, i) => (
-                                    <OrbitDot key={i} {...dot} />
-                                ))}
-                            </svg>
-
-                            {/* Radar sweep layer */}
-                            <div className="absolute inset-[4%] rounded-full overflow-hidden">
-                                <RadarSweep />
-                            </div>
-
-                            {/* Inner radar tick marks */}
-                            <div className="absolute inset-0">
-                                {Array.from({ length: 12 }).map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="absolute top-1/2 left-1/2 w-full h-px origin-left"
-                                        style={{ transform: `rotate(${i * 30}deg) translateY(-50%)` }}
+                                    {/* Radar / Ring SVG */}
+                                    <svg
+                                        viewBox="0 0 100 100"
+                                        className="absolute inset-0 w-full h-full"
                                     >
-                                        <div className="absolute right-0 w-2 h-px bg-theme-primary/20" />
+                                        <defs>
+                                            <filter id="orangeGlow">
+                                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                                                <feMerge>
+                                                    <feMergeNode in="coloredBlur" />
+                                                    <feMergeNode in="SourceGraphic" />
+                                                </feMerge>
+                                            </filter>
+                                        </defs>
+
+                                        {/* Concentric rings */}
+                                        <Ring r={48} duration={60} dir={1} dash="1 5" />
+                                        <Ring r={43} duration={40} dir={-1} dash="3 3" />
+                                        <Ring r={37} duration={25} dir={1} dash="0.5 3" />
+                                        <Ring r={30} duration={18} dir={-1} dash="2 4" />
+                                        <Ring r={22} duration={12} dir={1} dash="1 2" />
+
+                                        {/* Cross-hair lines */}
+                                        <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
+                                        <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(248,87,42,0.06)" strokeWidth="0.15" />
+
+                                        {/* Orbit dots — positions precomputed to avoid SSR/client Math.sin/cos float divergence */}
+                                        {ORBIT_DOTS.map((dot, i) => (
+                                            <OrbitDot key={i} {...dot} />
+                                        ))}
+                                    </svg>
+
+                                    {/* Radar sweep layer */}
+                                    <div className="absolute inset-[4%] rounded-full overflow-hidden">
+                                        <RadarSweep />
                                     </div>
-                                ))}
-                            </div>
 
-                            {/* Center nucleus */}
-                            <div className="relative w-[240px] h-[240px] flex items-center justify-center z-10">
-                                {/* Pulse rings */}
-                                {[1, 2, 3].map(i => (
-                                    <motion.div
-                                        key={i}
-                                        className="absolute inset-0 rounded-full border border-theme-primary/20"
-                                        animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0, 0.4] }}
-                                        transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }}
-                                    />
-                                ))}
+                                    {/* Inner radar tick marks */}
+                                    <div className="absolute inset-0">
+                                        {Array.from({ length: 12 }).map((_, i) => (
+                                            <div
+                                                key={i}
+                                                className="absolute top-1/2 left-1/2 w-full h-px origin-left"
+                                                style={{ transform: `rotate(${i * 30}deg) translateY(-50%)` }}
+                                            >
+                                                <div className="absolute right-0 w-2 h-px bg-theme-primary/20" />
+                                            </div>
+                                        ))}
+                                    </div>
 
-                                {/* Holographic Avatar Core */}
-                                <div className="relative w-[200px] h-[200px] rounded-full bg-theme-primary/5 border border-theme-primary/30 flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(248,87,42,0.2),inset_0_0_30px_rgba(248,87,42,0.1)] group">
-                                    
-                                    {/* Base tint (fades out on hover) */}
-                                    <div className="absolute inset-0 bg-theme-primary/20 mix-blend-overlay z-10 transition-opacity duration-700 group-hover:opacity-0" />
+                                    {/* Center nucleus */}
+                                    <div className="relative w-[240px] h-[240px] flex items-center justify-center z-10">
+                                        {/* Pulse rings */}
+                                        {[1, 2, 3].map(i => (
+                                            <motion.div
+                                                key={i}
+                                                className="absolute inset-0 rounded-full border border-theme-primary/20"
+                                                animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0, 0.4] }}
+                                                transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }}
+                                            />
+                                        ))}
 
-                                    {/* Hologram scanline fx */}
-                                    <motion.div
-                                        animate={{ y: ["-100%", "200%"] }}
-                                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-0 w-full h-12 bg-gradient-to-b from-transparent via-theme-primary/30 to-transparent z-20 pointer-events-none"
-                                    />
+                                        {/* Holographic Avatar Core */}
+                                        <div className="relative w-[200px] h-[200px] rounded-full bg-theme-primary/5 border border-theme-primary/30 flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(248,87,42,0.2),inset_0_0_30px_rgba(248,87,42,0.1)] group">
 
-                                    {/* Avatar Image (colored on hover) */}
-                                    <img 
-                                        // src="/images/buddhi-img.png" 
-                                        src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
-                                        alt="Avatar Hologram" 
-                                        className="w-[200px] h-auto object-cover filter contrast-125 grayscale brightness-110 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 drop-shadow-[0_0_10px_rgba(248,87,42,0.5)] relative z-0 transition-all duration-700 group-hover:scale-110" 
-                                    />
+                                            {/* Base tint (fades out on hover) */}
+                                            <div className="absolute inset-0 bg-theme-primary/20 mix-blend-overlay z-10 transition-opacity duration-700 group-hover:opacity-0" />
 
-                                    {/* Conic spin for extra tech radar feel over the avatar */}
-                                    <motion.div
-                                        animate={{ rotate: 360 }}
-                                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-0 z-30 opacity-60 pointer-events-none mix-blend-screen"
-                                        style={{ background: "conic-gradient(from 0deg, transparent 0%, rgba(248,87,42,0.2) 20%, transparent 60%)" }}
-                                    />
-                                    
-                                    {/* Glass rim reflection */}
-                                    <div className="absolute inset-0 rounded-full border border-white/10 z-30 pointer-events-none" />
-                                </div>
-                            </div>
+                                            {/* Hologram scanline fx */}
+                                            <motion.div
+                                                animate={{ y: ["-100%", "200%"] }}
+                                                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                                                className="absolute inset-0 w-full h-12 bg-gradient-to-b from-transparent via-theme-primary/30 to-transparent z-20 pointer-events-none"
+                                            />
+
+                                            {/* Avatar Image (colored on hover) */}
+                                            <img
+                                                src="/images/about/buddhi-rangana-img.webp"
+                                                alt="Buddhi Rangana Profile"
+                                                className="w-[200px] h-auto object-cover filter contrast-125 grayscale brightness-110 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 drop-shadow-[0_0_10px_rgba(248,87,42,0.5)] relative z-0 transition-all duration-700 group-hover:scale-110"
+                                            />
+
+                                            {/* Conic spin for extra tech radar feel over the avatar */}
+                                            <motion.div
+                                                animate={{ rotate: 360 }}
+                                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                                className="absolute inset-0 z-30 opacity-60 pointer-events-none mix-blend-screen"
+                                                style={{ background: "conic-gradient(from 0deg, transparent 0%, rgba(248,87,42,0.2) 20%, transparent 60%)" }}
+                                            />
+
+                                            {/* Glass rim reflection */}
+                                            <div className="absolute inset-0 rounded-full border border-white/10 z-30 pointer-events-none" />
+                                        </div>
+                                    </div>
 
 
 
-                            {/* Floating Skill Tags Array */}
-                            {[
-                                { label: ".NET Core", top: "2%", left: "50%", offsetX: "-50%" },
-                                { label: "React", top: "18%", right: "8%" },
-                                { label: "Django", top: "52%", right: "-4%" },
-                                { label: "Cloud ☁", bottom: "16%", right: "5%" },
-                                { label: "5+ Yrs", bottom: "16%", left: "5%" },
-                                { label: "NestJS", top: "52%", left: "-4%" },
-                                { label: "NextJS", top: "18%", left: "8%" }
-                            ].map((skill, i) => (
-                                <motion.div
-                                    key={skill.label}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1, y: [-4, 4, -4], x: skill.offsetX || 0 }}
-                                    transition={{ 
-                                        opacity: { delay: i * 0.1, duration: 0.8 },
-                                        scale: { delay: i * 0.1, duration: 0.8 },
-                                        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
-                                        x: { duration: 0 }
-                                    }}
-                                    style={{ top: skill.top, left: skill.left, right: skill.right, bottom: skill.bottom }}
-                                    className="absolute px-5 py-2.5 rounded-[1.25rem] bg-dark-400/90 border border-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(248,87,42,0.15)] flex items-center justify-center cursor-default z-30"
-                                >
-                                    <span className="text-[12px] font-bold text-white/90 hover:text-theme-primary transition-colors whitespace-nowrap">{skill.label}</span>
-                                </motion.div>
-                            ))}
+                                    {/* Floating Skill Tags Array */}
+                                    {[
+                                        { label: "JavaScript", top: "2%", left: "50%", offsetX: "-50%" },
+                                        { label: "React", top: "18%", right: "8%" },
+                                        { label: "Next.js", top: "52%", right: "-4%" },
+                                        { label: "Cloud ☁", bottom: "16%", right: "5%" },
+                                        { label: "PHP", bottom: "16%", left: "5%" },
+                                        { label: "WordPress", top: "52%", left: "-4%" },
+                                        { label: "Tailwind CSS", top: "18%", left: "8%" }
+                                    ].map((skill, i) => (
+                                        <motion.div
+                                            key={skill.label}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1, y: [-4, 4, -4], x: skill.offsetX || 0 }}
+                                            transition={{
+                                                opacity: { delay: i * 0.1, duration: 0.8 },
+                                                scale: { delay: i * 0.1, duration: 0.8 },
+                                                y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+                                                x: { duration: 0 }
+                                            }}
+                                            style={{ top: skill.top, left: skill.left, right: skill.right, bottom: skill.bottom }}
+                                            className="absolute px-5 py-2.5 rounded-[1.25rem] bg-dark-400/90 border border-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(248,87,42,0.15)] flex items-center justify-center cursor-default z-30"
+                                        >
+                                            <span className="text-[12px] font-bold text-white/90 hover:text-theme-primary transition-colors whitespace-nowrap">{skill.label}</span>
+                                        </motion.div>
+                                    ))}
                                 </motion.div>
                             </div>
                         </div>
@@ -489,17 +481,17 @@ export default function HeroSection() {
                                 <div className="flex items-center justify-between gap-3 sm:gap-6 lg:gap-10 w-full">
                                     <div className="flex flex-col items-center flex-1">
                                         <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">5<span className="text-sm lg:text-xl">+</span></span>
-                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Years Exp.</span>
+                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Experience</span>
                                     </div>
                                     <div className="w-px h-8 lg:h-12 bg-white/10 shrink-0" />
                                     <div className="flex flex-col items-center flex-1">
-                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">10<span className="text-sm lg:text-xl">+</span></span>
+                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">30<span className="text-sm lg:text-xl">+</span></span>
                                         <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Projects</span>
                                     </div>
                                     <div className="w-px h-8 lg:h-12 bg-white/10 shrink-0" />
                                     <div className="flex flex-col items-center flex-1">
-                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">2</span>
-                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Countries</span>
+                                        <span className="text-xl lg:text-3xl font-bold text-theme-primary mb-1">50<span className="text-sm lg:text-xl">+</span></span>
+                                        <span className="text-[7px] lg:text-[8px] font-bold text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">Happy Clients</span>
                                     </div>
                                 </div>
                             </motion.div>
