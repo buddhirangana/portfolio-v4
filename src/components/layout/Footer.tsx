@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Facebook, Mail, ArrowUp, Command, Terminal, Cpu, Figma } from "lucide-react";
+import { Github, Linkedin, Instagram, Facebook, ArrowUp, Terminal, Figma } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 24 }: { size?: number }) => (
@@ -54,7 +53,7 @@ export default function Footer() {
                         </div>
 
                         <p className="text-xl text-white/40 max-w-sm leading-relaxed mb-12 font-medium mx-auto md:mx-0">
-                            Architecting high-performance digital systems with <span className="text-white">radical engineering</span> principles.
+                            Building scalable, high-performance digital systems with a <span className="text-white">focus on innovation</span>, precision and future-ready technologies.
                         </p>
 
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-8">
@@ -82,20 +81,17 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Navigation Channels */}
+                    {/* Navigation Links */}
                     <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
-                        <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ CHANNELS ]</h4>
+                        <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ Quick Links ]</h4>
                         <ul className="space-y-8">
-                            {["About", "Projects", "Experience", "Contact"].map((link, i) => (
+                            {["About", "Experience", "Education", "Projects", "Contact"].map((link, i) => (
                                 <li key={link}>
                                     <a
                                         href={`#${link.toLowerCase()}`}
                                         className="group flex items-center justify-center md:justify-start gap-6 text-sm font-bold text-white/40 hover:text-white transition-all duration-300"
                                     >
                                         <div className="flex flex-col items-center md:items-start">
-                                            <span className="text-[8px] font-mono text-theme-primary/30 group-hover:text-theme-primary transition-colors mb-1 tracking-widest">
-                                                CH_0{i + 1}
-                                            </span>
                                             <span className="tracking-[0.2em] relative">
                                                 {link.toUpperCase()}
                                                 <div className="absolute -bottom-2 left-0 right-0 h-px bg-theme-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
@@ -107,20 +103,20 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* System Endpoint */}
+                    {/* Location */}
                     <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
-                        <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ ENDPOINT ]</h4>
+                        <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ Location ]</h4>
                         <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] mb-8 w-full max-w-sm">
                             <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
                                 <Terminal size={14} className="text-theme-primary" />
-                                <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Access Node v4.0</span>
+                                <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">My Location</span>
                             </div>
                             <p className="text-white font-bold text-lg mb-1">Colombo, Sri Lanka</p>
-                            <p className="text-white/30 text-xs font-mono lowercase">EST_CONNECTION: SECURE</p>
+                            <p className="text-white/30 text-xs font-mono uppercase">Operating globally - available for remote collaboration</p>
                         </div>
                         <div className="flex items-center gap-4 px-6 py-3 rounded-full bg-theme-primary/10 border border-theme-primary/20 w-fit">
                             <div className="w-2 h-2 rounded-full bg-theme-primary animate-pulse" />
-                            <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.4em]">Available_For_Ops</span>
+                            <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.4em]">Available for Work</span>
                         </div>
                     </div>
                 </div>
@@ -129,11 +125,10 @@ export default function Footer() {
                 <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                     <div className="flex flex-col items-center md:items-start gap-2">
                         <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.5em]">
-                            © {currentYear} — BUDDHI RANGANA FOUNDRY
+                            © {currentYear} Buddhi Rangana. All rights reserved.
                         </p>
                         <div className="flex items-center justify-center md:justify-start gap-4">
-                            <span className="text-[7px] font-mono text-white/10 uppercase">Architectural_v2.4_Stable</span>
-                            <Cpu size={10} className="text-white/10" />
+                            <span className="text-[7px] font-mono text-white/10 uppercase">Portfolio Version 4.0</span>
                         </div>
                     </div>
 
@@ -142,7 +137,7 @@ export default function Footer() {
                         onClick={scrollToTop}
                         className="group flex flex-col items-center gap-4"
                     >
-                        <span className="text-[8px] font-bold text-white/20 group-hover:text-white transition-colors uppercase tracking-[0.5em]">Origin_Point</span>
+                        <span className="text-[8px] font-bold text-white/20 group-hover:text-white transition-colors uppercase tracking-[0.5em]">Back to Top</span>
                         <div className="w-14 h-14 rounded-2xl glass-card-premium border border-white/5 flex items-center justify-center text-white/30 group-hover:text-theme-primary group-hover:border-theme-primary/40 transition-all duration-700">
                             <ArrowUp size={20} />
                         </div>
