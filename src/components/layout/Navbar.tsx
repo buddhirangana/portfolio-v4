@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Menu, X, Github, Linkedin, Instagram, Facebook, Command, Terminal, Satellite, Zap, Radio, User, Briefcase, GraduationCap, Database, Mail, Cpu } from "lucide-react";
+import { X, Github, Linkedin, Instagram, Facebook, Terminal, Satellite, Zap, User, Briefcase, GraduationCap, Database, Mail } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
