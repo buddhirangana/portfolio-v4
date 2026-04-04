@@ -138,9 +138,9 @@ export default function AboutSection() {
                                     <div className="absolute inset-0 rounded-3xl border border-theme-primary animate-pulse" />
                                     <div className="absolute inset-0 bg-theme-primary/10 rounded-3xl backdrop-blur-sm flex items-center justify-center overflow-hidden">
                                         <img
-                                            src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
-                                            alt="Architect"
-                                            className="w-full h-full object-cover grayscale brightness-125"
+                                            src="/images/about/buddhi-rangana-img.webp"
+                                            alt="Buddhi Rangana Profile" loading="lazy"
+                                            className="w-full h-full object-cover brightness-125"
                                         />
                                         <motion.div
                                             animate={{ y: [-160, 160] }}

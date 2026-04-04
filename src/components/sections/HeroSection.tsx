@@ -421,7 +421,7 @@ export default function HeroSection() {
                                             {/* Avatar Image (colored on hover) */}
                                             <img
                                                 src="/images/about/buddhi-rangana-img.webp"
-                                                alt="Buddhi Rangana Profile"
+                                                alt="Buddhi Rangana Profile" loading="lazy"
                                                 className="w-[200px] h-auto object-cover filter contrast-125 grayscale brightness-110 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 drop-shadow-[0_0_10px_rgba(248,87,42,0.5)] relative z-0 transition-all duration-700 group-hover:scale-110"
                                             />
 
