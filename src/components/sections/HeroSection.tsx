@@ -200,8 +200,8 @@ export default function HeroSection() {
                                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-theme-primary">Available for Work</span>
                             </div>
                             <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl border border-white/5 bg-white/[0.02]">
-                                <span className="text-[9px] font-mono text-white/20">SYS_ID:</span>
-                                <span className="text-[9px] font-mono text-white/40">0x4BR_ARCH</span>
+                                <span className="text-[9px] font-mono uppercase text-white/20">From Sri Lanka</span>
+                                <span className="text-[9px] font-mono uppercase text-white/40">to the World</span>
                             </div>
                         </motion.div>
 
