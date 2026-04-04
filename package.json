@@ -1,6 +1,7 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "br-portfolio",
+  "version": "4.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
