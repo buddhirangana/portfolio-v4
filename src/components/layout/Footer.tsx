@@ -109,7 +109,7 @@ export default function Footer() {
                         <div className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] mb-8 w-full max-w-sm">
                             <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
                                 <Terminal size={14} className="text-theme-primary" />
-                                <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">My Location</span>
+                                <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Where I'm From</span>
                             </div>
                             <p className="text-white font-bold text-lg mb-1">Colombo, Sri Lanka</p>
                             <p className="text-white/30 text-xs font-mono uppercase">Operating globally - available for remote collaboration</p>
