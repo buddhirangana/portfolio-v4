@@ -14,12 +14,12 @@ const QUALIFICATIONS = [
         degree: "BSc (Hons) in Computing",
         field: "Software Engineering",
         institution: "Coventry University",
-        via: "via SLIIT, Sri Lanka",
+        via: "",
         location: "Colombo, Sri Lanka",
         period: "2022 — Present",
         status: "READING",
-        grade: "Upper Second Class (Predicted)",
-        gpa: "3.4",
+        grade: "",
+        gpa: "",
         featured: true,
         modules: [
             "Software Architecture",
@@ -246,7 +246,7 @@ export default function EducationSection() {
                                         transition={{ duration: 1.5, repeat: Infinity }}
                                         className="w-1.5 h-1.5 bg-theme-primary rounded-full"
                                     />
-                                    <span className="text-[8px] font-bold uppercase tracking-[0.35em] text-theme-primary">Currently Reading</span>
+                                    <span className="text-[8px] font-bold uppercase tracking-[0.35em] text-theme-primary">Reading</span>
                                 </div>
                                 <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">{feat.id}</span>
                             </div>
@@ -276,7 +276,7 @@ export default function EducationSection() {
                             </div>
 
                             {/* Grade + GPA row */}
-                            <div className="flex flex-wrap gap-3 mb-8">
+                            {/* <div className="flex flex-wrap gap-3 mb-8">
                                 <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/5">
                                     <Award size={12} className="text-theme-primary" />
                                     <div>
@@ -291,7 +291,7 @@ export default function EducationSection() {
                                         <p className="text-xs font-bold text-theme-primary">{feat.gpa} / 4.0</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Description */}
                             <p className="text-sm text-white/35 leading-relaxed mb-8">
@@ -315,13 +315,13 @@ export default function EducationSection() {
                             </div>
 
                             {/* University footer strip */}
-                            <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/[0.05]">
+                            {/* <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/[0.05]">
                                 <div className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-[11px] font-bold text-white shadow-[0_0_18px_rgba(248,87,42,0.4)] shrink-0">CU</div>
                                 <div>
                                     <p className="text-[8px] font-bold text-theme-primary/60 uppercase tracking-[0.3em] mb-0.5">Awarded by</p>
                                     <p className="text-xs font-semibold text-white/60">Coventry University, United Kingdom</p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </motion.div>
 
