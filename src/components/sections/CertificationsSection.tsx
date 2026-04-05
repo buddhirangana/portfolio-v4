@@ -439,7 +439,7 @@ function ImageModal({ image, onClose }: { image: string | null; onClose: () => v
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all"
+                    className="absolute top-6 right-6 w-12 h-12 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-theme-primary/20 hover:border-theme-primary/40 transition-all backdrop-blur-md"
                 >
                     <span className="text-lg font-light leading-none">×</span>
                 </button>
