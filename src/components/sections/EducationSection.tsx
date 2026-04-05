@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
 import {
     GraduationCap, Award, MapPin, Calendar,
     ChevronDown, BookOpen, Layers, Star, Zap
@@ -165,13 +165,24 @@ export default function EducationSection() {
     const feat = QUALIFICATIONS[0];
     const rest = QUALIFICATIONS.slice(1);
 
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
     return (
-        <section id="education" className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
+        <section id="education" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Journey
+            </motion.div>
             {/* Faint grid */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
-            {/* Ghost watermark */}
-            <div className="absolute -right-8 bottom-0 text-[18rem] font-black italic text-white/[0.012] pointer-events-none select-none leading-none">EDU</div>
-
             <div className="section-container relative z-10">
 
                 {/* ── Section Header ── */}
