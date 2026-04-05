@@ -48,11 +48,12 @@ const EXPERIENCE = [
 ];
 
 export default function ExperienceSection() {
-    const sectionRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"]
-    });
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
 
     const scaleY = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -62,14 +63,13 @@ export default function ExperienceSection() {
 
     return (
         <section id="experience" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
-            {/* Background Data Decals */}
-            <div className="absolute right-[-5%] top-1/4 text-[15rem] font-bold text-white/[0.01] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
-                FOUNDRY_LOGS_CORE_v2.4
-            </div>
-
-            <div className="absolute left-[-10%] bottom-1/4 text-[10rem] font-bold text-white/[0.01] pointer-events-none select-none uppercase -rotate-90 whitespace-nowrap">
-                HARDWARE_RIG_ACCESS
-            </div>
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Skills
+            </motion.div>
 
             <div className="section-container relative z-10">
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left mb-12 lg:mb-24">
