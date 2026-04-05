@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
 import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCheck, Activity, Globe, Cpu } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactSection() {
     const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -11,6 +12,7 @@ export default function ContactSection() {
 
     useEffect(() => {
         setTxId(Math.random().toString(16).substring(2, 10).toUpperCase());
+        console.log("reCAPTCHA Site Key Status:", !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
     }, []);
 
     const sectionRef = useRef<HTMLElement>(null);
@@ -146,21 +148,23 @@ export default function ContactSection() {
                                 </div>
                                 <Wifi size={12} className="text-theme-primary animate-pulse" />
                             </div>
-                            <form className="space-y-6 relative z-10">
+                            <form action="https://formspree.io/f/xzbwjrvp" method="POST" className="space-y-6 relative z-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-3">
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                             <label className="text-white/30 flex items-center gap-2">
                                                 <Terminal size={10} className="text-theme-primary" />
-                                                Identity_Sig
+                                                Identity_Name
                                             </label>
-                                            {focusedField === 'name' && <span className="text-theme-primary animate-pulse">AWAITING_STR</span>}
+                                            {focusedField === 'name' && <span className="text-theme-primary animate-pulse">AWAITING_INPUT</span>}
                                         </div>
                                         <input
+                                            name="name"
+                                            required
                                             onFocus={() => setFocusedField('name')}
                                             onBlur={() => setFocusedField(null)}
                                             type="text"
-                                            placeholder="AGENT_NAME"
+                                            placeholder="Your Name"
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
                                         />
                                     </div>
@@ -168,15 +172,17 @@ export default function ContactSection() {
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                             <label className="text-white/30 flex items-center gap-2">
                                                 <ShieldCheck size={10} className="text-theme-primary" />
-                                                Routing_Addr
+                                                Routing_Email
                                             </label>
                                             {focusedField === 'email' && <span className="text-theme-primary animate-pulse">VALIDATING</span>}
                                         </div>
                                         <input
+                                            name="email"
+                                            required
                                             onFocus={() => setFocusedField('email')}
                                             onBlur={() => setFocusedField(null)}
                                             type="email"
-                                            placeholder="ENDPOINT@DNS.HOST"
+                                            placeholder="Your Email Address"
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
                                         />
                                     </div>
@@ -186,14 +192,16 @@ export default function ContactSection() {
                                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                         <label className="text-white/30 flex items-center gap-2">
                                             <Zap size={10} className="text-theme-primary" />
-                                            Mission_Brief
+                                            Subject_Line
                                         </label>
                                     </div>
                                     <input
+                                        name="subject"
+                                        required
                                         onFocus={() => setFocusedField('subject')}
                                         onBlur={() => setFocusedField(null)}
                                         type="text"
-                                        placeholder="DIRECTIVE_SUBJECT_LINE"
+                                        placeholder="Message Subject / Topic"
                                         className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none placeholder:text-white/10 font-bold tracking-wider"
                                     />
                                 </div>
@@ -202,26 +210,38 @@ export default function ContactSection() {
                                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                         <label className="text-white/30 flex items-center gap-2">
                                             <Activity size={10} className="text-theme-primary" />
-                                            Payload_Data
+                                            Transmission_Data
                                         </label>
                                     </div>
                                     <textarea
+                                        name="message"
+                                        required
                                         onFocus={() => setFocusedField('message')}
                                         onBlur={() => setFocusedField(null)}
                                         rows={5}
-                                        placeholder="DATA_STREAM_CONTENT_ENCODING..."
+                                        placeholder="Type your message here..."
                                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-xs text-white focus:border-theme-primary/50 focus:bg-white/[0.08] transition-all outline-none resize-none placeholder:text-white/10 font-bold tracking-wider leading-relaxed"
                                     />
                                 </div>
 
+                                {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                                    <div className="flex justify-center py-4">
+                                        <ReCAPTCHA
+                                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                            theme="dark"
+                                        />
+                                    </div>
+                                )}
+
                                 <motion.button
+                                    type="submit"
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     whileTap={{ scale: 0.98 }}
                                     className="w-full group relative overflow-hidden rounded-2xl bg-theme-primary text-white py-5 font-extrabold uppercase tracking-[0.5em] text-[10px] shadow-3xl shadow-theme-primary/30"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-theme-primary to-theme-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
                                     <span className="relative z-10 flex items-center justify-center gap-4">
-                                        Initiate Data Transmission
+                                        Send Message
                                         <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                     </span>
                                 </motion.button>

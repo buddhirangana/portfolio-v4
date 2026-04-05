@@ -12,6 +12,7 @@
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
     "@types/aos": "^3.0.7",
+    "@types/react-google-recaptcha": "^2.1.9",
     "aos": "^2.3.4",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.2",
@@ -22,6 +23,7 @@
     "next-themes": "^0.4.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-google-recaptcha": "^3.1.0",
     "react-icons": "^5.6.0",
     "tailwind-merge": "^3.5.0"
   },
