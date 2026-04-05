@@ -12,7 +12,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "AWS-SA-12345",
         hash: "0x882A...F92",
-        status: "VALIDATED"
+        status: "VALIDATED",
+        image: "/images/certifications/aws-solutions-architect.png"
     },
     {
         title: "Meta Front-End Developer Professional Certificate",
@@ -21,7 +22,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "META-FE-9876",
         hash: "0x221B...X1C",
-        status: "CERTIFIED"
+        status: "CERTIFIED",
+        image: "/images/certifications/meta-front-end.png"
     },
     {
         title: "Google Cloud Digital Leader",
@@ -30,7 +32,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "GCP-DL-5544",
         hash: "0x994D...K99",
-        status: "ACTIVE"
+        status: "ACTIVE",
+        image: "/images/certifications/google-cloud-digital-leader.png"
     },
     {
         title: "Google Analytics Individual Qualification",
@@ -39,7 +42,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "GAIQ-7712",
         hash: "0x33AC...P71",
-        status: "VALIDATED"
+        status: "VALIDATED",
+        image: "/images/certifications/google-analytics.png"
     },
     {
         title: "HubSpot Content Marketing Certification",
@@ -48,7 +52,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "HUB-CM-4421",
         hash: "0x77FF...B30",
-        status: "CERTIFIED"
+        status: "CERTIFIED",
+        image: "/images/certifications/hubspot-content-marketing.png"
     },
     {
         title: "Digital Marketing Fundamentals",
@@ -57,7 +62,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "GDG-DM-8831",
         hash: "0xA12E...S04",
-        status: "ACTIVE"
+        status: "ACTIVE",
+        image: "/images/certifications/google-digital-marketing.png"
     },
     {
         title: "WordPress Development Certification",
@@ -66,7 +72,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "WP-DEV-3390",
         hash: "0xD99C...W88",
-        status: "VALIDATED"
+        status: "VALIDATED",
+        image: "/images/certifications/wordpress-development.png"
     },
     {
         title: "JavaScript Algorithms & Data Structures",
@@ -75,7 +82,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "FCC-JS-6614",
         hash: "0xBB44...J22",
-        status: "CERTIFIED"
+        status: "CERTIFIED",
+        image: "/images/certifications/fcc-js-algorithms.png"
     },
     {
         title: "Responsive Web Design Certification",
@@ -84,7 +92,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "FCC-RWD-2200",
         hash: "0x5C1A...R55",
-        status: "ACTIVE"
+        status: "ACTIVE",
+        image: "/images/certifications/fcc-responsive-web.png"
     },
     {
         title: "PHP & MySQL Web Development",
@@ -93,7 +102,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "UDM-PHP-9902",
         hash: "0x6E3B...M14",
-        status: "VALIDATED"
+        status: "VALIDATED",
+        image: "/images/certifications/udemy-php-mysql.png"
     },
     {
         title: "SEO Fundamentals",
@@ -102,7 +112,8 @@ const CERTIFICATIONS = [
         link: "#",
         id: "SEM-SEO-1145",
         hash: "0x8A7D...Q39",
-        status: "CERTIFIED"
+        status: "CERTIFIED",
+        image: "/images/certifications/semrush-seo.png"
     },
 ];
 
@@ -111,6 +122,7 @@ const INITIAL_COUNT = 3;
 export default function CertificationsSection() {
     const sectionRef = useRef(null);
     const [showAll, setShowAll] = useState(false);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const visibleCerts = showAll ? CERTIFICATIONS : CERTIFICATIONS.slice(0, INITIAL_COUNT);
     const hiddenCount = CERTIFICATIONS.length - INITIAL_COUNT;
@@ -190,7 +202,7 @@ export default function CertificationsSection() {
                                     layout: { duration: 0.4 }
                                 }}
                             >
-                                <Card cert={cert} index={i} />
+                                <Card cert={cert} index={i} onImageClick={(img) => setSelectedImage(img)} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
@@ -253,11 +265,16 @@ export default function CertificationsSection() {
                     ))}
                 </motion.div>
             </div>
+
+            {/* Image Modal */}
+            <AnimatePresence>
+                {selectedImage && <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />}
+            </AnimatePresence>
         </section>
     );
 }
 
-function Card({ cert, index }: { cert: any; index: number }) {
+function Card({ cert, index, onImageClick }: { cert: any; index: number; onImageClick: (img: string) => void }) {
     const cardRef = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -292,7 +309,7 @@ function Card({ cert, index }: { cert: any; index: number }) {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className="group relative h-[500px]"
+            className="group relative h-[580px]"
         >
             <div className="absolute inset-0 glass-card-premium rounded-[3rem] border border-white/5 group-hover:border-theme-primary/30 transition-colors duration-700 overflow-hidden">
                 {/* Holographic Gloss Effect */}
@@ -300,16 +317,16 @@ function Card({ cert, index }: { cert: any; index: number }) {
 
                 {/* Scanning Beam */}
                 <motion.div
-                    animate={{ y: [-500, 500] }}
+                    animate={{ y: [-580, 580] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                     className="absolute inset-x-0 h-px bg-theme-primary/40 shadow-[0_0_15px_rgba(248,87,42,1)] opacity-0 group-hover:opacity-30"
                 />
 
-                <div className="p-12 h-full flex flex-col justify-between" style={{ transform: "translateZ(75px)" }}>
+                <div className="p-10 h-full flex flex-col justify-between" style={{ transform: "translateZ(75px)" }}>
                     {/* Header Seal */}
-                    <div className="flex justify-between items-start">
-                        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-theme-primary group-hover:bg-theme-primary group-hover:text-white transition-all duration-500">
-                            <Award size={28} />
+                    <div className="flex justify-between items-start mb-6">
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-theme-primary group-hover:bg-theme-primary group-hover:text-white transition-all duration-500">
+                            <Award size={24} />
                         </div>
                         <div className="flex flex-col items-end">
                             <div className="flex items-center gap-2 mb-1">
@@ -320,24 +337,45 @@ function Card({ cert, index }: { cert: any; index: number }) {
                         </div>
                     </div>
 
+                    {/* Image Preview */}
+                    <div
+                        onClick={() => onImageClick(cert.image)}
+                        className="relative w-full aspect-video md:aspect-auto md:h-44 mb-8 rounded-2xl overflow-hidden border border-white/5 bg-white/5 group-hover:border-theme-primary/20 transition-colors cursor-zoom-in"
+                    >
+                        <img
+                            src={cert.image}
+                            alt={cert.title}
+                            className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                            onError={(e) => {
+                                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=800&auto=format&fit=crop";
+                            }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-dark-400/80 to-transparent opacity-60" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="px-4 py-2 bg-theme-primary/10 backdrop-blur-md rounded-full border border-theme-primary/20 text-theme-primary text-[8px] font-bold uppercase tracking-widest">
+                                Expand_Credential
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Content */}
                     <div>
-                        <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.4em] mb-4 block">Professional_Credential</span>
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-theme-primary transition-colors tracking-tighter leading-tight">
+                        <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em] mb-4 block">Professional_Credential</span>
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-theme-primary transition-colors tracking-tighter leading-tight">
                             {cert.title}
                         </h3>
-                        <p className="text-sm font-medium text-white/40 mb-10 leading-relaxed font-poppins">
+                        <p className="text-xs font-medium text-white/40 mb-6 leading-relaxed font-poppins">
                             {cert.issuer}
                         </p>
 
-                        <div className="flex flex-col gap-4 pt-10 border-t border-white/5">
+                        <div className="flex flex-col gap-4 pt-6 border-t border-white/5">
                             <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3 text-[9px] font-bold uppercase tracking-widest text-white/20">
-                                    <Calendar size={14} className="text-theme-primary" />
+                                <div className="flex items-center gap-3 text-[8px] font-bold uppercase tracking-widest text-white/20">
+                                    <Calendar size={12} className="text-theme-primary" />
                                     ISSUED: {cert.date}
                                 </div>
-                                <div className="flex items-center gap-3 text-[9px] font-bold uppercase tracking-widest text-white/20 text-right">
-                                    <Fingerprint size={14} className="text-theme-primary" />
+                                <div className="flex items-center gap-3 text-[8px] font-bold uppercase tracking-widest text-white/20 text-right">
+                                    <Fingerprint size={12} className="text-theme-primary" />
                                     ID: {cert.id}
                                 </div>
                             </div>
@@ -348,17 +386,62 @@ function Card({ cert, index }: { cert: any; index: number }) {
                     <motion.a
                         whileHover={{ x: 5 }}
                         href={cert.link}
-                        className="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary group/link mt-8"
+                        className="inline-flex items-center gap-4 text-[9px] font-bold uppercase tracking-[0.5em] text-theme-primary group/link mt-6"
                     >
                         VERIFY_CREDENTIAL
-                        <ExternalLink size={16} className="group-hover/link:translate-x-1 transition-transform" />
+                        <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
                     </motion.a>
                 </div>
 
                 {/* Decorative Background Decal */}
-                <ShieldCheck size={220} className="absolute -bottom-24 -right-24 text-white/[0.01] -rotate-12 group-hover:rotate-0 transition-all duration-1000" />
-                <Lock size={150} className="absolute -top-12 -left-12 text-white/[0.01] rotate-12 group-hover:rotate-0 transition-all duration-1000" />
+                <ShieldCheck size={180} className="absolute -bottom-16 -right-16 text-white/[0.01] -rotate-12 group-hover:rotate-0 transition-all duration-1000" />
             </div>
+        </motion.div>
+    );
+}
+
+function ImageModal({ image, onClose }: { image: string | null; onClose: () => void }) {
+    if (!image) return null;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-dark-400/90 backdrop-blur-xl cursor-zoom-out"
+        >
+            <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative max-w-5xl w-full aspect-[4/3] md:aspect-[16/11] glass-card-premium rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl"
+            >
+                <img
+                    src={image}
+                    alt="Certificate"
+                    className="w-full h-full object-contain p-2 md:p-4"
+                    onError={(e) => {
+                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop";
+                    }}
+                />
+                
+                {/* Close Button */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all"
+                >
+                    <ChevronUp className="rotate-90 md:rotate-0" />
+                </button>
+
+                {/* Scanner Effect */}
+                <motion.div
+                    animate={{ y: [-1000, 1000] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-x-0 h-px bg-theme-primary/20 shadow-[0_0_20px_rgba(248,87,42,0.5)]"
+                />
+            </motion.div>
         </motion.div>
     );
 }
