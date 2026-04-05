@@ -107,7 +107,7 @@ const QUALIFICATIONS = [
         location: "Biyagama, Sri Lanka",
         period: "2016 - 2018",
         status: "COMPLETED",
-        grade: "3 Passes",
+        grade: "Passed",
         gpa: "",
         featured: false,
         modules: ["Engineering Technology", "Science for Technology", "ICT"],
