@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useScroll, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, useScroll, AnimatePresence, LayoutGroup, useInView, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github, ArrowRight, Plus, Globe, Database, Command, Layers, Monitor, Cpu, Palette } from "lucide-react";
 
 // ─── Filter Definitions ────────────────────────────────────────────────────────
@@ -132,9 +132,6 @@ const PAGE_SIZE = 3;
 
 // ─── Main Section ──────────────────────────────────────────────────────────────
 export default function ProjectsSection() {
-    const sectionRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-
     const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -150,13 +147,24 @@ export default function ProjectsSection() {
         setVisibleCount(PAGE_SIZE);
     };
 
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
     return (
         <section id="projects" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background Architecture */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
-            <div className="absolute top-0 left-0 p-20 opacity-[0.01] text-[15rem] font-bold select-none pointer-events-none uppercase leading-none">
-                Research
-            </div>
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Academic
+            </motion.div>
 
             <div className="section-container relative z-10">
 

@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
 import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCheck, Activity, Globe, Cpu } from "lucide-react";
 
 export default function ContactSection() {
-    const sectionRef = useRef(null);
     const [focusedField, setFocusedField] = useState<string | null>(null);
     // Generate TX_ID only on the client (after mount) to avoid SSR/client hydration mismatch
     const [txId, setTxId] = useState<string>("--------");
@@ -14,14 +13,25 @@ export default function ContactSection() {
         setTxId(Math.random().toString(16).substring(2, 10).toUpperCase());
     }, []);
 
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
     return (
         <section id="contact" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background Atmosphere & Foundry Decals */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-theme-primary/5 blur-[180px] rounded-full pointer-events-none opacity-40" />
 
-            <div className="absolute top-0 right-[-5%] text-[12rem] font-bold text-white/[0.01] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
-                COMM_PROTO_AX_01
-            </div>
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Academic
+            </motion.div>
 
             <div className="section-container relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">

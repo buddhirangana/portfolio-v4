@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useSpring, useTransform } from "framer-motion";
 import { Camera, ExternalLink, MapPin, Calendar, Tag, Images, ZoomIn, ChevronRight } from "lucide-react";
 
 // ─── Gallery Data ──────────────────────────────────────────────────────────────
@@ -223,15 +223,24 @@ function GalleryCard({ item, index }: { item: typeof GALLERY_ITEMS[0]; index: nu
 
 // ─── Main Section ──────────────────────────────────────────────────────────────
 export default function GallerySection() {
-    const sectionRef = useRef(null);
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
 
     return (
         <section id="gallery" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background */}
             <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />
-            <div className="absolute right-[-2%] top-0 text-[15rem] font-bold text-white/[0.01] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
-                VISUAL_LOG
-            </div>
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Academic
+            </motion.div>
 
             <div className="section-container relative z-10">
 

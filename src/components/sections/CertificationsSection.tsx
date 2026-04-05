@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, useTransform, AnimatePresence, useScroll } from "framer-motion";
 import { Award, ExternalLink, Calendar, ShieldCheck, Fingerprint, Lock, Shield, Activity, Database, ChevronDown, ChevronUp, Zap } from "lucide-react";
 
 const CERTIFICATIONS = [
@@ -120,22 +120,31 @@ const CERTIFICATIONS = [
 const INITIAL_COUNT = 3;
 
 export default function CertificationsSection() {
-    const sectionRef = useRef(null);
     const [showAll, setShowAll] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const visibleCerts = showAll ? CERTIFICATIONS : CERTIFICATIONS.slice(0, INITIAL_COUNT);
     const hiddenCount = CERTIFICATIONS.length - INITIAL_COUNT;
 
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
     return (
         <section id="certifications" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Background Architecture */}
             <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />
 
-            {/* Industrial Decals */}
-            <div className="absolute top-0 right-0 p-20 opacity-[0.01] text-[15rem] font-bold select-none pointer-events-none uppercase">
-                Verification
-            </div>
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Academic
+            </motion.div>
 
             <div className="section-container relative z-10">
                 {/* Header */}
@@ -426,7 +435,7 @@ function ImageModal({ image, onClose }: { image: string | null; onClose: () => v
                         (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop";
                     }}
                 />
-                
+
                 {/* Close Button */}
                 <button
                     onClick={onClose}
