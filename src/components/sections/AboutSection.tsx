@@ -224,6 +224,21 @@ export default function AboutSection() {
                 </div>
 
                 {/* Expertise Micro-Grid */}
+                {/* Expertise Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="flex flex-col items-center justify-center gap-4 mb-20 mt-32"
+                >
+                    <div className="flex items-center gap-4">
+                        <Zap size={14} className="text-theme-primary" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/40 whitespace-nowrap">My Services</span>
+                    </div>
+                    <h3 className="text-3xl md:text-6xl font-bold text-white tracking-tighter text-center">
+                        What <span className="text-white/20 italic font-light">I'm Doing</span>
+                    </h3>
+                </motion.div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {EXPERTISE.map((item, i) => (
                         <motion.div

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion, type Variants } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView, useScroll, useSpring, useTransform, type Variants } from "framer-motion";
 import { FaJava, FaCss3, FaPython, FaPhp, FaReact, FaNodeJs, FaWordpress, FaGitAlt } from "react-icons/fa";
 import { SiAndroidstudio, SiAngular, SiArduino, SiBootstrap, SiCanva, SiCloudflare, SiCplusplus, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGithub, SiGoogleanalytics, SiGooglechrome, SiGooglegemini, SiHeroku, SiHtml5, SiJavascript, SiJoomla, SiKotlin, SiLinux, SiMongodb, SiMysql, SiNextdotjs, SiNumpy, SiPandas, SiPostman, SiScikitlearn, SiShopify, SiStreamlit, SiSupabase, SiTailwindcss, SiTensorflow, SiTypescript, SiVercel, SiVirtualbox } from "react-icons/si";
 import { Code2, Database, Globe, Smartphone, Cloud, Palette, BrainCircuit, Wrench } from "lucide-react";
@@ -158,14 +158,29 @@ const cardVariants: Variants = {
 };
 
 export default function ToolsSection() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+
+    // Smooth reveal for technical decals
+    const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
     return (
-        <section id="tools" className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
+        <section id="tools" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Grid bg */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
 
             {/* Ambient glows */}
             <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-sky-500/5 blur-[120px] pointer-events-none" />
+
+            {/* Foundry Background Decals */}
+            <motion.div
+                style={{ x: decalX }}
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+            >
+                Skills
+            </motion.div>
 
             <div className="section-container relative z-10">
                 {/* Header */}
@@ -178,11 +193,11 @@ export default function ToolsSection() {
                     <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
                         <Wrench size={14} className="text-theme-primary" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">
-                            Technical Skillset
+                            Proficiency
                         </span>
                     </div>
                     <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
-                        Digital <span className="text-white/20 italic font-light">Arsenal</span>
+                        Technical <span className="text-white/20 italic font-light">Skills</span>
                     </h2>
                 </motion.div>
 
@@ -248,14 +263,6 @@ export default function ToolsSection() {
                         </motion.div>
                     ))}
                 </motion.div>
-            </div>
-
-            {/* Industrial decals */}
-            <div className="absolute left-[-2%] bottom-0 opacity-[0.02] text-[10rem] font-bold select-none pointer-events-none uppercase">
-                Skill_Matrix
-            </div>
-            <div className="absolute right-[-2%] top-0 opacity-[0.02] text-[10rem] font-bold select-none pointer-events-none uppercase rotate-180">
-                Tech_Stack
             </div>
         </section>
     );
