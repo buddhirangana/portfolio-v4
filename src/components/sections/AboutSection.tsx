@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
-import { Code2, Palette, BarChart3, Megaphone, Video, FileText, Cpu, Globe, Crosshair, Terminal, Zap, Fingerprint, Layout, Star } from "lucide-react";
+import { Palette, BarChart3, Megaphone, Globe, Crosshair, Terminal, Zap, Layout, Star } from "lucide-react";
 
 // Updated Skills with technical metadata
 const SKILLS = [
@@ -17,57 +17,57 @@ const EXPERTISE = [
     {
         icon: Terminal,
         title: "Web Development",
-        desc: "Architecting high-performance digital environments with zero-latency logic.",
-        tag: "WEB_DEPLOY",
+        desc: "Engineering high-performance web applications with scalable architecture and modern frameworks.",
+        tag: "WEB_DEV",
         color: "var(--theme-primary)"
     },
     {
         icon: Palette,
         title: "Graphic Design",
-        desc: "Crafting unique brand DNAs that resonate across modern industrial landscapes.",
-        tag: "VISUAL_DNA",
+        desc: "Crafting visually compelling designs that blend creativity with strategic communication.",
+        tag: "VISUAL_IDENTITY",
         color: "var(--theme-secondary)"
     },
     {
         icon: BarChart3,
         title: "Technical Analysis",
-        desc: "Deep-dive data processing and system metrics analysis for performance modeling.",
-        tag: "DATA_NODE",
+        desc: "Analyzing complex systems and data to optimize performance, efficiency, and decision-making.",
+        tag: "DATA_ANALYSIS",
         color: "var(--theme-accent)"
     },
     {
         icon: Megaphone,
         title: "Social Media Consultant",
         desc: "Optimizing digital reach and engagement through strategic network consultation.",
-        tag: "UPLINK_SOC",
+        tag: "SM_CONSULT",
         color: "var(--theme-primary)"
     },
     {
         icon: Globe,
         title: "UI/UX Design",
-        desc: "Designing high-fidelity interfaces with intuitive user-centric logic flow.",
-        tag: "CORE_UI",
+        desc: "Designing intuitive, user-centered interfaces that enhance experience and usability.",
+        tag: "UI_UX",
         color: "var(--theme-secondary)"
     },
     {
         icon: Zap,
         title: "Social Media Marketing",
         desc: "Accelerating brand growth through targeted high-impact digital campaigns.",
-        tag: "MARK_OPS",
+        tag: "SM_MARKETING",
         color: "var(--theme-accent)"
     },
     {
         icon: Crosshair,
         title: "SEO",
-        desc: "Maximizing discoverability and indexing through advanced technical search optimization.",
+        desc: "Optimizing digital platforms for visibility, ranking and sustainable growth.",
         tag: "SEARCH_OPT",
         color: "var(--theme-primary)"
     },
     {
         icon: Layout,
         title: "WordPress Development",
-        desc: "Engineering custom themes and robust plugin architectures for scalable CMS solutions.",
-        tag: "CMS_ARCH",
+        desc: "Developing dynamic, customizable websites with powerful CMS capabilities.",
+        tag: "WP_DEV",
         color: "var(--theme-secondary)"
     }
 ];
