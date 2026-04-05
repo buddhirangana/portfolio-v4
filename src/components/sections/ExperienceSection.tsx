@@ -2,16 +2,26 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { Terminal, Cpu, Database, Network, Share2, Activity, ShieldCheck, Zap } from "lucide-react";
+import { Terminal, Cpu, Database, Network, Share2, Activity, ShieldCheck, Zap, User, MapPin } from "lucide-react";
 
 const EXPERIENCE = [
+    {
+        company: "Association for Information Communication Technology Professionals",
+        role: "Associate Member (AICTP)",
+        period: "FEB 2026 - PRESENT",
+        desc: "Association for Information Communication Technology Professionals (AICTP), the premier body advancing the science, practice, and professional standards of ICT.",
+        tag: "Part-time",
+        location: "Colombo, Sri Lanka",
+        icon: User,
+        color: "var(--theme-primary)"
+    },
     {
         company: "NIIBS",
         role: "Systems Architect",
         period: "2024 - PRESENT",
         desc: "Engineering high-availability digital infrastructure and core system management for institutional scale. Implemented zero-latency protocols and hyper-redundant node architectures.",
-        metrics: ["UPTIME: 99.99%", "LATENCY: 0.04ms", "SYNC: VERIFIED"],
         tag: "CORE_ACCESS_V4",
+        location: "Colombo, Sri Lanka",
         icon: Network,
         color: "var(--theme-primary)"
     },
@@ -20,8 +30,8 @@ const EXPERIENCE = [
         role: "Founder & Lead",
         period: "2023 - PRESENT",
         desc: "Architecting premium digital meshes and strategic growth protocols for global scale enterprises. Leading the development of custom hardware-aware software solutions.",
-        metrics: ["NODES: 120+", "THROUGHPUT: MAX", "LOAD: OPTIMIZED"],
         tag: "EXT_OPS_PROT",
+        location: "Remote",
         icon: Database,
         color: "var(--theme-secondary)"
     },
@@ -30,8 +40,8 @@ const EXPERIENCE = [
         role: "Founder / Editor",
         period: "2022 - PRESENT",
         desc: "Orchestrating the premier technical publication in Sri Lanka, delivering industrial-grade insights into emerging hardware and software paradigms.",
-        metrics: ["REACH: GLOBAL", "FREQ: REALTIME", "ENGAGEMENT: HIGH"],
         tag: "DATA_MESH_SIG",
+        location: "Wattala, Sri Lanka",
         icon: Share2,
         color: "var(--theme-accent)"
     },
@@ -40,8 +50,8 @@ const EXPERIENCE = [
         role: "Consultant",
         period: "2021 - 2022",
         desc: "Pioneered neural network integration benchmarks for automated customer support architectures. Optimized decision-tree logic for high-frequency data streams.",
-        metrics: ["SYNC: VERIFIED", "BUILD: v2.4.9", "CORE: DUAL_RIG"],
         tag: "RESEARCH_NODE_X",
+        location: "Kandy, Sri Lanka",
         icon: Cpu,
         color: "var(--theme-primary)"
     }
@@ -68,7 +78,7 @@ export default function ExperienceSection() {
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                Skills
+                Journey
             </motion.div>
 
             <div className="section-container relative z-10">
@@ -79,10 +89,10 @@ export default function ExperienceSection() {
                     >
                         <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
                             <Terminal size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Chronicle logs</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Journey</span>
                         </div>
                         <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
-                            System <span className="text-white/20 italic font-light">Evolution</span>
+                            Career <span className="text-white/20 italic font-light">Timeline</span>
                         </h2>
                     </motion.div>
                 </div>
@@ -123,9 +133,16 @@ export default function ExperienceSection() {
 
                                         <div className="flex flex-col gap-8 relative z-10">
                                             <div className="flex justify-between items-center">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-theme-primary animate-pulse" />
-                                                    <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.3em]">[{exp.tag}]</span>
+                                                <div className="flex items-center gap-4">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-theme-primary animate-pulse" />
+                                                        <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.3em]">[{exp.tag}]</span>
+                                                    </div>
+                                                    <div className="w-px h-3 bg-white/10 hidden md:block" />
+                                                    <div className="flex items-center gap-2 text-[9px] font-medium text-white/40 uppercase tracking-[0.2em]">
+                                                        <MapPin size={10} className="text-theme-primary" />
+                                                        {exp.location}
+                                                    </div>
                                                 </div>
                                                 <span className="text-[10px] font-mono font-bold text-white/20 px-3 py-1 bg-white/5 rounded-full border border-white/5">{exp.period}</span>
                                             </div>
@@ -142,14 +159,14 @@ export default function ExperienceSection() {
                                                 {exp.desc}
                                             </p>
 
-                                            <div className="grid grid-cols-3 gap-6 pt-10 border-t border-white/5">
+                                            {/* <div className="grid grid-cols-3 gap-6 pt-10 border-t border-white/5">
                                                 {exp.metrics.map(metric => (
                                                     <div key={metric} className="flex flex-col gap-2">
                                                         <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em] font-mono">{metric.split(':')[0]}</span>
                                                         <span className="text-[9px] font-bold text-theme-primary tracking-widest uppercase">{metric.split(':')[1]}</span>
                                                     </div>
                                                 ))}
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         {/* Connector Decal Horizontal */}
