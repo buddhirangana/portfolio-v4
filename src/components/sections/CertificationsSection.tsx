@@ -43,7 +43,7 @@ const CERTIFICATIONS = [
         id: "GAIQ-7712",
         hash: "0x33AC...P71",
         status: "VALIDATED",
-        image: "/images/certifications/google-analytics.png"
+        image: ""
     },
     {
         title: "HubSpot Content Marketing Certification",
@@ -53,7 +53,7 @@ const CERTIFICATIONS = [
         id: "HUB-CM-4421",
         hash: "0x77FF...B30",
         status: "CERTIFIED",
-        image: "/images/certifications/hubspot-content-marketing.png"
+        image: ""
     },
     {
         title: "Digital Marketing Fundamentals",
@@ -63,7 +63,7 @@ const CERTIFICATIONS = [
         id: "GDG-DM-8831",
         hash: "0xA12E...S04",
         status: "ACTIVE",
-        image: "/images/certifications/google-digital-marketing.png"
+        image: ""
     },
     {
         title: "WordPress Development Certification",
@@ -73,7 +73,7 @@ const CERTIFICATIONS = [
         id: "WP-DEV-3390",
         hash: "0xD99C...W88",
         status: "VALIDATED",
-        image: "/images/certifications/wordpress-development.png"
+        image: ""
     },
     {
         title: "JavaScript Algorithms & Data Structures",
@@ -83,7 +83,7 @@ const CERTIFICATIONS = [
         id: "FCC-JS-6614",
         hash: "0xBB44...J22",
         status: "CERTIFIED",
-        image: "/images/certifications/fcc-js-algorithms.png"
+        image: ""
     },
     {
         title: "Responsive Web Design Certification",
@@ -93,7 +93,7 @@ const CERTIFICATIONS = [
         id: "FCC-RWD-2200",
         hash: "0x5C1A...R55",
         status: "ACTIVE",
-        image: "/images/certifications/fcc-responsive-web.png"
+        image: ""
     },
     {
         title: "PHP & MySQL Web Development",
@@ -103,7 +103,7 @@ const CERTIFICATIONS = [
         id: "UDM-PHP-9902",
         hash: "0x6E3B...M14",
         status: "VALIDATED",
-        image: "/images/certifications/udemy-php-mysql.png"
+        image: ""
     },
     {
         title: "SEO Fundamentals",
@@ -113,7 +113,7 @@ const CERTIFICATIONS = [
         id: "SEM-SEO-1145",
         hash: "0x8A7D...Q39",
         status: "CERTIFIED",
-        image: "/images/certifications/semrush-seo.png"
+        image: ""
     },
 ];
 
