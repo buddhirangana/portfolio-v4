@@ -34,6 +34,7 @@ const ROLES = [
     "Founder of DigiFox Technologies",
     "Founder of TEC ROOM",
     "Web Developer",
+    "Freelancer",
     "WordPress Expert",
     "UI/UX Designer",
     "Graphic Designer",

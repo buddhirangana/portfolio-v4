@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
-import { Code2, Palette, BarChart3, Megaphone, Video, FileText, Cpu, Globe, Crosshair, Terminal, Zap, Fingerprint, Layout } from "lucide-react";
+import { Code2, Palette, BarChart3, Megaphone, Video, FileText, Cpu, Globe, Crosshair, Terminal, Zap, Fingerprint, Layout, Star } from "lucide-react";
 
 // Updated Skills with technical metadata
 const SKILLS = [
-    { name: "Full-Stack Development", level: 96, category: "SYSTEMS", color: "var(--theme-primary)" },
-    { name: "Cloud Architecture", level: 88, category: "INFRA", color: "var(--theme-secondary)" },
-    { name: "UI/UX Orchestration", level: 92, category: "INTERFACE", color: "var(--theme-accent)" },
-    { name: "Neural Integration", level: 75, category: "AI_ML", color: "var(--theme-primary)" },
+    { name: "Web Development", level: 80, category: "PHP | JAVASCRIPT | HTML | CSS | Next.js | React", color: "var(--theme-primary)" },
+    { name: "Graphic Design", level: 70, category: "PHOTOSHOP | ILLUSTRATOR", color: "var(--theme-secondary)" },
+    { name: "Digital Marketing", level: 75, category: "FACEBOOK | TIKTOK | INSTAGRAM | SEO", color: "var(--theme-accent)" },
+    { name: "UI/UX Design", level: 75, category: "FIGMA | ADOBE XD", color: "var(--theme-primary)" },
+    { name: "CMS Development", level: 90, category: "WORDPRESS | SHOPIFY | WOOCOMMERCE | GHOST | JOOMLA", color: "var(--theme-primary)" },
 ];
 
 const EXPERTISE = [
@@ -107,7 +108,7 @@ export default function AboutSection() {
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">About Me</span>
                         </div>
                         <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-8">
-                            Decoding the <span className="italic font-light text-white/40">Architectural</span> Blueprint
+                            Engineering the <span className="italic font-light text-white/40">Digital Blueprint</span>
                         </h2>
                     </motion.div>
 
@@ -118,7 +119,7 @@ export default function AboutSection() {
                         className="lg:text-right"
                     >
                         <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs ml-auto">
-                            Transforming raw technical logic into high-fidelity digital reality through precise engineering.
+                            Transforming complex ideas into scalable, high-performance digital systems through precision engineering and intelligent design.
                         </p>
                     </motion.div>
                 </div>
@@ -131,47 +132,53 @@ export default function AboutSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="lg:col-span-7 group"
                     >
-                        <div className="glass-card-premium rounded-[3rem] p-8 md:p-12 h-full border border-white/5 relative overflow-hidden flex flex-col justify-end min-h-[500px]">
-                            {/* Scanning Animation Visual */}
-                            <div className="relative mb-8 self-center md:absolute md:top-0 md:right-0 md:p-12 md:mb-0">
-                                <div className="relative w-32 h-32 md:w-40 md:h-40 group-hover:scale-105 transition-transform duration-700">
-                                    <div className="absolute inset-0 rounded-3xl border border-theme-primary animate-pulse" />
-                                    <div className="absolute inset-0 bg-theme-primary/10 rounded-3xl backdrop-blur-sm flex items-center justify-center overflow-hidden">
-                                        <img
-                                            src="/images/about/buddhi-rangana-img.webp"
-                                            alt="Buddhi Rangana Profile" loading="lazy"
-                                            className="w-full h-full object-cover brightness-125"
-                                        />
-                                        <motion.div
-                                            animate={{ y: [-160, 160] }}
-                                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                            className="absolute inset-x-0 h-1 bg-theme-primary/40 shadow-[0_0_15px_rgba(248,87,42,1)]"
-                                        />
+                        <div className="glass-card-premium rounded-[3rem] p-8 md:p-12 h-full border border-white/5 relative overflow-hidden flex flex-col min-h-[500px]">
+                            {/* Scanning Animation Visual & Info Section */}
+                            <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mb-12">
+                                <div className="relative group-hover:scale-105 transition-transform duration-700">
+                                    <div className="relative w-32 h-32 md:w-40 md:h-40">
+                                        <div className="absolute inset-0 rounded-3xl border border-theme-primary animate-pulse" />
+                                        <div className="absolute inset-0 bg-theme-primary/10 rounded-3xl backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                                            <img
+                                                src="/images/about/buddhi-rangana-img.webp"
+                                                alt="Buddhi Rangana Profile" loading="lazy"
+                                                className="w-full h-full object-cover brightness-125"
+                                            />
+                                            <motion.div
+                                                animate={{ y: [-160, 160] }}
+                                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                                className="absolute inset-x-0 h-1 bg-theme-primary/40 shadow-[0_0_15px_rgba(248,87,42,1)]"
+                                            />
+                                        </div>
+                                        <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-dark-400 rounded-2xl border border-white/10 flex items-center justify-center">
+                                            <Crosshair size={20} className="text-theme-primary" />
+                                        </div>
                                     </div>
-                                    <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-dark-400 rounded-2xl border border-white/10 flex items-center justify-center">
-                                        <Crosshair size={20} className="text-theme-primary" />
+                                </div>
+
+                                <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 flex-1">
+                                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Buddhi Rangana</h3>
+                                    <p className="text-sm md:text-md text-white/50 leading-relaxed mb-6 max-w-2xl">Entrepreneur • Founder @ DFox Technologies (Pvt) Ltd • Founder @ TEC ROOM • Aspiring Full-Stack Developer</p>
+                                    <div className="flex justify-center lg:justify-start gap-4">
+                                        <span className="text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-white/40">Freelancer</span>
+                                        <span className="text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 bg-theme-primary/10 border border-theme-primary/20 rounded-full text-theme-primary">Available for Work</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="relative z-10 max-w-lg flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0">
-                                <h3 className="text-3xl font-bold text-white mb-6">Buddhi Rangana</h3>
-                                <div className="flex justify-center lg:justify-start gap-4 mb-8">
-                                    <span className="text-[9px] font-bold uppercase tracking-widest px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/40">SYSTEMS_ENGINEER</span>
-                                    <span className="text-[9px] font-bold uppercase tracking-widest px-3 py-1 bg-theme-primary/10 border border-theme-primary/20 rounded-full text-theme-primary">LEVEL_06</span>
-                                </div>
-                                <p className="text-lg text-white/50 leading-relaxed mb-8">
-                                    A visionary architect at the intersection of <span className="text-white font-semibold">industrial software</span> and <span className="text-white font-semibold">creative expression</span>. Currently leading digital infrastructure at NIIBS and pioneering research through DigiFox systems.
+                            <div className="relative z-10 flex flex-col flex-1 justify-end">
+                                <p className="text-md md:text-lg text-white/50 leading-relaxed mb-10 max-w-2xl">
+                                    I'm Buddhi Rangana, a Software Engineering undergraduate and founder of DigiFox Technologies, focused on building scalable, high-performance digital systems. With a strong background in full-stack development and hands-on experience in real-world projects, I create solutions that combine functionality, usability and innovation. <br/><br/> Driven by continuous learning and a passion for AI and emerging technologies, I transform ideas into intelligent, future-ready digital experiences.
                                 </p>
 
                                 <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5 text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">
                                     <div className="flex flex-col gap-2">
-                                        <span>Status: Operational</span>
-                                        <span>Loc: 04° N, 79° E</span>
+                                        <span>Status: Undergraduate</span>
+                                        <span>Location: Sri Lanka</span>
                                     </div>
                                     <div className="flex flex-col gap-2 text-right">
-                                        <span className="text-theme-primary">Sync: Active</span>
-                                        <span>Core: Optimized</span>
+                                        <span className="text-theme-primary">Focus: Full-Stack & AI</span>
+                                        <span>Role: Entrepreneur</span>
                                     </div>
                                 </div>
                             </div>
@@ -187,8 +194,8 @@ export default function AboutSection() {
                     >
                         <div className="glass-card-premium rounded-[3rem] p-12 h-full border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent">
                             <div className="flex items-center justify-center lg:justify-start gap-3 mb-12">
-                                <Cpu size={20} className="text-theme-primary" />
-                                <h4 className="text-sm font-bold items-center lg:items-start uppercase tracking-[0.4em] text-white/40">Logic Cores</h4>
+                                <Star size={20} className="text-theme-primary" />
+                                <h4 className="text-sm font-bold items-center lg:items-start uppercase tracking-[0.4em] text-white/40">My Skills</h4>
                             </div>
 
                             <div className="space-y-12">
@@ -199,7 +206,7 @@ export default function AboutSection() {
                                                 <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest mb-1">{skill.category}</span>
                                                 <span className="text-sm font-bold text-white uppercase tracking-wider">{skill.name}</span>
                                             </div>
-                                            <span className="text-xs font-mono font-bold text-theme-primary">{skill.level}MS</span>
+                                            <span className="text-xs font-mono font-bold text-theme-primary">{skill.level}%</span>
                                         </div>
                                         <div className="h-1 bg-white/5 rounded-full overflow-hidden">
                                             <motion.div
