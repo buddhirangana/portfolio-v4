@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { Terminal, Cpu, Database, Network, Share2, Activity, ShieldCheck, Zap, User, MapPin } from "lucide-react";
+import { Terminal, Network, Activity, ShieldCheck, Zap, User, MapPin, Code, Globe } from "lucide-react";
 
 const EXPERIENCE = [
     {
@@ -16,43 +16,63 @@ const EXPERIENCE = [
         color: "var(--theme-primary)"
     },
     {
-        company: "NIIBS",
-        role: "Systems Architect",
-        period: "2024 - PRESENT",
-        desc: "Engineering high-availability digital infrastructure and core system management for institutional scale. Implemented zero-latency protocols and hyper-redundant node architectures.",
-        tag: "CORE_ACCESS_V4",
+        company: "DigiFox Technologies",
+        role: "Founder & CEO",
+        period: "MAR 2024 - PRESENT",
+        desc: "DigiFox Technologies provides web design, SEO, digital marketing, software development, e-commerce, branding and content services.",
+        tag: "Remote",
         location: "Colombo, Sri Lanka",
-        icon: Network,
+        icon: Code,
         color: "var(--theme-primary)"
     },
     {
-        company: "DigiFox Systems",
-        role: "Founder & Lead",
-        period: "2023 - PRESENT",
-        desc: "Architecting premium digital meshes and strategic growth protocols for global scale enterprises. Leading the development of custom hardware-aware software solutions.",
-        tag: "EXT_OPS_PROT",
-        location: "Remote",
-        icon: Database,
+        company: "Cyber Crew of SICT",
+        role: "Main Editor",
+        period: "JAN 2024 - PRESENT",
+        desc: "Cyber Crew of SICT is a community group to support students in their quest of being a significant IT Professional.",
+        tag: "Volunteering",
+        location: "Colombo, Sri Lanka",
+        icon: Network,
         color: "var(--theme-secondary)"
     },
     {
-        company: "TEC ROOM",
-        role: "Founder / Editor",
-        period: "2022 - PRESENT",
-        desc: "Orchestrating the premier technical publication in Sri Lanka, delivering industrial-grade insights into emerging hardware and software paradigms.",
-        tag: "DATA_MESH_SIG",
-        location: "Wattala, Sri Lanka",
-        icon: Share2,
+        company: "Colombo Journal",
+        role: "Web Content Writer",
+        period: "JAN 2023 - PRESENT",
+        desc: "The Colombo Journal is an open-source, online content community which contains expert articles done by Sri Lankan professionals. All these articles are published free of charge on merit and considering the substance of the subject matter.",
+        tag: "Volunteering",
+        location: "Colombo, Sri Lanka",
+        icon: Globe,
         color: "var(--theme-accent)"
     },
     {
-        company: "Innovation Lab",
-        role: "Consultant",
-        period: "2021 - 2022",
-        desc: "Pioneered neural network integration benchmarks for automated customer support architectures. Optimized decision-tree logic for high-frequency data streams.",
-        tag: "RESEARCH_NODE_X",
-        location: "Kandy, Sri Lanka",
-        icon: Cpu,
+        company: "NIIBS Campus",
+        role: "Information System Assistant",
+        period: "FEB 2021 - PRESENT",
+        desc: "NIIBS is a degree awarding institute recognized by the Government of Sri Lanka under the provisions of the Universities Act No.16 of 1978.",
+        tag: "Full-time",
+        location: "Kelaniya, Sri Lanka",
+        icon: Code,
+        color: "var(--theme-primary)"
+    },
+    {
+        company: "NIIBS Campus",
+        role: "Trainee",
+        period: "AUG 2020 - FEB 2021",
+        desc: "NIIBS is a degree awarding institute recognized by the Government of Sri Lanka under the provisions of the Universities Act No.16 of 1978.",
+        tag: "Full-time",
+        location: "Kelaniya, Sri Lanka",
+        icon: Code,
+        color: "var(--theme-primary)"
+    },
+    {
+        company: "TEC ROOM",
+        role: "Founder",
+        period: "MAR 2020 - PRESENT",
+        desc: "TEC ROOM  is a Sri Lankan technology website, publishing news, feature stories, software & app reviews, tech tutorials and product reviews in Sinhala. ",
+        tag: "Part-time",
+        location: "Colombo, Sri Lanka",
+        icon: Globe,
         color: "var(--theme-primary)"
     }
 ];
