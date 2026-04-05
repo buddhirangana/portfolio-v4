@@ -441,7 +441,7 @@ function ImageModal({ image, onClose }: { image: string | null; onClose: () => v
                     onClick={onClose}
                     className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all"
                 >
-                    <ChevronUp className="rotate-90 md:rotate-0" />
+                    <span className="text-lg font-light leading-none">×</span>
                 </button>
 
                 {/* Scanner Effect */}
