@@ -6,7 +6,7 @@ import { Terminal, Network, Activity, ShieldCheck, Zap, User, MapPin, Code, Glob
 
 const EXPERIENCE = [
     {
-        company: "Association for Information Communication Technology Professionals",
+        company: "AICTP",
         role: "Associate Member (AICTP)",
         period: "FEB 2026 - PRESENT",
         desc: "Association for Information Communication Technology Professionals (AICTP), the premier body advancing the science, practice, and professional standards of ICT.",
@@ -152,19 +152,19 @@ export default function ExperienceSection() {
                                         </div>
 
                                         <div className="flex flex-col gap-8 relative z-10">
-                                            <div className="flex justify-between items-center">
-                                                <div className="flex items-center gap-4">
+                                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+                                                <div className="flex flex-wrap items-center gap-3 md:gap-6">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1.5 h-1.5 rounded-full bg-theme-primary animate-pulse" />
-                                                        <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.3em]">[{exp.tag}]</span>
+                                                        <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.3em] whitespace-nowrap">[{exp.tag}]</span>
                                                     </div>
-                                                    <div className="w-px h-3 bg-white/10 hidden md:block" />
-                                                    <div className="flex items-center gap-2 text-[9px] font-medium text-white/40 uppercase tracking-[0.2em]">
-                                                        <MapPin size={10} className="text-theme-primary" />
+                                                    <div className="w-px h-3 bg-white/10 hidden sm:block" />
+                                                    <div className="flex items-center gap-2 text-[9px] font-medium text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">
+                                                        <MapPin size={10} className="text-theme-primary flex-shrink-0" />
                                                         {exp.location}
                                                     </div>
                                                 </div>
-                                                <span className="text-[10px] font-mono font-bold text-white/20 px-3 py-1 bg-white/5 rounded-full border border-white/5">{exp.period}</span>
+                                                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-white/20 px-4 py-1.5 bg-white/5 rounded-full border border-white/5 self-start sm:self-auto whitespace-nowrap">{exp.period}</span>
                                             </div>
 
                                             <div>
@@ -178,15 +178,6 @@ export default function ExperienceSection() {
                                             <p className="text-[15px] text-white/50 leading-relaxed font-medium">
                                                 {exp.desc}
                                             </p>
-
-                                            {/* <div className="grid grid-cols-3 gap-6 pt-10 border-t border-white/5">
-                                                {exp.metrics.map(metric => (
-                                                    <div key={metric} className="flex flex-col gap-2">
-                                                        <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em] font-mono">{metric.split(':')[0]}</span>
-                                                        <span className="text-[9px] font-bold text-theme-primary tracking-widest uppercase">{metric.split(':')[1]}</span>
-                                                    </div>
-                                                ))}
-                                            </div> */}
                                         </div>
 
                                         {/* Connector Decal Horizontal */}
@@ -205,15 +196,15 @@ export default function ExperienceSection() {
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-3">
                             <ShieldCheck size={16} className="text-theme-primary" />
-                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em]">Background_Verified</span>
+                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em]">Quality Assured</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <Zap size={16} className="text-theme-primary" />
-                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em]">Core_Stable</span>
+                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em]">Performance Optimized</span>
                         </div>
                     </div>
                     <div className="text-[8px] font-mono text-white/10 uppercase tracking-[0.5em]">
-                        Foundry_Protocol_Execution_Verified // 2018-2025
+                        Delivering Scalable Digital Products // 2020 - Present
                     </div>
                 </div>
             </div>
