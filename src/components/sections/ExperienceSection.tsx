@@ -30,8 +30,8 @@ const EXPERIENCE = [
         role: "Main Editor",
         period: "JAN 2024 - PRESENT",
         desc: "Cyber Crew of SICT is a community group to support students in their quest of being a significant IT Professional.",
-        tag: "Volunteering",
-        location: "Colombo, Sri Lanka",
+        tag: "Volunteer",
+        location: "Kelaniya, Sri Lanka",
         icon: Network,
         color: "var(--theme-secondary)"
     },
@@ -40,7 +40,7 @@ const EXPERIENCE = [
         role: "Web Content Writer",
         period: "JAN 2023 - PRESENT",
         desc: "The Colombo Journal is an open-source, online content community which contains expert articles done by Sri Lankan professionals. All these articles are published free of charge on merit and considering the substance of the subject matter.",
-        tag: "Volunteering",
+        tag: "Volunteer",
         location: "Colombo, Sri Lanka",
         icon: Globe,
         color: "var(--theme-accent)"
