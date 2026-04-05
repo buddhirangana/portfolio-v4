@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { Terminal, Cpu, Database, Network, Box, Share2, Activity, ShieldCheck, Zap } from "lucide-react";
+import { Terminal, Cpu, Database, Network, Share2, Activity, ShieldCheck, Zap } from "lucide-react";
 
 const EXPERIENCE = [
     {
