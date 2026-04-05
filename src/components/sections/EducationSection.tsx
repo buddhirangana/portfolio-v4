@@ -11,79 +11,123 @@ import {
 const QUALIFICATIONS = [
     {
         id: "EDU-001",
-        degree: "BSc (Hons) in Computing",
+        degree: "BSc (Hons.) in Information Technology",
         field: "Software Engineering",
-        institution: "Coventry University",
+        institution: "NIIBS Campus",
         via: "",
-        location: "Colombo, Sri Lanka",
-        period: "2022 — Present",
+        location: "Kelaniya, Sri Lanka",
+        period: "May 2023 - Present",
         status: "READING",
         grade: "",
         gpa: "",
         featured: true,
         modules: [
-            "Software Architecture",
-            "Web Technologies",
-            "Database Systems",
-            "AI & Machine Learning",
-            "Agile Development",
-            "Cloud Computing",
+            "Software Engineering",
+            "Information Security",
+            "Database Management Systems",
+            "Graphic & Multimedia",
+            "Data Structures & Algorithms",
+            "OOP Concepts",
+            "Web Application Development",
+            "Big Data Technologies",
+            "Mobile Application Development",
+            "Artificial Intelligence",
+            "Robotics",
+            "Internet Technologies & Social Media"
         ],
         description:
-            "A rigorous, industry-focused programme covering the full software development lifecycle — from systems design and database engineering to modern web frameworks and AI-driven systems.",
+            "Advancing through my degree with a core focus on Software Engineering. The curriculum combines deep learning concepts, mobile development, and project management to build scalable, high-performance digital solutions.",
     },
     {
         id: "EDU-002",
-        degree: "Diploma in Information Technology",
-        field: "IT & Networking",
-        institution: "Esoft Metro Campus",
-        via: "",
-        location: "Kandy, Sri Lanka",
-        period: "2018 — 2019",
+        degree: "AI/ML Engineer - Stage 2",
+        field: "AI & Machine Learning",
+        institution: "Centre for Open and Distance Education - SLIIT",
+        via: "Centre for Open and Distance Education",
+        location: "Malabe, Sri Lanka",
+        period: "Dec 2025 - Jan 2026",
         status: "COMPLETED",
-        grade: "Merit Pass",
+        grade: "COMPLETED",
         gpa: "",
         featured: false,
-        modules: ["Computer Networks", "Web Design", "Programming Fundamentals", "Database Management"],
-        description: "Foundational diploma covering core IT concepts, networking infrastructure, and practical programming skills.",
+        modules: ["Artificial Intelligence (AI)", "Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Neural Networks"],
+        description: "Specialized study in artificial intelligence, exploring deep learning concepts, predictive analytics, and the engineering of scalable machine learning models.",
     },
     {
         id: "EDU-003",
-        degree: "G.C.E. Advanced Level",
-        field: "Mathematics Stream",
-        institution: "Dharmaraja College",
+        degree: "AI/ML Engineer - Stage 1",
+        field: "AI & Machine Learning",
+        institution: "Centre for Open and Distance Education - SLIIT",
+        via: "Centre for Open and Distance Education",
+        location: "Malabe, Sri Lanka",
+        period: "Aug 2025 - Sep 2025",
+        status: "COMPLETED",
+        grade: "COMPLETED",
+        gpa: "",
+        featured: false,
+        modules: ["Artificial Intelligence (AI)", "Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Neural Networks"],
+        description: "Specialized study in artificial intelligence, exploring deep learning concepts, predictive analytics, and the engineering of scalable machine learning models.",
+    },
+    {
+        id: "EDU-004",
+        degree: "Trainee Full Stack Developer Programme",
+        field: "Full Stack Development",
+        institution: "University of Moratuwa",
         via: "",
-        location: "Kandy, Sri Lanka",
-        period: "2015 — 2017",
+        location: "Moratuwa, Sri Lanka",
+        period: "Jun 2022 - Aug 2022",
+        status: "COMPLETED",
+        grade: "COMPLETED",
+        gpa: "",
+        featured: false,
+        modules: ["Angular", "Node.js", "Express.js", "Python", "JavaScript", "HTML", "CSS", "Sqlite", "Server-side Logic", "Software Practices"],
+        description: "Immersive full-stack training covering the complete development stack, from fundamental Python and JavaScript to building dynamic web applications using Angular, Node.js and Express.",
+    },
+    {
+        id: "EDU-005",
+        degree: "Diploma in Information Technology",
+        field: "IT & Networking",
+        institution: "NIIBS Campus",
+        via: "",
+        location: "Kelaniya, Sri Lanka",
+        period: "2019 - 2020",
+        status: "COMPLETED",
+        grade: "COMPLETED",
+        gpa: "",
+        featured: false,
+        modules: ["Computer Networks", "Web Engineering", "Programming Fundamentals", "Database Management", "Java", "MySQL", "Hardware & Networks", "HTML", "CSS", "JavaScript"],
+        description: "Foundational IT diploma spanning hardware engineering, secure network design and core development fundamentals using Java, MySQL and responsive web frameworks.",
+    },
+    {
+        id: "EDU-006",
+        degree: "G.C.E. Advanced Level",
+        field: "Technology Stream",
+        institution: "Biyagama Central College",
+        via: "",
+        location: "Biyagama, Sri Lanka",
+        period: "2016 - 2018",
         status: "COMPLETED",
         grade: "3 Passes",
         gpa: "",
         featured: false,
-        modules: ["Combined Mathematics", "Physics", "ICT"],
+        modules: ["Engineering Technology", "Science for Technology", "ICT"],
         description: "Advanced level study with focus on analytical and technical subjects that built the foundation for engineering.",
     },
     {
-        id: "EDU-004",
+        id: "EDU-007",
         degree: "G.C.E. Ordinary Level",
         field: "General Education",
-        institution: "Dharmaraja College",
+        institution: "Pilapitiya President College",
         via: "",
-        location: "Kandy, Sri Lanka",
-        period: "2010 — 2014",
+        location: "Kelaniya, Sri Lanka",
+        period: "2005 - 2015",
         status: "COMPLETED",
-        grade: "6 A Passes",
+        grade: "Passed",
         gpa: "",
         featured: false,
-        modules: ["Mathematics", "Science", "ICT", "English", "History", "Sinhala"],
-        description: "Broad general education with distinction in STEM and language subjects.",
+        modules: ["Mathematics", "Science", "Art", "English Language", "History", "Sinhala Language & Literature", "Buddhism", "Civic Education", "Health & Physical Education"],
+        description: "Achieved foundational academic qualifications with a balanced curriculum focused on mathematical principles, scientific inquiry and language proficiency.",
     },
-];
-
-const STATS = [
-    { val: "02", label: "Degrees" },
-    { val: "03", label: "Institutions" },
-    { val: "07+", label: "Years Study" },
-    { val: "20+", label: "Modules" },
 ];
 
 // ─── Expandable Qualification Strip ──────────────────────────────────────────
@@ -346,7 +390,7 @@ export default function EducationSection() {
                         ))}
 
                         {/* Learning banner — fills remaining vertical space */}
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -376,7 +420,7 @@ export default function EducationSection() {
                                     </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </motion.div> */}
                     </div>
                 </div>
 
