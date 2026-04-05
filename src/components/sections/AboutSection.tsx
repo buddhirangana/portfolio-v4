@@ -88,9 +88,9 @@ export default function AboutSection() {
             {/* Foundry Background Decals */}
             <motion.div
                 style={{ x: decalX }}
-                className="absolute top-20 right-[-5%] text-[15rem] font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
+                className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                ARCHITECT_FOUNDRY_SYSTEM_V.2.4
+                About Me
             </motion.div>
 
             <div className="section-container relative z-10">
@@ -104,7 +104,7 @@ export default function AboutSection() {
                     >
                         <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 w-full">
                             <span className="w-12 h-[1px] bg-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Identity Profile</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">About Me</span>
                         </div>
                         <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-8">
                             Decoding the <span className="italic font-light text-white/40">Architectural</span> Blueprint
