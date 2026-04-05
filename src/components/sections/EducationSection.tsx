@@ -179,7 +179,7 @@ export default function EducationSection() {
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                Journey
+                Academic
             </motion.div>
             {/* Faint grid */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
@@ -199,35 +199,9 @@ export default function EducationSection() {
                             <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-theme-primary">Academic Archive</span>
                             <div className="w-10 h-px bg-theme-primary/30 hidden md:block" />
                         </div>
-                        <h2 className="text-5xl md:text-7xl xl:text-8xl font-bold text-white tracking-tighter leading-none">
-                            Education
+                        <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
+                            Education <span className="text-white/20 italic font-light">Qualifications</span>
                         </h2>
-                        <p className="text-white/20 italic font-light text-3xl md:text-5xl tracking-tight mt-1">
-                            &amp; Qualifications
-                        </p>
-                    </motion.div>
-
-                    {/* Stat chips */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.1 }}
-                        className="flex flex-wrap justify-center md:justify-start gap-4"
-                    >
-                        {STATS.map((s, i) => (
-                            <motion.div
-                                key={s.label}
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.15 + i * 0.07 }}
-                                className="flex flex-col items-center px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/5"
-                            >
-                                <span className="text-2xl font-bold text-white tracking-tight leading-none">{s.val}</span>
-                                <span className="text-[7px] font-bold text-white/20 uppercase tracking-[0.3em] mt-1">{s.label}</span>
-                            </motion.div>
-                        ))}
                     </motion.div>
                 </div>
 
