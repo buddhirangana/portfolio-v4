@@ -92,7 +92,7 @@ export default function LoadingScreen() {
                         transition={{ delay: 1.2 }}
                         className="absolute bottom-12 flex flex-col items-center gap-2"
                     >
-                        <span className="text-[8px] font-bold text-white/10 uppercase tracking-[0.8em]">Buddhi Rangana // Portfolio</span>
+                        <span className="text-[8px] font-bold text-white/10 uppercase tracking-[0.8em]">BR // Portfolio</span>
                         <div className="w-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                     </motion.div>
                 </motion.div>
