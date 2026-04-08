@@ -163,7 +163,7 @@ export default function ProjectsSection() {
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                Academic
+                Portfolio
             </motion.div>
 
             <div className="section-container relative z-10">
@@ -178,10 +178,10 @@ export default function ProjectsSection() {
                     >
                         <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <Database size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Experimental Archive</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Portfolio</span>
                         </div>
                         <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
-                            Technical <span className="text-white/20 italic font-light">Research</span>
+                            Featured <span className="text-white/20 italic font-light">Projects</span>
                         </h2>
                     </motion.div>
 
