@@ -80,7 +80,7 @@ export default function LoadingScreen() {
 
                         {/* Tech readout */}
                         <div className="flex justify-between w-full">
-                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]">Loading</span>
+                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]">Loading Portfolio</span>
                             <span className="text-[9px] font-mono text-theme-primary/80">{progress.toString().padStart(3, "")}%</span>
                         </div>
                     </div>
