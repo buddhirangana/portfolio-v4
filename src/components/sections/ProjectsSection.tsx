@@ -113,7 +113,7 @@ const PROJECTS = [
         filter: "uiux" as FilterKey,
         figma: "#",
         link: "#",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+        image: "/images/projects/project-1.webp"
     },
 ];
 
