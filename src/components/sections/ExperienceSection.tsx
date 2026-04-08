@@ -166,7 +166,7 @@ export default function ExperienceSection() {
 
                                             <div className="flex items-center gap-6 md:gap-8">
                                                 {/* Large App-Style Logo Container */}
-                                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-[1.5rem] md:rounded-[2rem] bg-white/[0.03] border border-white/10 p-2 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl shrink-0">
+                                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-[1.2rem] md:rounded-[1.8rem] bg-white/[0.03] border border-white/10 p-1 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl shrink-0">
                                                     <img
                                                         src={exp.logo}
                                                         alt={exp.company}

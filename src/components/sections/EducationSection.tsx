@@ -21,6 +21,7 @@ const QUALIFICATIONS = [
         grade: "",
         gpa: "",
         featured: true,
+        logo: "/images/experience/niibs-logo.webp",
         modules: [
             "Software Engineering",
             "Information Security",
@@ -42,7 +43,7 @@ const QUALIFICATIONS = [
         id: "EDU-002",
         degree: "AI/ML Engineer - Stage 2",
         field: "AI & Machine Learning",
-        institution: "Centre for Open and Distance Education - SLIIT",
+        institution: "SLIIT",
         via: "Centre for Open and Distance Education",
         location: "Malabe, Sri Lanka",
         period: "Dec 2025 - Jan 2026",
@@ -50,6 +51,7 @@ const QUALIFICATIONS = [
         grade: "COMPLETED",
         gpa: "",
         featured: false,
+        logo: "/images/experience/sliit-logo.webp",
         modules: ["Artificial Intelligence (AI)", "Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Neural Networks"],
         description: "Specialized study in artificial intelligence, exploring deep learning concepts, predictive analytics, and the engineering of scalable machine learning models.",
     },
@@ -57,7 +59,7 @@ const QUALIFICATIONS = [
         id: "EDU-003",
         degree: "AI/ML Engineer - Stage 1",
         field: "AI & Machine Learning",
-        institution: "Centre for Open and Distance Education - SLIIT",
+        institution: "SLIIT",
         via: "Centre for Open and Distance Education",
         location: "Malabe, Sri Lanka",
         period: "Aug 2025 - Sep 2025",
@@ -65,6 +67,7 @@ const QUALIFICATIONS = [
         grade: "COMPLETED",
         gpa: "",
         featured: false,
+        logo: "/images/experience/sliit-logo.webp",
         modules: ["Artificial Intelligence (AI)", "Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Neural Networks"],
         description: "Specialized study in artificial intelligence, exploring deep learning concepts, predictive analytics, and the engineering of scalable machine learning models.",
     },
@@ -80,6 +83,7 @@ const QUALIFICATIONS = [
         grade: "COMPLETED",
         gpa: "",
         featured: false,
+        logo: "/images/experience/uom-logo.webp",
         modules: ["Angular", "Node.js", "Express.js", "Python", "JavaScript", "HTML", "CSS", "Sqlite", "Server-side Logic", "Software Practices"],
         description: "Immersive full-stack training covering the complete development stack, from fundamental Python and JavaScript to building dynamic web applications using Angular, Node.js and Express.",
     },
@@ -95,6 +99,7 @@ const QUALIFICATIONS = [
         grade: "COMPLETED",
         gpa: "",
         featured: false,
+        logo: "/images/experience/niibs-logo.webp",
         modules: ["Computer Networks", "Web Engineering", "Programming Fundamentals", "Database Management", "Java", "MySQL", "Hardware & Networks", "HTML", "CSS", "JavaScript"],
         description: "Foundational IT diploma spanning hardware engineering, secure network design and core development fundamentals using Java, MySQL and responsive web frameworks.",
     },
@@ -110,6 +115,7 @@ const QUALIFICATIONS = [
         grade: "Passed",
         gpa: "",
         featured: false,
+        logo: "/images/experience/bcc-logo.webp",
         modules: ["Engineering Technology", "Science for Technology", "ICT"],
         description: "Advanced level study with focus on analytical and technical subjects that built the foundation for engineering.",
     },
@@ -125,6 +131,7 @@ const QUALIFICATIONS = [
         grade: "Passed",
         gpa: "",
         featured: false,
+        logo: "/images/experience/ppc-logo.webp",
         modules: ["Mathematics", "Science", "Art", "English Language", "History", "Sinhala Language & Literature", "Buddhism", "Civic Education", "Health & Physical Education"],
         description: "Achieved foundational academic qualifications with a balanced curriculum focused on mathematical principles, scientific inquiry and language proficiency.",
     },
@@ -149,9 +156,16 @@ function QualStrip({ item, index }: { item: typeof QUALIFICATIONS[1]; index: num
                 onClick={() => setOpen(o => !o)}
                 className="w-full flex items-center gap-5 px-7 py-5 text-left"
             >
-                {/* Initials badge */}
-                <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/8 flex items-center justify-center text-[11px] font-bold text-white/30 shrink-0 group-hover:bg-theme-primary/10 group-hover:border-theme-primary/20 group-hover:text-theme-primary transition-all duration-400">
-                    {item.institution.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()}
+                {/* Logo badge */}
+                <div className="w-14 h-14 md:w-14 md:h-14 rounded-[1rem] md:rounded-[1rem] bg-white/[0.03] border border-white/10 p-1 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl shrink-0">
+                    <img 
+                        src={item.logo} 
+                        alt={item.institution} 
+                        className="w-full h-full object-contain filter group-hover:brightness-110 transition-all"
+                        onError={(e) => {
+                            (e.target as HTMLImageElement).style.opacity = '0.3';
+                        }}
+                    />
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -267,7 +281,7 @@ export default function EducationSection() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={featInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                        className="lg:col-span-5 group relative rounded-[3rem] overflow-hidden border border-theme-primary/20 bg-dark-300 flex flex-col"
+                        className="lg:col-span-12 group relative rounded-[3rem] overflow-hidden border border-theme-primary/20 bg-dark-300 flex flex-col md:flex-row p-10 md:p-14 mb-8"
                     >
                         {/* Glows */}
                         <div className="absolute top-0 left-0 w-80 h-60 bg-theme-primary/10 blur-[90px] rounded-full pointer-events-none" />
@@ -281,96 +295,81 @@ export default function EducationSection() {
                             style={{ background: "linear-gradient(to right, transparent, rgba(248,87,42,0.06), transparent)" }}
                         />
 
-                        <div className="relative z-10 p-10 flex flex-col flex-1">
+                        {/* Left Side: Logo */}
+                        <div className="relative z-10 mb-8 md:mb-0 md:mr-12 shrink-0">
+                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-[2rem] bg-white/[0.03] border border-white/10 p-2 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl">
+                                <img
+                                    src={feat.logo}
+                                    alt={feat.institution}
+                                    className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Right Side: Content */}
+                        <div className="relative z-10 flex flex-col flex-1">
                             {/* Top badges */}
-                            <div className="flex flex-wrap items-center gap-3 mb-8">
+                            <div className="flex flex-wrap items-center gap-3 mb-6">
                                 <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-theme-primary/15 border border-theme-primary/25">
                                     <motion.div
                                         animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
                                         transition={{ duration: 1.5, repeat: Infinity }}
                                         className="w-1.5 h-1.5 bg-theme-primary rounded-full"
                                     />
-                                    <span className="text-[8px] font-bold uppercase tracking-[0.35em] text-theme-primary">Reading</span>
+                                    <span className="text-[8px] font-bold uppercase tracking-[0.35em] text-theme-primary">{feat.status}</span>
                                 </div>
                                 <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">{feat.id}</span>
                             </div>
 
-                            {/* Field tag */}
-                            <span className="text-[9px] font-bold text-theme-primary/60 uppercase tracking-[0.5em] block mb-2">{feat.field}</span>
-
                             {/* Degree */}
-                            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-snug mb-2">
+                            <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-none mb-4 group-hover:text-theme-primary transition-colors">
                                 {feat.degree}
                             </h3>
 
                             {/* Institution */}
-                            <p className="text-sm font-semibold text-white/55 mb-0.5">{feat.institution}</p>
-                            <p className="text-[10px] italic text-white/25 mb-6">{feat.via}</p>
+                            <div className="flex flex-wrap items-center gap-4 mb-8">
+                                <p className="text-lg md:text-2xl font-bold text-white/60 tracking-tight">{feat.institution}</p>
+                                <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                                <span className="text-[9px] md:text-[11px] font-bold text-theme-primary uppercase tracking-[0.2em] whitespace-nowrap">[{feat.field}]</span>
+                            </div>
 
                             {/* Meta */}
-                            <div className="flex flex-wrap gap-3 mb-6">
-                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">
-                                    <MapPin size={10} className="text-theme-primary/60" />
-                                    <span className="text-[9px] text-white/35">{feat.location}</span>
+                            <div className="flex flex-wrap gap-4 mb-8">
+                                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <MapPin size={12} className="text-theme-primary/60" />
+                                    <span className="text-[10px] md:text-xs text-white/40 font-medium">{feat.location}</span>
                                 </div>
-                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">
-                                    <Calendar size={10} className="text-theme-primary/60" />
-                                    <span className="text-[9px] text-white/35">{feat.period}</span>
+                                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <Calendar size={12} className="text-theme-primary/60" />
+                                    <span className="text-[10px] md:text-xs text-white/40 font-medium">{feat.period}</span>
                                 </div>
                             </div>
 
-                            {/* Grade + GPA row */}
-                            {/* <div className="flex flex-wrap gap-3 mb-8">
-                                <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/5">
-                                    <Award size={12} className="text-theme-primary" />
-                                    <div>
-                                        <p className="text-[6px] text-white/20 uppercase tracking-widest">Predicted Grade</p>
-                                        <p className="text-xs font-bold text-white/70">{feat.grade}</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-theme-primary/8 border border-theme-primary/20">
-                                    <Star size={12} className="text-theme-primary" />
-                                    <div>
-                                        <p className="text-[6px] text-theme-primary/50 uppercase tracking-widest">GPA</p>
-                                        <p className="text-xs font-bold text-theme-primary">{feat.gpa} / 4.0</p>
-                                    </div>
-                                </div>
-                            </div> */}
-
                             {/* Description */}
-                            <p className="text-sm text-white/35 leading-relaxed mb-8">
+                            <p className="text-[15px] md:text-[17px] text-white/40 leading-relaxed font-medium border-l border-white/5 pl-6 mb-8">
                                 {feat.description}
                             </p>
 
                             {/* Modules */}
                             <div className="mt-auto">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <Layers size={10} className="text-theme-primary" />
-                                    <span className="text-[8px] font-bold text-theme-primary uppercase tracking-[0.4em]">Key Modules</span>
+                                <div className="flex items-center gap-3 mb-5">
+                                    <Layers size={13} className="text-theme-primary" />
+                                    <span className="text-[10px] font-bold text-theme-primary uppercase tracking-[0.4em]">Integrated Modules</span>
                                 </div>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2.5">
                                     {feat.modules.map(mod => (
                                         <span key={mod}
-                                            className="text-[8px] font-bold uppercase tracking-widest text-white/30 border border-white/[0.07] px-3 py-1.5 rounded-lg hover:text-white/50 hover:border-white/10 transition-colors duration-200">
+                                            className="text-[9px] font-bold uppercase tracking-widest text-white/30 border border-white/[0.07] px-4 py-2 rounded-xl hover:text-white/50 hover:border-white/10 transition-colors duration-200 bg-white/[0.01]">
                                             {mod}
                                         </span>
                                     ))}
                                 </div>
                             </div>
-
-                            {/* University footer strip */}
-                            {/* <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/[0.05]">
-                                <div className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-[11px] font-bold text-white shadow-[0_0_18px_rgba(248,87,42,0.4)] shrink-0">CU</div>
-                                <div>
-                                    <p className="text-[8px] font-bold text-theme-primary/60 uppercase tracking-[0.3em] mb-0.5">Awarded by</p>
-                                    <p className="text-xs font-semibold text-white/60">Coventry University, United Kingdom</p>
-                                </div>
-                            </div> */}
                         </div>
                     </motion.div>
 
-                    {/* RIGHT: Stacked strips + learning banner */}
-                    <div className="lg:col-span-7 flex flex-col gap-4">
+                    {/* BELOW: Stacked strips */}
+                    <div className="lg:col-span-12 flex flex-col gap-4">
 
                         {/* Section label */}
                         <motion.div
@@ -378,16 +377,18 @@ export default function EducationSection() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="flex items-center gap-4"
+                            className="flex items-center gap-4 mb-4"
                         >
-                            <span className="text-[8px] font-bold text-white/20 uppercase tracking-[0.5em]">Previous Qualifications</span>
+                            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]">Academic History</span>
                             <div className="flex-1 h-px bg-white/[0.04]" />
                         </motion.div>
 
                         {/* Expandable strips */}
-                        {rest.map((item, i) => (
-                            <QualStrip key={item.id} item={item} index={i} />
-                        ))}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                            {rest.map((item, i) => (
+                                <QualStrip key={item.id} item={item} index={i} />
+                            ))}
+                        </div>
 
                         {/* Learning banner — fills remaining vertical space */}
                         {/* <motion.div
