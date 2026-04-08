@@ -166,7 +166,7 @@ export default function ExperienceSection() {
 
                                             <div className="flex items-center gap-6 md:gap-8">
                                                 {/* Large App-Style Logo Container */}
-                                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-[1.5rem] md:rounded-[2rem] bg-white/[0.03] border border-white/10 p-4 md:p-6 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl shrink-0">
+                                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-[1.5rem] md:rounded-[2rem] bg-white/[0.03] border border-white/10 p-2 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl shrink-0">
                                                     <img
                                                         src={exp.logo}
                                                         alt={exp.company}
@@ -185,7 +185,7 @@ export default function ExperienceSection() {
                                                     
                                                     {/* Company & Meta Info */}
                                                     <div className="flex flex-wrap items-center gap-3 mt-2">
-                                                        <p className="text-sm md:text-md font-semibold text-white/60 tracking-tight">{exp.company}</p>
+                                                        <p className="text-sm md:text-lg font-semibold text-white/60 tracking-tight">{exp.company}</p>
                                                         <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-[9px] md:text-[11px] font-bold text-theme-primary uppercase tracking-[0.2em]">[{exp.tag}]</span>
