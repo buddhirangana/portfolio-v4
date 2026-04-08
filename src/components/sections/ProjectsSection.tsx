@@ -2,16 +2,16 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useScroll, AnimatePresence, LayoutGroup, useInView, useSpring, useTransform } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, Plus, Globe, Database, Command, Layers, Monitor, Cpu, Palette } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Plus, Globe, Database, Command, Layers, Monitor, Cpu, Palette, Figma } from "lucide-react";
 
 // ─── Filter Definitions ────────────────────────────────────────────────────────
 type FilterKey = "all" | "web" | "app" | "uiux";
 
 const FILTERS: { key: FilterKey; label: string; tag: string; icon: React.ElementType }[] = [
     { key: "all", label: "All", tag: "ALL_NODES", icon: Layers },
-    { key: "web", label: "Web Development", tag: "WEB_SYS", icon: Monitor },
-    { key: "app", label: "Applications", tag: "APP_CORE", icon: Cpu },
-    { key: "uiux", label: "UI/UX Design", tag: "DESIGN_OPS", icon: Palette },
+    { key: "web", label: "Web", tag: "WEB_SYS", icon: Monitor },
+    { key: "app", label: "App", tag: "APP_CORE", icon: Cpu },
+    { key: "uiux", label: "UI/UX", tag: "DESIGN_OPS", icon: Palette },
 ];
 
 // ─── Projects Data ─────────────────────────────────────────────────────────────
@@ -22,7 +22,6 @@ const PROJECTS = [
         tech: ["PHP", "Laravel", "MySQL"],
         category: "SYS_CORE",
         filter: "web" as FilterKey,
-        build: "v3.0.1",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
@@ -33,7 +32,6 @@ const PROJECTS = [
         tech: ["WordPress", "PHP", "SEO"],
         category: "WEB_ARCH",
         filter: "web" as FilterKey,
-        build: "v2.1.4",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=800&auto=format&fit=crop"
@@ -44,7 +42,6 @@ const PROJECTS = [
         tech: ["Next.js", "Stripe", "Tailwind"],
         category: "ECOSYSTEM",
         filter: "web" as FilterKey,
-        build: "v1.5.0",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop"
@@ -55,7 +52,6 @@ const PROJECTS = [
         tech: ["Next.js", "Python", "MediaPipe"],
         category: "NEURAL_NET",
         filter: "app" as FilterKey,
-        build: "v4.2.1",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1517836357463-d25dfeac00dc?q=80&w=800&auto=format&fit=crop"
@@ -66,7 +62,6 @@ const PROJECTS = [
         tech: ["Electron", "React", "SQLite"],
         category: "APP_SYS",
         filter: "app" as FilterKey,
-        build: "v2.8.0",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop"
@@ -77,7 +72,6 @@ const PROJECTS = [
         tech: ["Three.js", "D3.js", "React"],
         category: "DATA_VIS",
         filter: "app" as FilterKey,
-        build: "v0.9.4_BETA",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=800&auto=format&fit=crop"
@@ -88,7 +82,6 @@ const PROJECTS = [
         tech: ["React Native", "Expo", "Node.js"],
         category: "MOBILE_SYS",
         filter: "app" as FilterKey,
-        build: "v1.3.2",
         link: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=800&auto=format&fit=crop"
@@ -99,8 +92,7 @@ const PROJECTS = [
         tech: ["Figma", "React", "Storybook"],
         category: "DESIGN_SYS",
         filter: "uiux" as FilterKey,
-        build: "v5.0.0",
-        link: "#",
+        figma: "#",
         github: "#",
         image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
     },
@@ -110,9 +102,7 @@ const PROJECTS = [
         tech: ["Figma", "Illustrator", "Photoshop"],
         category: "BRAND_OPS",
         filter: "uiux" as FilterKey,
-        build: "v1.0.0",
-        link: "#",
-        github: "#",
+        figma: "#",
         image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -121,14 +111,13 @@ const PROJECTS = [
         tech: ["Figma", "Framer", "CSS"],
         category: "UI_ARCH",
         filter: "uiux" as FilterKey,
-        build: "v2.2.0",
+        figma: "#",
         link: "#",
-        github: "#",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
     },
 ];
 
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 6;
 
 // ─── Main Section ──────────────────────────────────────────────────────────────
 export default function ProjectsSection() {
@@ -193,9 +182,9 @@ export default function ProjectsSection() {
                     >
                         <div className="text-left md:text-right">
                             <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">
-                                {filteredProjects.length} Projects Indexed
+                                {filteredProjects.length} Projects Total
                             </div>
-                            <div className="text-xs font-mono text-theme-primary">0010110_READING</div>
+                            <div className="text-xs font-mono text-theme-primary">SELECTED WORKS</div>
                         </div>
                     </motion.div>
                 </div>
@@ -299,23 +288,30 @@ export default function ProjectsSection() {
 
                                     {/* HUD Overlay on Hover */}
                                     <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-all duration-500 bg-dark-400/40 backdrop-blur-sm">
-                                        <div className="flex justify-between items-start">
-                                            <div className="flex flex-col">
-                                                <span className="text-[8px] font-bold text-theme-primary uppercase tracking-widest mb-1">BUILD_ID</span>
-                                                <span className="text-[10px] font-mono text-white">{project.build}</span>
-                                            </div>
+                                        <div className="flex justify-end items-end">
                                             <div className="flex gap-2">
-                                                <a href={project.github} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5">
-                                                    <Github size={18} />
-                                                </a>
-                                                <a href={project.link} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5">
-                                                    <ExternalLink size={18} />
-                                                </a>
+                                                {project.github && (
+                                                    <a href={project.github} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
+                                                        <Github size={18} />
+                                                    </a>
+                                                )}
+                                                {project.link && (
+                                                    <a href={project.link} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
+                                                        <ExternalLink size={18} />
+                                                    </a>
+                                                )}
+                                                {'figma' in project && (project as any).figma && (
+                                                    <a href={(project as any).figma} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
+                                                        <Figma size={18} />
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white">
                                             <Globe size={12} className="text-theme-primary" />
-                                            <span>LIVE_DEPLOYMENT</span>
+                                            <span>
+                                                {project.link ? "LIVE_PREVIEW" : (project as any).figma ? "DESIGN_BOARD" : "SYSTEM_SOURCE"}
+                                            </span>
                                         </div>
                                     </div>
 
@@ -323,20 +319,14 @@ export default function ProjectsSection() {
                                     <div className="absolute top-4 left-4 flex items-center gap-2">
                                         <div className="px-3 py-1 bg-dark-400/60 backdrop-blur-md border border-white/5 rounded-full">
                                             <span className="text-[7px] font-bold uppercase tracking-[0.3em] text-white/40">
-                                                NODE // {project.category}
-                                            </span>
-                                        </div>
-                                        {/* Filter badge */}
-                                        <div className="px-3 py-1 bg-theme-primary/10 backdrop-blur-md border border-theme-primary/20 rounded-full">
-                                            <span className="text-[7px] font-bold uppercase tracking-[0.3em] text-theme-primary">
-                                                {FILTERS.find(f => f.key === project.filter)?.tag}
+                                                {project.category}
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Card Content */}
-                                <div className="p-10 flex flex-col h-full relative">
+                                <div className="p-8 flex flex-col h-auto relative">
                                     <div className="flex gap-2 mb-6">
                                         {project.tech.map(t => (
                                             <span key={t} className="text-[8px] font-bold uppercase tracking-widest text-white/30 border border-white/5 px-2 py-1 rounded">
@@ -347,11 +337,11 @@ export default function ProjectsSection() {
                                     <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-theme-primary transition-colors tracking-tight">
                                         {project.title}
                                     </h3>
-                                    <p className="text-xs text-white/40 leading-relaxed max-w-xs mb-8">
+                                    <p className="text-xs text-white/40 leading-relaxed max-w-xs mb-2">
                                         {project.desc}
                                     </p>
 
-                                    <div className="mt-auto flex items-center justify-between pt-8 border-t border-white/5">
+                                    <div className="mt-5 flex mb-4 items-center justify-between pt-8 border-t border-white/5">
                                         <div className="flex items-center gap-2">
                                             <Command size={12} className="text-theme-primary" />
                                             <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/20">Access Protocol</span>
