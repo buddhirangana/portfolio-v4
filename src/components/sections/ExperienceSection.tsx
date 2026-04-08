@@ -13,6 +13,7 @@ const EXPERIENCE = [
         tag: "Part-time",
         location: "Colombo, Sri Lanka",
         icon: User,
+        logo: "/images/experience/aictp-logo.webp",
         color: "var(--theme-primary)"
     },
     {
@@ -23,6 +24,7 @@ const EXPERIENCE = [
         tag: "Remote",
         location: "Colombo, Sri Lanka",
         icon: Code,
+        logo: "/images/experience/digifox-logo.webp",
         color: "var(--theme-primary)"
     },
     {
@@ -33,6 +35,7 @@ const EXPERIENCE = [
         tag: "Volunteer",
         location: "Kelaniya, Sri Lanka",
         icon: Network,
+        logo: "/images/experience/cybercrewsict-logo.webp",
         color: "var(--theme-secondary)"
     },
     {
@@ -43,6 +46,7 @@ const EXPERIENCE = [
         tag: "Volunteer",
         location: "Colombo, Sri Lanka",
         icon: Globe,
+        logo: "/images/experience/colombo-journal-logo.webp",
         color: "var(--theme-accent)"
     },
     {
@@ -53,6 +57,7 @@ const EXPERIENCE = [
         tag: "Full-time",
         location: "Kelaniya, Sri Lanka",
         icon: Code,
+        logo: "/images/experience/niibs-logo.webp",
         color: "var(--theme-primary)"
     },
     {
@@ -63,6 +68,7 @@ const EXPERIENCE = [
         tag: "Full-time",
         location: "Kelaniya, Sri Lanka",
         icon: Code,
+        logo: "/images/experience/niibs-logo.webp",
         color: "var(--theme-primary)"
     },
     {
@@ -73,6 +79,7 @@ const EXPERIENCE = [
         tag: "Part-time",
         location: "Colombo, Sri Lanka",
         icon: Globe,
+        logo: "/images/experience/tecroom-logo.webp",
         color: "var(--theme-primary)"
     }
 ];
@@ -152,30 +159,46 @@ export default function ExperienceSection() {
                                         </div>
 
                                         <div className="flex flex-col gap-8 relative z-10">
-                                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
-                                                <div className="flex flex-wrap items-center gap-3 md:gap-6">
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-theme-primary animate-pulse" />
-                                                        <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.3em] whitespace-nowrap">[{exp.tag}]</span>
-                                                    </div>
-                                                    <div className="w-px h-3 bg-white/10 hidden sm:block" />
-                                                    <div className="flex items-center gap-2 text-[9px] font-medium text-white/40 uppercase tracking-[0.2em] whitespace-nowrap">
-                                                        <MapPin size={10} className="text-theme-primary flex-shrink-0" />
-                                                        {exp.location}
-                                                    </div>
-                                                </div>
-                                                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-white/20 px-4 py-1.5 bg-white/5 rounded-full border border-white/5 self-start sm:self-auto whitespace-nowrap">{exp.period}</span>
+                                            {/* Period Badge - Moved slightly for better flow */}
+                                            <div className="flex justify-end">
+                                                <span className="text-[10px] sm:text-[11px] font-mono font-bold text-white/20 px-4 py-1.5 bg-white/5 rounded-full border border-white/5 whitespace-nowrap">{exp.period}</span>
                                             </div>
 
-                                            <div>
-                                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tighter group-hover:text-theme-primary transition-colors">{exp.role}</h3>
-                                                <div className="flex items-center gap-3">
-                                                    <Activity size={12} className="text-white/20" />
-                                                    <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-white/40">{exp.company}</p>
+                                            <div className="flex items-center gap-6 md:gap-8">
+                                                {/* Large App-Style Logo Container */}
+                                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-[1.5rem] md:rounded-[2rem] bg-white/[0.03] border border-white/10 p-4 md:p-6 flex items-center justify-center group-hover:border-theme-primary/30 transition-all duration-700 shadow-2xl shrink-0">
+                                                    <img
+                                                        src={exp.logo}
+                                                        alt={exp.company}
+                                                        className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-700"
+                                                        onError={(e) => {
+                                                            (e.target as HTMLImageElement).style.display = 'none';
+                                                        }}
+                                                    />
+                                                </div>
+
+                                                <div className="flex flex-col gap-1">
+                                                    {/* Role Title */}
+                                                    <h3 className="text-lg md:text-2xl font-bold text-white tracking-tighter group-hover:text-theme-primary transition-colors leading-none">
+                                                        {exp.role}
+                                                    </h3>
+                                                    
+                                                    {/* Company & Meta Info */}
+                                                    <div className="flex flex-wrap items-center gap-3 mt-2">
+                                                        <p className="text-sm md:text-md font-semibold text-white/60 tracking-tight">{exp.company}</p>
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                                                        <div className="flex items-center gap-2">
+                                                            <span className="text-[9px] md:text-[11px] font-bold text-theme-primary uppercase tracking-[0.2em]">[{exp.tag}]</span>
+                                                        </div>
+                                                        <div className="hidden md:flex items-center gap-2 text-[10px] font-medium text-white/20 uppercase tracking-[0.1em]">
+                                                            <MapPin size={10} className="text-theme-primary/40" />
+                                                            {exp.location}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <p className="text-[15px] text-white/50 leading-relaxed font-medium">
+                                            <p className="text-[15px] md:text-[17px] text-white/50 leading-relaxed font-medium border-l border-white/5 pl-6">
                                                 {exp.desc}
                                             </p>
                                         </div>
