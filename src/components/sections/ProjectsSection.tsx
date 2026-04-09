@@ -502,7 +502,7 @@ export default function ProjectsSection() {
                                 className="group bg-transparent border border-white/5 rounded-2xl px-10 py-5 flex items-center gap-5 hover:border-theme-primary transition-all duration-500"
                             >
                                 <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30 group-hover:text-theme-primary">
-                                    Expand Data Feed · {filteredProjects.length - visibleCount} Remaining
+                                    View More Projects · {filteredProjects.length - visibleCount} Remaining
                                 </span>
                                 <div className="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-theme-primary flex items-center justify-center transition-all">
                                     <Plus size={14} className="text-white/30 group-hover:text-white" />
