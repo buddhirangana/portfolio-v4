@@ -58,7 +58,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ease-[0.16, 1, 0.3, 1] ${isScrolled ? "py-4 md:py-6" : "py-8 md:py-10"
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ease-[0.16, 1, 0.3, 1] ${isScrolled ? "py-4 md:py-6" : "py-6 md:py-8"
                 }`}
         >
             <div className="mx-auto max-w-7xl px-6 flex justify-center">
@@ -85,12 +85,12 @@ export default function Navbar() {
                     </motion.a>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-0">
+                    <div className="hidden lg:flex items-center gap-1">
                         {NAV_LINKS.map((link, i) => (
                             <motion.a
                                 key={link.name}
                                 href={link.href}
-                                className="px-3 py-2 group relative"
+                                className="px-4 py-2 group relative"
                             >
                                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 group-hover:text-white transition-colors">
                                     {link.name}
@@ -103,8 +103,8 @@ export default function Navbar() {
                     </div>
 
                     {/* Right Side Actions */}
-                    <div className="hidden md:flex items-center gap-4">
-                        <div className="flex items-center gap-3 border-r border-white/5 pr-4">
+                    <div className="hidden lg:flex items-center gap-6">
+                        <div className="flex items-center gap-3 border-r border-white/5 pr-6">
                             <a href="https://github.com/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={16} /></a>
                             <a href="https://www.linkedin.com/in/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
                         </div>
@@ -128,7 +128,7 @@ export default function Navbar() {
 
                     {/* Mobile Toggle */}
                     <button
-                        className="md:hidden w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
+                        className="lg:hidden w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? <X size={20} /> : <div className="flex flex-col gap-1.5"><div className="w-5 h-px bg-white" /><div className="w-3 h-px bg-white self-end" /></div>}
@@ -143,7 +143,7 @@ export default function Navbar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[110] bg-dark-400 p-6 flex flex-col md:hidden"
+                        className="fixed inset-0 z-[110] bg-dark-400 p-6 flex flex-col lg:hidden"
                     >
                         {/* Background Decal */}
                         <div className="absolute right-[-10%] top-1/4 text-[12rem] font-bold text-white/[0.02] pointer-events-none select-none uppercase rotate-90 whitespace-nowrap">
