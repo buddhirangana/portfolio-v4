@@ -118,11 +118,11 @@ export default function Navbar() {
                         </motion.button>
                     </div>
 
-                    {/* Progress Indicator (only after mount to avoid attribute hydration mismatch) */}
+                    {/* Progress Indicator */}
                     {mounted && (
                         <motion.div
                             style={{ scaleX }}
-                            className="absolute bottom-0 left-0 right-0 h-[1px] bg-theme-primary origin-left opacity-30"
+                            className="absolute bottom-[2px] inset-x-8 h-[1px] bg-theme-primary origin-left opacity-40 rounded-full"
                         />
                     )}
 
