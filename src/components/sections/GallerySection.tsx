@@ -7,75 +7,59 @@ import { Camera, ExternalLink, MapPin, Calendar, Tag, Images, ZoomIn, ChevronRig
 // ─── Gallery Data ──────────────────────────────────────────────────────────────
 const GALLERY_ITEMS = [
     {
-        id: "EVT-001",
+        id: "GAL-001",
         title: "AWS Community Day Sri Lanka",
-        location: "Colombo, Sri Lanka",
-        date: "Feb 2024",
         tag: "CONFERENCE",
         image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
         span: "col-span-2 row-span-2", // large feature card
     },
     {
-        id: "EVT-002",
+        id: "GAL-002",
         title: "DigiFox Product Launch",
-        location: "Colombo, Sri Lanka",
-        date: "Dec 2023",
         tag: "LAUNCH_EVENT",
         image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
         span: "col-span-1 row-span-1",
     },
     {
-        id: "EVT-003",
+        id: "GAL-003",
         title: "Google DevFest 2023",
-        location: "Colombo, Sri Lanka",
-        date: "Nov 2023",
         tag: "DEVFEST",
         image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop",
         span: "col-span-1 row-span-1",
     },
     {
-        id: "EVT-004",
+        id: "GAL-004",
         title: "TEC ROOM Meetup Vol. 3",
-        location: "Kandy, Sri Lanka",
-        date: "Sep 2023",
         tag: "COMMUNITY",
         image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=800&auto=format&fit=crop",
         span: "col-span-1 row-span-1",
     },
     {
-        id: "EVT-005",
+        id: "GAL-005",
         title: "Digital Marketing Summit",
-        location: "Colombo, Sri Lanka",
-        date: "Aug 2023",
         tag: "SUMMIT",
         image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
         span: "col-span-1 row-span-1",
     },
     {
-        id: "EVT-006",
-        title: "Startup Weekend Colombo",
-        location: "Colombo, Sri Lanka",
-        date: "Jul 2023",
-        tag: "HACKATHON",
-        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
+        id: "GAL-006",
+        title: "NIIBS Open Day 2023",
+        tag: "COMMUNITY EVENT",
+        image: "/images/gallery/gallery-3.webp",
         span: "col-span-2 row-span-1", // wide card
     },
     {
-        id: "EVT-007",
-        title: "UX Design Workshop",
-        location: "Remote / Online",
-        date: "Jun 2023",
-        tag: "WORKSHOP",
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop",
+        id: "GAL-007",
+        title: "Inaugural Meeting of Cyber Crew of SICT",
+        tag: "COMMUNITY EVENT",
+        image: "/images/gallery/gallery-2.webp",
         span: "col-span-1 row-span-1",
     },
     {
-        id: "EVT-008",
-        title: "Sri Lanka Tech Conference",
-        location: "Colombo, Sri Lanka",
-        date: "Mar 2023",
-        tag: "CONFERENCE",
-        image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800&auto=format&fit=crop",
+        id: "GAL-008",
+        title: "Batch Trip of BSc IT 2023/A",
+        tag: "COMMUNITY EVENT",
+        image: "/images/gallery/gallery-1.webp",
         span: "col-span-1 row-span-1",
     },
 ];
@@ -109,16 +93,6 @@ function Lightbox({ item, onClose }: { item: typeof GALLERY_ITEMS[0]; onClose: (
                         <div>
                             <span className="text-[9px] font-bold text-theme-primary uppercase tracking-[0.4em] block mb-2">[{item.tag}]</span>
                             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tighter">{item.title}</h3>
-                            <div className="flex items-center gap-4 mt-3">
-                                <div className="flex items-center gap-2">
-                                    <MapPin size={12} className="text-theme-primary" />
-                                    <span className="text-xs text-white/50">{item.location}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <Calendar size={12} className="text-theme-primary" />
-                                    <span className="text-xs text-white/50">{item.date}</span>
-                                </div>
-                            </div>
                         </div>
                         <div className="text-[9px] font-mono text-white/20 shrink-0">{item.id}</div>
                     </div>
@@ -154,7 +128,7 @@ function GalleryCard({ item, index }: { item: typeof GALLERY_ITEMS[0]; index: nu
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110 scale-105"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 scale-105"
                     />
                 </div>
 
@@ -166,8 +140,8 @@ function GalleryCard({ item, index }: { item: typeof GALLERY_ITEMS[0]; index: nu
 
                 {/* Top-left tag */}
                 <div className="absolute top-5 left-5 flex items-center gap-2">
-                    <div className="px-3 py-1.5 rounded-xl bg-black/50 border border-white/8 backdrop-blur-md">
-                        <span className="text-[7px] font-bold uppercase tracking-[0.35em] text-theme-primary">{item.tag}</span>
+                    <div className="px-3 py-1 bg-dark-400/60 backdrop-blur-md border border-white/5 rounded-full">
+                        <span className="text-[7px] font-bold uppercase tracking-[0.3em] text-white/40">{item.tag}</span>
                     </div>
                 </div>
 
@@ -175,7 +149,7 @@ function GalleryCard({ item, index }: { item: typeof GALLERY_ITEMS[0]; index: nu
                 <motion.div
                     initial={{ opacity: 0, scale: 0.7 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="absolute top-5 right-5 w-10 h-10 rounded-xl bg-black/50 border border-white/8 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    className="absolute top-5 right-5 w-10 h-10 rounded-xl bg-dark-400/60 border border-white/5 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                 >
                     <ZoomIn size={15} className="text-white/70" />
                 </motion.div>
@@ -185,23 +159,12 @@ function GalleryCard({ item, index }: { item: typeof GALLERY_ITEMS[0]; index: nu
                     {/* ID chip */}
                     <div className="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
                         <div className="w-1 h-1 rounded-full bg-theme-primary animate-pulse" />
-                        <span className="text-[7px] font-mono text-white/30 uppercase tracking-widest">{item.id}</span>
+                        <span className="text-[7px] font-mono text-theme-primary uppercase tracking-widest">{item.id}</span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tighter leading-tight mb-3 drop-shadow-lg">
+                    <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tighter leading-tight mb-3 drop-shadow-lg">
                         {item.title}
                     </h3>
-
-                    <div className="flex items-center gap-6 opacity-0 group-hover:opacity-100 transition-all duration-400 delay-75">
-                        <div className="flex items-center gap-2">
-                            <MapPin size={11} className="text-theme-primary shrink-0" />
-                            <span className="text-[10px] font-medium text-white/50">{item.location}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Calendar size={11} className="text-theme-primary shrink-0" />
-                            <span className="text-[10px] font-medium text-white/50">{item.date}</span>
-                        </div>
-                    </div>
                 </div>
 
                 {/* Scanning beam on hover */}
@@ -308,7 +271,7 @@ export default function GallerySection() {
                     >
                         <Camera size={14} className="text-theme-primary" />
                         <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">
-                            View Full Visual Archive
+                            View Full Archive
                         </span>
                         <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 group-hover:bg-theme-primary group-hover:border-theme-primary flex items-center justify-center transition-all duration-500">
                             <ChevronRight size={14} className="text-white/30 group-hover:text-white transition-colors" />
