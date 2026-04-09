@@ -8,10 +8,10 @@ import { ExternalLink, Github, ArrowRight, Plus, Globe, Database, Command, Layer
 type FilterKey = "all" | "web" | "app" | "uiux";
 
 const FILTERS: { key: FilterKey; label: string; tag: string; icon: React.ElementType }[] = [
-    { key: "all", label: "All", tag: "ALL_NODES", icon: Layers },
-    { key: "web", label: "Web", tag: "WEB_SYS", icon: Monitor },
-    { key: "app", label: "App", tag: "APP_CORE", icon: Cpu },
-    { key: "uiux", label: "UI/UX", tag: "DESIGN_OPS", icon: Palette },
+    { key: "all", label: "All", tag: "ALL", icon: Layers },
+    { key: "web", label: "Web", tag: "WEB", icon: Monitor },
+    { key: "app", label: "App", tag: "APP", icon: Cpu },
+    { key: "uiux", label: "UI/UX", tag: "UI/UX", icon: Palette },
 ];
 
 // ─── Projects Data ─────────────────────────────────────────────────────────────
@@ -24,6 +24,15 @@ const PROJECTS = [
         filter: "web" as FilterKey,
         link: "#",
         github: "#",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        title: "SaaS Dashboard UI",
+        desc: "Dark-mode analytics dashboard UI with micro-interactions, data-dense layouts, and motion design.",
+        tech: ["Figma", "Framer", "CSS"],
+        category: "UI/UX",
+        filter: "uiux" as FilterKey,
+        figma: "#",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -96,24 +105,23 @@ const PROJECTS = [
         github: "#",
         image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
     },
-    {
-        title: "DigiFox Brand Identity",
-        desc: "End-to-end branding and visual identity system — logo, typography, color system, and brand guidelines.",
-        tech: ["Figma", "Illustrator", "Photoshop"],
-        category: "BRAND_OPS",
-        filter: "uiux" as FilterKey,
-        figma: "#",
-        image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=800&auto=format&fit=crop"
+        {
+        title: "Sri Lanka Covid-19 Statistics",
+        desc: "Chrome extension developed for provides the current real time situation of the patients reported in Sri Lanka.",
+        tech: ["JavaScript", "HTML", "CSS"],
+        category: "APP",
+        filter: "app" as FilterKey,
+        github: "https://github.com/buddhirangana/SL-Covid-19-Statistics-Chrome-Extension",
+        image: "/images/projects/sri-lanka-covid-19-statistics-img.webp"
     },
     {
-        title: "SaaS Dashboard UI",
-        desc: "Dark-mode analytics dashboard UI with micro-interactions, data-dense layouts, and motion design.",
-        tech: ["Figma", "Framer", "CSS"],
-        category: "UI_ARCH",
-        filter: "uiux" as FilterKey,
-        figma: "#",
-        link: "#",
-        image: "/images/projects/project-1.webp"
+        title: "Student Management System",
+        desc: "Student Management System is software which is helpful for students as well as the school authorities.",
+        tech: ["Java", "MySQL", "NetBeans", "PhpMyAdmin", "XAMPP"],
+        category: "APP",
+        filter: "app" as FilterKey,
+        github: "https://github.com/buddhirangana/Student-Management-System",
+        image: "/images/projects/sms-system-img.webp"
     },
 ];
 
@@ -284,7 +292,7 @@ export default function ProjectsSection() {
                                     <img
                                         src={project.image}
                                         alt={project.title}
-                                        className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0 scale-105"
+                                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0 scale-105"
                                     />
 
                                     {/* Scanning Beam */}
@@ -318,7 +326,7 @@ export default function ProjectsSection() {
                                         <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white">
                                             <Globe size={12} className="text-theme-primary" />
                                             <span>
-                                                {project.link ? "LIVE_PREVIEW" : (project as any).figma ? "DESIGN_BOARD" : "SYSTEM_SOURCE"}
+                                                {project.link ? "LIVE PREVIEW" : (project as any).figma ? "DESIGN PREVIEW" : "SOURCE CODE"}
                                             </span>
                                         </div>
                                     </div>
@@ -349,13 +357,21 @@ export default function ProjectsSection() {
                                         {project.desc}
                                     </p>
 
-                                    <div className="mt-5 flex mb-4 items-center justify-between pt-8 border-t border-white/5">
+                                    <a 
+                                        href={project.link || project.github || (project as any).figma || "#"} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="mt-5 flex mb-4 items-center justify-between pt-8 border-t border-white/5 group/link cursor-pointer"
+                                    >
                                         <div className="flex items-center gap-2">
                                             <Command size={12} className="text-theme-primary" />
-                                            <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/20">Access Protocol</span>
+                                            <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/20 group-hover/link:text-theme-primary transition-colors">
+                                                {project.link && project.link !== "#" ? "Live Preview" : (project as any).figma && (project as any).figma !== "#" ? "Design Preview" : "Source Code"}
+                                            </span>
                                         </div>
                                         <ArrowRight size={14} className="text-white/20 group-hover:translate-x-2 group-hover:text-theme-primary transition-all" />
-                                    </div>
+                                    </a>
+
                                 </div>
                             </motion.div>
                         ))}
