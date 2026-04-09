@@ -56,15 +56,6 @@ const PROJECTS = [
         image: "/images/projects/hms-web-img.webp"
     },
     {
-        title: "Spa Ceylon App",
-        desc: "A simple Android application built using Kotlin, inspired by the Spa Ceylon – Ayurveda Wellness brand. This mini project demonstrates basic Android UI design and user navigation between multiple screens.",
-        tech: ["Kotlin", "Android Studio"],
-        category: "APPLICATION",
-        filter: "app" as FilterKey,
-        github: "https://github.com/buddhirangana/spa-ceylon-app",
-        image: "/images/projects/spa-ceylon-app-img.webp"
-    },
-    {
         title: "Online Bus Seat Booking App",
         desc: "This Online Bus Seat Booking App design is perfect for modernizing the way people reserve bus tickets. It combines functionality, user-friendliness, and clean aesthetics to provide a top-notch booking solution for travelers and operators.",
         tech: ["Figma", "Photoshop"],
@@ -74,14 +65,14 @@ const PROJECTS = [
         image: "/images/projects/online-bus-seat-booking-app-img.webp"
     },
     {
-        title: "Secret Santa Generator",
-        desc: "A simple and fun web-based Secret Santa name generator built with HTML, JavaScript, and Bootstrap 5. Easily create anonymous pairings for your group of friends, family, or coworkers!",
-        tech: ["HTML", "JavaScript", "CSS", "Bootstrap"],
+        title: "Alumni Management System",
+        desc: "The Alumni Management System project in PHP is an advanced initiative designed to help university management efficiently manage alumni records.",
+        tech: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
         category: "WEB DEVELOPMENT",
         filter: "web" as FilterKey,
-        link: "https://secret-santa-generator-two.vercel.app/",
-        github: "https://github.com/buddhirangana/Secret-Santa-Generator",
-        image: "/images/projects/secret-santa-generator-img.webp"
+        link: "https://aasict.iceiy.com/",
+        github: "https://github.com/buddhirangana/alumni-management-system",
+        image: "/images/projects/alumni-management-system-img.webp"
     },
     {
         title: "Hostel Management System - Standalone",
@@ -93,14 +84,14 @@ const PROJECTS = [
         image: "/images/projects/hms-desktop-img.webp"
     },
     {
-        title: "Alumni Management System",
-        desc: "The Alumni Management System project in PHP is an advanced initiative designed to help university management efficiently manage alumni records.",
-        tech: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
+        title: "Secret Santa Generator",
+        desc: "A simple and fun web-based Secret Santa name generator built with HTML, JavaScript, and Bootstrap 5. Easily create anonymous pairings for your group of friends, family, or coworkers!",
+        tech: ["HTML", "JavaScript", "CSS", "Bootstrap"],
         category: "WEB DEVELOPMENT",
         filter: "web" as FilterKey,
-        link: "https://aasict.iceiy.com/",
-        github: "https://github.com/buddhirangana/alumni-management-system",
-        image: "/images/projects/alumni-management-system-img.webp"
+        link: "https://secret-santa-generator-two.vercel.app/",
+        github: "https://github.com/buddhirangana/Secret-Santa-Generator",
+        image: "/images/projects/secret-santa-generator-img.webp"
     },
     {
         title: "Association for ICT Professionals Website",
