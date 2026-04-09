@@ -1,66 +1,115 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { Camera, ExternalLink, MapPin, Calendar, Tag, Images, ZoomIn, ChevronRight } from "lucide-react";
+import { Camera, ExternalLink, Images, ZoomIn, ChevronRight } from "lucide-react";
 
 // ─── Gallery Data ──────────────────────────────────────────────────────────────
 const GALLERY_ITEMS = [
     {
-        id: "GAL-001",
-        title: "AWS Community Day Sri Lanka",
-        tag: "CONFERENCE",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
+        id: "GAL-015",
+        title: "AURA '26 - Igniting Talent, Celebrating Creativity",
+        tag: "CONCERT",
+        image: "/images/gallery/gallery-15.webp",
         span: "col-span-2 row-span-2", // large feature card
     },
     {
-        id: "GAL-002",
-        title: "DigiFox Product Launch",
-        tag: "LAUNCH_EVENT",
-        image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
-        span: "col-span-1 row-span-1",
-    },
-    {
-        id: "GAL-003",
-        title: "Google DevFest 2023",
-        tag: "DEVFEST",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop",
-        span: "col-span-1 row-span-1",
-    },
-    {
-        id: "GAL-004",
-        title: "TEC ROOM Meetup Vol. 3",
-        tag: "COMMUNITY",
-        image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=800&auto=format&fit=crop",
-        span: "col-span-1 row-span-1",
-    },
-    {
-        id: "GAL-005",
-        title: "Digital Marketing Summit",
-        tag: "SUMMIT",
-        image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
-        span: "col-span-1 row-span-1",
-    },
-    {
-        id: "GAL-006",
-        title: "NIIBS Open Day 2023",
+        id: "GAL-014",
+        title: "Clean Mind, Clean Beach - Beach Cleaning Programme",
         tag: "COMMUNITY EVENT",
-        image: "/images/gallery/gallery-3.webp",
-        span: "col-span-2 row-span-1", // wide card
+        image: "/images/gallery/gallery-14.webp",
+        span: "col-span-1 row-span-1",
     },
     {
-        id: "GAL-007",
-        title: "Inaugural Meeting of Cyber Crew of SICT",
+        id: "GAL-013",
+        title: "SICT Diamond Night 2025",
         tag: "COMMUNITY EVENT",
-        image: "/images/gallery/gallery-2.webp",
+        image: "/images/gallery/gallery-13.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-012",
+        title: "Viva Voice & Final Project Demonstration - BSc (Hons) in IT 2023/A",
+        tag: "PRESENTATION",
+        image: "/images/gallery/gallery-12.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-011",
+        title: "Nagananda Kowul Wasantha Udanaya 2025",
+        tag: "FESTIVAL",
+        image: "/images/gallery/gallery-11.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-010",
+        title: "Free One Day Workshop - Cyber Crew of SICT",
+        tag: "WORKSHOP",
+        image: "/images/gallery/gallery-10.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-009",
+        title: "Diploma and Certificate Awarding Ceremony at NIIBS - 2024",
+        tag: "AWARDING CEREMONY",
+        image: "/images/gallery/gallery-9.webp",
         span: "col-span-1 row-span-1",
     },
     {
         id: "GAL-008",
+        title: "Batch Bash 2024 - 1st Year Ending Celebration",
+        tag: "COMMUNITY EVENT",
+        image: "/images/gallery/gallery-8.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-007",
+        title: "Grand opening of the NIIBS Convention Center's official website",
+        tag: "PRODUCT LAUNCHES",
+        image: "/images/gallery/gallery-7.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-006",
+        title: "Leadership & Soft Skills Development Outbound Training Program for BSc (Hons) in IT Students",
+        tag: "WORKSHOP",
+        image: "/images/gallery/gallery-6.webp",
+        span: "col-span-2 row-span-1", // wide card
+    },
+    {
+        id: "GAL-005",
+        title: "NIIBS Open Day 2023",
+        tag: "COMMUNITY EVENT",
+        image: "/images/gallery/gallery-5.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-004",
+        title: "Inaugural Meeting of Cyber Crew of SICT",
+        tag: "COMMUNITY EVENT",
+        image: "/images/gallery/gallery-4.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-003",
         title: "Batch Trip of BSc IT 2023/A",
         tag: "COMMUNITY EVENT",
-        image: "/images/gallery/gallery-1.webp",
+        image: "/images/gallery/gallery-3.webp",
         span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-002",
+        title: "INDO Sri'23 - Indu Sri Lanka Cultural Concert",
+        tag: "CONCERT",
+        image: "/images/gallery/gallery-2.webp",
+        span: "col-span-1 row-span-1",
+    },
+    {
+        id: "GAL-001",
+        title: "Soft Skills+ 2017 Programme @ SLIIT",
+        tag: "WORKSHOP",
+        image: "/images/gallery/gallery-1.webp",
+        span: "col-span-2 row-span-1", // wide card
     },
 ];
 
@@ -110,88 +159,83 @@ function Lightbox({ item, onClose }: { item: typeof GALLERY_ITEMS[0]; onClose: (
 }
 
 // ─── Gallery Card ──────────────────────────────────────────────────────────────
-function GalleryCard({ item, index }: { item: typeof GALLERY_ITEMS[0]; index: number }) {
-    const [lightboxOpen, setLightboxOpen] = useState(false);
-
+function GalleryCard({ item, index, onOpen }: { item: typeof GALLERY_ITEMS[0]; index: number; onOpen: (item: typeof GALLERY_ITEMS[0]) => void }) {
     return (
-        <>
-            <motion.div
-                initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.07 }}
-                viewport={{ once: true, margin: "-60px" }}
-                className={`${item.span} group relative overflow-hidden rounded-[2.5rem] cursor-pointer border border-white/5 hover:border-theme-primary/40 transition-colors duration-500`}
-                onClick={() => setLightboxOpen(true)}
-            >
-                {/* Image */}
-                <div className="absolute inset-0">
-                    <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 scale-105"
-                    />
-                </div>
-
-                {/* Ambient base gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                {/* Hover overlay tint */}
-                <div className="absolute inset-0 bg-theme-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Top-left tag */}
-                <div className="absolute top-5 left-5 flex items-center gap-2">
-                    <div className="px-3 py-1 bg-dark-400/60 backdrop-blur-md border border-white/5 rounded-full">
-                        <span className="text-[7px] font-bold uppercase tracking-[0.3em] text-white/40">{item.tag}</span>
-                    </div>
-                </div>
-
-                {/* Top-right zoom hint */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="absolute top-5 right-5 w-10 h-10 rounded-xl bg-dark-400/60 border border-white/5 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-                >
-                    <ZoomIn size={15} className="text-white/70" />
-                </motion.div>
-
-                {/* Bottom content */}
-                <div className="absolute bottom-0 inset-x-0 p-6 md:p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    {/* ID chip */}
-                    <div className="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                        <div className="w-1 h-1 rounded-full bg-theme-primary animate-pulse" />
-                        <span className="text-[7px] font-mono text-theme-primary uppercase tracking-widest">{item.id}</span>
-                    </div>
-
-                    <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tighter leading-tight mb-3 drop-shadow-lg">
-                        {item.title}
-                    </h3>
-                </div>
-
-                {/* Scanning beam on hover */}
-                <motion.div
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity"
+        <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: index * 0.05 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className={`${item.span} group relative overflow-hidden rounded-[2.5rem] cursor-pointer border border-white/5 hover:border-theme-primary/40 transition-colors duration-500`}
+            onClick={() => onOpen(item)}
+        >
+            {/* Image */}
+            <div className="absolute inset-0">
+                <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 scale-105"
                 />
+            </div>
+
+            {/* Ambient base gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+            {/* Hover overlay tint */}
+            <div className="absolute inset-0 bg-theme-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Top-left tag */}
+            <div className="absolute top-5 left-5 flex items-center gap-2">
+                <div className="px-3 py-1 bg-dark-400/60 backdrop-blur-md border border-white/5 rounded-full">
+                    <span className="text-[7px] font-bold uppercase tracking-[0.3em] text-white/40">{item.tag}</span>
+                </div>
+            </div>
+
+            {/* Top-right zoom hint */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.7 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="absolute top-5 right-5 w-10 h-10 rounded-xl bg-dark-400/60 border border-white/5 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+            >
+                <ZoomIn size={15} className="text-white/70" />
             </motion.div>
 
-            <AnimatePresence>
-                {lightboxOpen && (
-                    <Lightbox item={item} onClose={() => setLightboxOpen(false)} />
-                )}
-            </AnimatePresence>
-        </>
+            {/* Bottom content */}
+            <div className="absolute bottom-0 inset-x-0 p-6 md:p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                {/* ID chip */}
+                <div className="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                    <div className="w-1 h-1 rounded-full bg-theme-primary animate-pulse" />
+                    <span className="text-[7px] font-mono text-theme-primary uppercase tracking-widest">{item.id}</span>
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tighter leading-tight mb-3 drop-shadow-lg">
+                    {item.title}
+                </h3>
+            </div>
+
+            {/* Scanning beam on hover */}
+            <motion.div
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity"
+            />
+        </motion.div>
     );
 }
 
 // ─── Main Section ──────────────────────────────────────────────────────────────
 export default function GallerySection() {
     const sectionRef = useRef<HTMLElement>(null);
+    const [visibleCount, setVisibleCount] = useState(5);
+    const [selectedItem, setSelectedItem] = useState<typeof GALLERY_ITEMS[0] | null>(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
     const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
 
     // Smooth reveal for technical decals
     const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
+    const visibleItems = GALLERY_ITEMS.slice(0, visibleCount);
+    const hasMore = visibleCount < GALLERY_ITEMS.length;
 
     return (
         <section id="gallery" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
@@ -251,9 +295,16 @@ export default function GallerySection() {
 
                 {/* ── Bento Grid ── */}
                 <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-4 md:gap-6">
-                    {GALLERY_ITEMS.map((item, i) => (
-                        <GalleryCard key={item.id} item={item} index={i} />
-                    ))}
+                    <AnimatePresence>
+                        {visibleItems.map((item, i) => (
+                            <GalleryCard
+                                key={item.id}
+                                item={item}
+                                index={i}
+                                onOpen={(item) => setSelectedItem(item)}
+                            />
+                        ))}
+                    </AnimatePresence>
                 </div>
 
                 {/* ── Footer CTA ── */}
@@ -263,22 +314,40 @@ export default function GallerySection() {
                     transition={{ delay: 0.3 }}
                     className="mt-20 flex justify-center"
                 >
-                    <motion.a
+                    <motion.button
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.97 }}
-                        href="#"
+                        onClick={() => setVisibleCount(hasMore ? GALLERY_ITEMS.length : 4)}
                         className="group flex items-center gap-4 px-8 py-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-theme-primary/40 hover:bg-theme-primary/5 transition-all duration-500"
                     >
-                        <Camera size={14} className="text-theme-primary" />
+                        <div className="relative">
+                            <Camera size={14} className={`text-theme-primary transition-transform duration-500 ${hasMore ? "group-hover:rotate-12" : "rotate-180 group-hover:rotate-[192deg]"}`} />
+                            {hasMore && (
+                                <motion.div
+                                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                    className="absolute inset-0 bg-theme-primary/20 rounded-full blur-sm"
+                                />
+                            )}
+                        </div>
                         <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">
-                            View Full Archive
+                            {hasMore ? "Load More Highlights" : "Show Less"}
                         </span>
                         <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 group-hover:bg-theme-primary group-hover:border-theme-primary flex items-center justify-center transition-all duration-500">
-                            <ChevronRight size={14} className="text-white/30 group-hover:text-white transition-colors" />
+                            <ChevronRight size={14} className={`text-white/30 group-hover:text-white transition-transform duration-500 ${hasMore ? "rotate-90" : "-rotate-90"}`} />
                         </div>
-                    </motion.a>
+                    </motion.button>
                 </motion.div>
             </div>
+
+            <AnimatePresence>
+                {selectedItem && (
+                    <Lightbox
+                        item={selectedItem}
+                        onClose={() => setSelectedItem(null)}
+                    />
+                )}
+            </AnimatePresence>
         </section>
     );
 }
