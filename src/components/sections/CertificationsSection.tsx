@@ -143,7 +143,7 @@ export default function CertificationsSection() {
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                Academic
+                Courses
             </motion.div>
 
             <div className="section-container relative z-10">
@@ -157,10 +157,10 @@ export default function CertificationsSection() {
                     >
                         <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <Shield size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Professional Verification</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Professional Credentials</span>
                         </div>
                         <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none mb-4 pb-4">
-                            Credentials &amp; <span className="text-white/20 italic font-light">Seals</span>
+                            Courses &amp; <span className="text-white/20 italic font-light">Certifications</span>
                             <motion.span
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
@@ -178,8 +178,8 @@ export default function CertificationsSection() {
                         className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
                     >
                         <div>
-                            <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Status: Encrypted</div>
-                            <div className="text-xs font-mono text-theme-primary">0X_VAL_PROTOCOL</div>
+                            <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">VERIFIED // ISSUED:</div>
+                            <div className="text-xs font-mono text-theme-primary">2021 - 2026</div>
                         </div>
                         <Database size={32} className="text-theme-primary/20" />
                     </motion.div>
@@ -195,7 +195,7 @@ export default function CertificationsSection() {
                     <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl border border-white/5 bg-white/[0.02]">
                         <Zap size={12} className="text-theme-primary" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30">
-                            {CERTIFICATIONS.length} Credentials Indexed
+                            {CERTIFICATIONS.length} EARNED CERTIFICATIONS
                         </span>
                         <span className="ml-2 text-[10px] font-bold text-theme-primary font-mono">
                             [{showAll ? CERTIFICATIONS.length : INITIAL_COUNT} / {CERTIFICATIONS.length}]
@@ -243,7 +243,7 @@ export default function CertificationsSection() {
 
                         <span className="relative z-10 flex flex-col items-start">
                             <span className="text-[7px] font-bold text-theme-primary uppercase tracking-[0.5em] mb-1">
-                                {showAll ? "Collapse_View" : `+${hiddenCount}_More_Available`}
+                                {showAll ? "Collapse View" : `+${hiddenCount} More Available`}
                             </span>
                             <span className="text-[11px] md:text-xs font-bold text-white/60 group-hover:text-white transition-colors uppercase tracking-[0.2em]">
                                 {showAll ? "Show Less" : "View All Credentials"}
@@ -370,14 +370,14 @@ function Card({ cert, index, onImageClick }: { cert: any; index: number; onImage
                         <div className="absolute inset-0 bg-gradient-to-t from-dark-400/80 to-transparent opacity-60" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div className="px-4 py-2 bg-theme-primary/10 backdrop-blur-md rounded-full border border-theme-primary/20 text-theme-primary text-[8px] font-bold uppercase tracking-widest">
-                                Expand_Credential
+                                Show Credential
                             </div>
                         </div>
                     </div>
 
                     {/* Content */}
                     <div>
-                        <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em] mb-4 block">Professional_Credential</span>
+                        <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.4em] mb-4 block">Professional Credential</span>
                         <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-theme-primary transition-colors tracking-tighter leading-tight">
                             {cert.title}
                         </h3>
@@ -405,7 +405,7 @@ function Card({ cert, index, onImageClick }: { cert: any; index: number; onImage
                         href={cert.link}
                         className="inline-flex items-center gap-4 text-[9px] font-bold uppercase tracking-[0.5em] text-theme-primary group/link mt-6"
                     >
-                        VERIFY_CREDENTIAL
+                        VERIFY CREDENTIAL
                         <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
                     </motion.a>
                 </div>
