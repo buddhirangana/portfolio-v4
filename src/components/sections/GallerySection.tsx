@@ -239,7 +239,7 @@ export default function GallerySection() {
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                Academic
+                Gallery
             </motion.div>
 
             <div className="section-container relative z-10">
@@ -254,7 +254,7 @@ export default function GallerySection() {
                     >
                         <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <Camera size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Visual Archive</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">COMMUNITY ENGAGEMENT</span>
                         </div>
                         <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
                             Event <span className="text-white/20 italic font-light">Gallery</span>
@@ -267,7 +267,7 @@ export default function GallerySection() {
                             />
                         </h2>
                         <p className="text-base text-white/30 font-medium max-w-md leading-relaxed mt-4">
-                            Moments captured across conferences, workshops, product launches, and community events.
+                            Moments captured across conferences, workshops, product launches and community events.
                         </p>
                     </motion.div>
 
@@ -279,10 +279,10 @@ export default function GallerySection() {
                         <div className="flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/5 bg-white/[0.02]">
                             <Images size={14} className="text-theme-primary" />
                             <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30">
-                                {GALLERY_ITEMS.length} Frames Indexed
+                                {GALLERY_ITEMS.length} SELECTED HIGHLIGHTS
                             </span>
                         </div>
-                        <div className="text-xs font-mono text-theme-primary">CAM_FEED_ACTIVE</div>
+                        <div className="text-xs font-mono text-theme-primary">LATEST HIGHLIGHTS</div>
                     </motion.div>
                 </div>
 
