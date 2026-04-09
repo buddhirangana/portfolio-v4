@@ -120,7 +120,7 @@ export default function RootLayout({
             <LoadingScreen />
             <CustomCursor />
             <Navbar />
-            <main id="main-content">{children}</main>
+            <main id="main-content" className="relative">{children}</main>
             <Footer />
             <ChatBot />
           </SmoothScrollProvider>

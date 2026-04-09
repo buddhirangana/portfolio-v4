@@ -64,7 +64,7 @@ export default function Navbar() {
             <div className="mx-auto max-w-7xl px-6 flex justify-center">
                 <div
                     className={`relative flex items-center justify-between transition-all duration-700 ease-[0.16,1,0.3,1] ${isScrolled
-                        ? "w-full max-w-[1000px] px-6 py-3 bg-dark-400/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl"
+                        ? "w-full max-w-[1200px] px-6 py-3 bg-dark-400/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl"
                         : "w-full bg-transparent border-transparent"
                         }`}
                 >
