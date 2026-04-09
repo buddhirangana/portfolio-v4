@@ -223,7 +223,8 @@ export default function HeroSection() {
                                     initial={{ scaleX: 0 }}
                                     animate={{ scaleX: 1 }}
                                     transition={{ delay: 1.2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                                    className="absolute -bottom-3 left-0 h-[3px] w-full origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                                    className="absolute -bottom-3 left-0 h-[3px] w-full md:w-60 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+
                                 />
                             </motion.h1>
                         </div>

@@ -257,20 +257,19 @@ export default function EducationSection() {
                             <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-theme-primary">Academic Archive</span>
                             <div className="w-10 h-px bg-theme-primary/30 hidden md:block" />
                         </div>
-                        <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
+                        <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
                             Education <span className="text-white/20 italic font-light">Qualifications</span>
+                            <motion.span
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                            />
                         </h2>
                     </motion.div>
                 </div>
 
-                {/* ── Divider ── */}
-                <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="h-px w-full origin-left bg-gradient-to-r from-theme-primary/40 via-white/5 to-transparent mb-16"
-                />
 
                 {/* ── BENTO LAYOUT: Featured left + strips right ── */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">

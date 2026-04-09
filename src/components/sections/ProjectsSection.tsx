@@ -169,9 +169,17 @@ export default function ProjectsSection() {
                             <Database size={14} className="text-theme-primary" />
                             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Portfolio</span>
                         </div>
-                        <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
+                        <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
                             Featured <span className="text-white/20 italic font-light">Projects</span>
+                            <motion.span
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                            />
                         </h2>
+
                     </motion.div>
 
                     <motion.div
