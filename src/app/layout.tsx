@@ -60,8 +60,7 @@ export const metadata: Metadata = {
     url: "https://buddhirangana.com",
     siteName: "Buddhi Rangana Portfolio",
     title: "Buddhi Rangana | Entrepreneur & Aspiring Full-Stack Developer",
-    description:
-      "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
+    description: "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
     images: [
       {
         url: "/og-image.png",
