@@ -136,7 +136,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Re-imagined Mobile Menu (Bento Style) */}
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
