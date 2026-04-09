@@ -6,114 +6,184 @@ import { Award, ExternalLink, Calendar, ShieldCheck, Fingerprint, Lock, Shield, 
 
 const CERTIFICATIONS = [
     {
-        title: "AWS Certified Solutions Architect",
-        issuer: "Amazon Web Services",
-        date: "2024",
-        link: "#",
-        id: "AWS-SA-12345",
-        hash: "0x882A...F92",
-        status: "VALIDATED",
-        image: "/images/certifications/aws-solutions-architect.png"
+        title: "Postman API Fundamentals Student Expert",
+        issuer: "Postman",
+        date: "Jan 2026",
+        link: "https://badgr.com/public/assertions/JUvM1l1TSFe6Fe-pEuW4vA",
+        id: "69738df7fd...ab9a41d",
+        hash: "69738df7fd...ab9a41d",
+        status: "VERIFIED",
+        image: "/images/certifications/postman-api-fundamentals-student-expert.webp"
     },
     {
-        title: "Meta Front-End Developer Professional Certificate",
-        issuer: "Coursera / Meta",
-        date: "2023",
-        link: "#",
-        id: "META-FE-9876",
-        hash: "0x221B...X1C",
+        title: "Digital Awareness",
+        issuer: "Cisco Networking Academy",
+        date: "Sep 2025",
+        link: "https://www.credly.com/badges/5efb32cb-1dcd-4832-8940-305b8a10aefd",
+        id: "5efb32cb...305b8a10aefd",
+        hash: "5efb32cb...305b8a10aefd",
+        status: "VERIFIED",
+        image: "/images/certifications/digital-awareness.webp"
+    },
+    {
+        title: "Computer Hardware Basics",
+        issuer: "Cisco Networking Academy",
+        date: "Sep 2025",
+        link: "https://www.credly.com/badges/8dbc235a-b24d-41ae-b5a8-c1cba91b73dc",
+        id: "8dbc235a...c1cba91b73dc",
+        hash: "8dbc235a...c1cba91b73dc",
+        status: "VERIFIED",
+        image: "/images/certifications/computer-hardware-basics.webp"
+    },
+    {
+        title: "AI Security & Governance",
+        issuer: "Securiti AI",
+        date: "Sep 2025",
+        link: "https://education.securiti.ai/verification/1395F77A2-1395F52E9-1333B5A4A/",
+        id: "1395F77A2...1333B5A4A",
+        hash: "1395F77A2...1333B5A4A",
         status: "CERTIFIED",
-        image: "/images/certifications/meta-front-end.png"
+        image: "/images/certifications/ai-security-governance.webp"
     },
     {
-        title: "Google Cloud Digital Leader",
-        issuer: "Google Cloud",
-        date: "2023",
-        link: "#",
-        id: "GCP-DL-5544",
-        hash: "0x994D...K99",
-        status: "ACTIVE",
-        image: "/images/certifications/google-cloud-digital-leader.png"
+        title: "Cisco IT Essentials",
+        issuer: "Cisco Networking Academy",
+        date: "Aug 2025",
+        link: "https://www.credly.com/badges/53c17015-fd35-45ec-b193-b2966c0bec14",
+        id: "53c17015...b2966c0bec14",
+        hash: "53c17015...b2966c0bec14",
+        status: "VERIFIED",
+        image: "/images/certifications/cisco-it-essentials.webp"
     },
     {
-        title: "Google Analytics Individual Qualification",
-        issuer: "Google",
-        date: "2023",
-        link: "#",
-        id: "GAIQ-7712",
-        hash: "0x33AC...P71",
-        status: "VALIDATED",
-        image: ""
-    },
-    {
-        title: "HubSpot Content Marketing Certification",
-        issuer: "HubSpot Academy",
-        date: "2023",
-        link: "#",
-        id: "HUB-CM-4421",
-        hash: "0x77FF...B30",
+        title: "Introduction to Digital Journalism",
+        issuer: "Reuters",
+        date: "Feb 2023",
+        link: "https://reutersdigitaljournalism.com/course_completed_certificate/246916.html",
+        id: "246916",
+        hash: "246916",
         status: "CERTIFIED",
-        image: ""
+        image: "/images/certifications/introduction-to-digital-journalism.webp"
     },
     {
-        title: "Digital Marketing Fundamentals",
+        title: "Professional Practice in Software Development",
+        issuer: "University of Moratuwa / DP Education",
+        date: "Aug 2022",
+        link: "https://drive.google.com/file/d/1TMA7iZcbWSd608nHsCGjR1CO5H5mABkc/view",
+        id: "fHJGUtXJR3",
+        hash: "fHJGUtXJR3",
+        status: "CERTIFIED",
+        image: "/images/certifications/professional-practice-in-software-development.webp"
+    },
+    {
+        title: "Server-side Web Programming",
+        issuer: "University of Moratuwa / DP Education",
+        date: "Jul 2022",
+        link: "https://drive.google.com/file/d/1K4vs5CjxDZALKBYhsr9zas4Gg1jXVixj/view",
+        id: "33WK5SLfPR",
+        hash: "33WK5SLfPR",
+        status: "CERTIFIED",
+        image: "/images/certifications/server-side-web-programming.webp"
+    },
+    {
+        title: "Front-End Web Development",
+        issuer: "University of Moratuwa / DP Education",
+        date: "Jul 2022",
+        link: "https://drive.google.com/file/d/1RDm4NsukPDh0xgHgbmzDj29lEbWUSEJR/view",
+        id: "YptzGOmmok",
+        hash: "YptzGOmmok",
+        status: "CERTIFIED",
+        image: "/images/certifications/front-end-web-development.webp"
+    },
+    {
+        title: "Python Programming",
+        issuer: "University of Moratuwa / DP Education",
+        date: "Jul 2022",
+        link: "https://drive.google.com/file/d/1QhjHtvTft606XIcPBpIFqH1p1wRisVYC/view",
+        id: "1WDXRYHBHF",
+        hash: "1WDXRYHBHF",
+        status: "CERTIFIED",
+        image: "/images/certifications/python-programming.webp"
+    },
+    {
+        title: "Web Design for Beginners",
+        issuer: "University of Moratuwa / DP Education",
+        date: "Jul 2022",
+        link: "https://drive.google.com/file/d/1PiEMKlTQAubD8edGp8BPsCvkUCuT8IU5/view",
+        id: "C2CIR9NXbb",
+        hash: "C2CIR9NXbb",
+        status: "CERTIFIED",
+        image: "/images/certifications/web-design-for-beginners.webp"
+    },
+    {
+        title: "Python for Beginners",
+        issuer: "University of Moratuwa / DP Education",
+        date: "Jul 2022",
+        link: "https://drive.google.com/file/d/1U2vGYjjMhADpXIz9NkTkYi5QYzZyGo3a/view",
+        id: "n6AS4aJDGh",
+        hash: "n6AS4aJDGh",
+        status: "CERTIFIED",
+        image: "/images/certifications/python-for-beginners.webp"
+    },
+    {
+        title: "Web Development Fundamentals",
+        issuer: "Sololearn",
+        date: "May 2022",
+        link: "https://www.sololearn.com/Certificate/CT-CH2OXBBA/pdf",
+        id: "#1141-21877333",
+        hash: "#1141-21877333",
+        status: "CERTIFIED",
+        image: "/images/certifications/web-development-fundamentals.webp"
+    },
+    {
+        title: "Coding for Marketers Course",
+        issuer: "Sololearn",
+        date: "Jul 2021",
+        link: "https://www.sololearn.com/Certificate/CT-KBGGVN3M/pdf",
+        id: "#1165-21877333",
+        hash: "#1165-21877333",
+        status: "CERTIFIED",
+        image: "/images/certifications/coding-for-marketers-course.webp"
+    },
+    {
+        title: "Google Analytics for Beginners",
+        issuer: "Google Digital Academy (Skillshop)",
+        date: "Jun 2021",
+        link: "https://analytics.google.com/analytics/academy/certificate/xAe00xsdSlWjeska19W_3w",
+        id: "xAe00xsdSlWjeska19W_3w",
+        hash: "xAe00xsdSlWjeska19W_3w",
+        status: "CERTIFIED",
+        image: "/images/certifications/google-analytics-for-beginners.webp"
+    },
+    {
+        title: "Marketing on Facebook",
+        issuer: "LinkedIn Learning",
+        date: "Jun 2021",
+        link: "https://drive.google.com/file/d/15LfN7KSpOzK7t3itcM5fQFjrG0jUGB5y/view?usp=drivesdk",
+        id: "AYQmhVQkD...P8RaAEj19",
+        hash: "AYQmhVQkD...P8RaAEj19",
+        status: "CERTIFIED",
+        image: "/images/certifications/marketing-on-facebook.webp"
+    },
+    {
+        title: "Introduction to IT & Cybersecurity",
+        issuer: "Cybrary",
+        date: "Jun 2021",
+        link: "https://app.cybrary.it/courses/api/certificate/CC-1592e6fa-6636-4a4e-ab9d-165a112d5b7a/view",
+        id: "CC-1592e6fa...5b7a",
+        hash: "CC-1592e6fa...5b7a",
+        status: "CERTIFIED",
+        image: "/images/certifications/introduction-to-it-cybersecurity.webp"
+    },
+    {
+        title: "Fundamentals of Digital Marketing",
         issuer: "Google Digital Garage",
-        date: "2022",
-        link: "#",
-        id: "GDG-DM-8831",
-        hash: "0xA12E...S04",
-        status: "ACTIVE",
-        image: ""
-    },
-    {
-        title: "WordPress Development Certification",
-        issuer: "Udemy / Automattic",
-        date: "2022",
-        link: "#",
-        id: "WP-DEV-3390",
-        hash: "0xD99C...W88",
-        status: "VALIDATED",
-        image: ""
-    },
-    {
-        title: "JavaScript Algorithms & Data Structures",
-        issuer: "freeCodeCamp",
-        date: "2022",
-        link: "#",
-        id: "FCC-JS-6614",
-        hash: "0xBB44...J22",
+        date: "Jun 2021",
+        link: "https://learndigital.withgoogle.com/link/1qsdpcedm9s",
+        id: "CEV Y5Z ETW",
+        hash: "CEV Y5Z ETW",
         status: "CERTIFIED",
-        image: ""
-    },
-    {
-        title: "Responsive Web Design Certification",
-        issuer: "freeCodeCamp",
-        date: "2021",
-        link: "#",
-        id: "FCC-RWD-2200",
-        hash: "0x5C1A...R55",
-        status: "ACTIVE",
-        image: ""
-    },
-    {
-        title: "PHP & MySQL Web Development",
-        issuer: "Udemy",
-        date: "2021",
-        link: "#",
-        id: "UDM-PHP-9902",
-        hash: "0x6E3B...M14",
-        status: "VALIDATED",
-        image: ""
-    },
-    {
-        title: "SEO Fundamentals",
-        issuer: "SEMrush Academy",
-        date: "2021",
-        link: "#",
-        id: "SEM-SEO-1145",
-        hash: "0x8A7D...Q39",
-        status: "CERTIFIED",
-        image: ""
+        image: "/images/certifications/fundamentals-of-digital-marketing.webp"
     },
 ];
 
