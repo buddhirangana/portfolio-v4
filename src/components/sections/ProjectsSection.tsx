@@ -17,99 +17,190 @@ const FILTERS: { key: FilterKey; label: string; tag: string; icon: React.Element
 // ─── Projects Data ─────────────────────────────────────────────────────────────
 const PROJECTS = [
     {
-        title: "DigiFox Agency Portal",
-        desc: "Full-stack agency management platform with client dashboards, invoicing, and project tracking built on PHP/Laravel.",
-        tech: ["PHP", "Laravel", "MySQL"],
-        category: "SYS_CORE",
+        title: "Movie Search - Find Your Favorite Films",
+        desc: "Movie Search is a web application that allows users to search for movies and get detailed information about them. This project uses the OMDB API to fetch movie data and display it in a user-friendly interface.",
+        tech: ["HTML", "CSS", "JavaScript", "OMDB API"],
+        category: "WEB DEVELOPMENT",
         filter: "web" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+        link: "https://movie-search-ten-brown.vercel.app/",
+        github: "https://github.com/buddhirangana/movie-search",
+        image: "/images/projects/movie-search-img.webp"
     },
     {
-        title: "SaaS Dashboard UI",
-        desc: "Dark-mode analytics dashboard UI with micro-interactions, data-dense layouts, and motion design.",
-        tech: ["Figma", "Framer", "CSS"],
-        category: "UI/UX",
+        title: "Spendo - An Expense Tracker App for Android",
+        desc: "Spendo is a modern, intuitive Android application designed to help users track their daily expenses and manage their personal finances. Built with Kotlin and Firebase, it offers a seamless experience for staying on top of your budget in real-time.",
+        tech: ["Kotlin", "Android Studio", "Firebase"],
+        category: "APPLICATION",
+        filter: "app" as FilterKey,
+        link: "https://github.com/buddhirangana/spendo-app/releases/tag/v1.0",
+        github: "https://github.com/buddhirangana/spendo-app",
+        image: "/images/projects/spendo-app-img.webp"
+    },
+    {
+        title: "Fruit Classifier - AI Powered Image Recognition App",
+        desc: "Fruit Classifier is a machine learning project that leverages deep learning techniques to classify different types of fruits. This project uses a convolutional neural network (CNN) to process images of fruits and predict their category.",
+        tech: ["Python", "TensorFlow", "OpenCV", "Streamlit"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "http://fruit-classifier-bv1.streamlit.app/",
+        github: "https://github.com/buddhirangana/fruit-classifier",
+        image: "/images/projects/fruit-classifier-img.webp"
+    },
+    {
+        title: "Hostel Management System - Web based",
+        desc: "Built a comprehensive web application to automate and digitalize hostel administration. Utilizing PHP and MySQL, this full-stack academic project simplifies facility management, student tracking and daily tasks for administrative staff.",
+        tech: ["PHP", "JavaScript", "MySQL", "Bootstrap", "PayHere"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://hms.digifox.lk/",
+        image: "/images/projects/hms-web-img.webp"
+    },
+    {
+        title: "Spa Ceylon App",
+        desc: "A simple Android application built using Kotlin, inspired by the Spa Ceylon – Ayurveda Wellness brand. This mini project demonstrates basic Android UI design and user navigation between multiple screens.",
+        tech: ["Kotlin", "Android Studio"],
+        category: "APPLICATION",
+        filter: "app" as FilterKey,
+        github: "https://github.com/buddhirangana/spa-ceylon-app",
+        image: "/images/projects/spa-ceylon-app-img.webp"
+    },
+    {
+        title: "Online Bus Seat Booking App",
+        desc: "This Online Bus Seat Booking App design is perfect for modernizing the way people reserve bus tickets. It combines functionality, user-friendliness, and clean aesthetics to provide a top-notch booking solution for travelers and operators.",
+        tech: ["Figma", "Photoshop"],
+        category: "UI/UX DESIGN",
         filter: "uiux" as FilterKey,
-        figma: "#",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+        figma: "https://www.figma.com/community/file/1449397086545531873/online-bus-seat-booking-app?q_id=f10edea2-cf4d-4bdb-b84e-569f1e9d252c",
+        image: "/images/projects/online-bus-seat-booking-app-img.webp"
     },
     {
-        title: "TEC ROOM Blog Platform",
-        desc: "High-performance tech blog with SEO-optimized architecture, custom CMS, and dynamic content delivery.",
-        tech: ["WordPress", "PHP", "SEO"],
-        category: "WEB_ARCH",
+        title: "Secret Santa Generator",
+        desc: "A simple and fun web-based Secret Santa name generator built with HTML, JavaScript, and Bootstrap 5. Easily create anonymous pairings for your group of friends, family, or coworkers!",
+        tech: ["HTML", "JavaScript", "CSS", "Bootstrap"],
+        category: "WEB DEVELOPMENT",
         filter: "web" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=800&auto=format&fit=crop"
+        link: "https://secret-santa-generator-two.vercel.app/",
+        github: "https://github.com/buddhirangana/Secret-Santa-Generator",
+        image: "/images/projects/secret-santa-generator-img.webp"
     },
     {
-        title: "Solar E-Commerce",
-        desc: "High-fidelity e-commerce portal with integrated payment pipelines and interactive product configuration.",
-        tech: ["Next.js", "Stripe", "Tailwind"],
-        category: "ECOSYSTEM",
+        title: "Hostel Management System - Standalone",
+        desc: "The Hostel Management System is a standalone application designed to efficiently manage hostel-related operations.",
+        tech: ["Java", "MySQL", "NetBeans", "iTextPDF", "FlatLaf"],
+        category: "APPLICATION",
+        filter: "app" as FilterKey,
+        github: "https://github.com/buddhirangana/hostel-management-system",
+        image: "/images/projects/hms-desktop-img.webp"
+    },
+    {
+        title: "Alumni Management System",
+        desc: "The Alumni Management System project in PHP is an advanced initiative designed to help university management efficiently manage alumni records.",
+        tech: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
+        category: "WEB DEVELOPMENT",
         filter: "web" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop"
+        link: "https://aasict.iceiy.com/",
+        github: "https://github.com/buddhirangana/alumni-management-system",
+        image: "/images/projects/alumni-management-system-img.webp"
     },
     {
-        title: "AI Personal Trainer",
-        desc: "Neural-vision fitness engine utilizing real-time pose estimation and corrective feedback loops.",
-        tech: ["Next.js", "Python", "MediaPipe"],
-        category: "NEURAL_NET",
-        filter: "app" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1517836357463-d25dfeac00dc?q=80&w=800&auto=format&fit=crop"
+        title: "Association for ICT Professionals Website",
+        desc: "Association for Information Communication Technology Professionals (AICTP), the premier body advancing the science, practice, and professional standards of ICT.",
+        tech: ["WordPress", "SEO", "Elementor"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://ictprofessionals.org/",
+        image: "/images/projects/aictp-img.webp"
     },
     {
-        title: "Inventory Manager Pro",
-        desc: "Real-time inventory tracking and analytics desktop application with barcode integration and reporting dashboards.",
-        tech: ["Electron", "React", "SQLite"],
-        category: "APP_SYS",
-        filter: "app" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop"
+        title: "FineArts.lk Website",
+        desc: "Discover a vibrant community of artists and art enthusiasts. This platform empowers creators to showcase, sell and promote their art, books and unique creations.",
+        tech: ["WordPress", "SEO", "WooCommerce", "OnePay"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://finearts.lk/",
+        image: "/images/projects/finearts-img.webp"
     },
     {
-        title: "Neural Network Viz",
-        desc: "Interactive holographic visualization bridge for complex weight-distribution analysis in deep learning.",
-        tech: ["Three.js", "D3.js", "React"],
-        category: "DATA_VIS",
-        filter: "app" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=800&auto=format&fit=crop"
+        title: "NIIBS Convention Centre Website",
+        desc: "NIIBS Convention Centre is the conference partner and prime location for local, regional and international conferences and events.",
+        tech: ["WordPress", "SEO", "Google Analytics"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://conventions.niibs.lk/",
+        image: "/images/projects/niibs-convention-centre-img.webp"
     },
     {
-        title: "FinTrack Mobile App",
-        desc: "Cross-platform personal finance tracker featuring AI-driven spending categorization and goal forecasting.",
-        tech: ["React Native", "Expo", "Node.js"],
-        category: "MOBILE_SYS",
-        filter: "app" as FilterKey,
-        link: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=800&auto=format&fit=crop"
+        title: "NIIBS Campus Website",
+        desc: "NIIBS is a degree awarding institute recognized by the Government of Sri Lanka under the provisions of the Universities Act No.16 of 1978.",
+        tech: ["WordPress", "SEO", "Google Analytics"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://niibs.lk/",
+        image: "/images/projects/niibs-img.webp"
     },
     {
-        title: "Foundry Design System",
-        desc: "Comprehensive UI component library and design token system built for scalable product teams.",
-        tech: ["Figma", "React", "Storybook"],
-        category: "DESIGN_SYS",
-        filter: "uiux" as FilterKey,
-        figma: "#",
-        github: "#",
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
+        title: "TEC ROOM Website",
+        desc: "TEC ROOM  is a Sri Lankan technology website, publishing news, feature stories, software & app reviews, tech tutorials and product reviews in Sinhala.",
+        tech: ["WordPress", "Cloudflare", "OneSignal", "PWA"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://tecroom.lk/",
+        image: "/images/projects/tecroom-img.webp"
     },
-        {
+    {
+        title: "ChineseFor.LK Website",
+        desc: "ChineseFor.LK is mainly focusing on every day using authentic Mandarin Chinese expressions to let you speak Chinese like a native.",
+        tech: ["WordPress", "WooCommerce", "Cloudflare"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://chinesefor.lk/",
+        image: "/images/projects/chineseforlk-img.webp"
+    },
+    {
+        title: "Weather Web App",
+        desc: "I used HTML, CSS and JavaScript to create this web app. Mainly the most popular CSS framework, Boostrap framework and font-awsome icon library were used to improve the appearance of the website.",
+        tech: ["JavaScript", "HTML", "CSS", "JQuery", "Bootstrap"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://weather-web-app-60162f.netlify.app/",
+        github: "https://github.com/buddhirangana/weather-web-app",
+        image: "/images/projects/weather-web-app-img.webp"
+    },
+    {
+        title: "Permalink Generator",
+        desc: "Using regular expressions we create a quick and effective way to generate a friendly slug that can be used in a URL, including support for special characters!",
+        tech: ["JavaScript", "HTML", "CSS", "JQuery", "Bootstrap"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://buddhirangana.github.io/permalink-generator/",
+        github: "https://github.com/buddhirangana/permalink-generator",
+        image: "/images/projects/permalink-generator-img.webp"
+    },
+    {
+        title: "Spicy Corner Website",
+        desc: "I used HTML, CSS and JavaScript to create this website. Mainly the most popular CSS framework, Boostrap framework and font-awsome icon library were used to improve the appearance of the website.",
+        tech: ["JavaScript", "HTML", "CSS", "JQuery", "Bootstrap"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://spicy-corner.netlify.app/",
+        github: "https://github.com/buddhirangana/spicy-corner-website",
+        image: "/images/projects/spicy-corner-website-img.webp"
+    },
+    {
+        title: "YouTube Thumbnail Downloader",
+        desc: "YouTube Thumbnail Downloader is a Tool. Which can be created using HTML, CSS and Javascript. With the help of this tool you can download the “Thumbnail” used on any YouTube video.",
+        tech: ["JavaScript", "HTML", "CSS", "JQuery", "Bootstrap"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://buddhirangana.github.io/youtube-thumbnail-downloader/",
+        github: "https://github.com/buddhirangana/youtube-thumbnail-downloader",
+        image: "/images/projects/yt-downloader-img.webp"
+    },
+    {
         title: "Sri Lanka Covid-19 Statistics",
         desc: "Chrome extension developed for provides the current real time situation of the patients reported in Sri Lanka.",
         tech: ["JavaScript", "HTML", "CSS"],
-        category: "APP",
+        category: "APPLICATION",
         filter: "app" as FilterKey,
         github: "https://github.com/buddhirangana/SL-Covid-19-Statistics-Chrome-Extension",
         image: "/images/projects/sri-lanka-covid-19-statistics-img.webp"
@@ -118,7 +209,7 @@ const PROJECTS = [
         title: "Student Management System",
         desc: "Student Management System is software which is helpful for students as well as the school authorities.",
         tech: ["Java", "MySQL", "NetBeans", "PhpMyAdmin", "XAMPP"],
-        category: "APP",
+        category: "APPLICATION",
         filter: "app" as FilterKey,
         github: "https://github.com/buddhirangana/Student-Management-System",
         image: "/images/projects/sms-system-img.webp"
@@ -357,9 +448,9 @@ export default function ProjectsSection() {
                                         {project.desc}
                                     </p>
 
-                                    <a 
-                                        href={project.link || project.github || (project as any).figma || "#"} 
-                                        target="_blank" 
+                                    <a
+                                        href={project.link || project.github || (project as any).figma || "#"}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className="mt-5 flex mb-4 items-center justify-between pt-8 border-t border-white/5 group/link cursor-pointer"
                                     >
@@ -390,7 +481,7 @@ export default function ProjectsSection() {
                             <div className="w-20 h-20 rounded-3xl bg-white/5 border border-white/5 flex items-center justify-center">
                                 <Database size={32} className="text-white/10" />
                             </div>
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/20">No_Records_Found</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/20">No Records Found</span>
                         </motion.div>
                     )}
                 </AnimatePresence>
