@@ -14,7 +14,6 @@ export default function ContactSection() {
 
     useEffect(() => {
         setTxId(Math.random().toString(16).substring(2, 10).toUpperCase());
-        console.log("reCAPTCHA Site Key Status:", !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
     }, []);
 
     const sectionRef = useRef<HTMLElement>(null);
