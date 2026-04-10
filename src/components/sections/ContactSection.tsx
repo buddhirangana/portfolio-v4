@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCheck, Activity, Globe, Cpu } from "lucide-react";
+import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCheck, Activity, Globe, Cpu, User } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactSection() {
@@ -32,7 +32,7 @@ export default function ContactSection() {
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
-                Academic
+                Connect
             </motion.div>
 
             <div className="section-container relative z-10">
@@ -44,10 +44,10 @@ export default function ContactSection() {
                     >
                         <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                             <MessageSquare size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Communication Node</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Get In Touch</span>
                         </div>
                         <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
-                            Establish <span className="text-white/20 italic font-light">Uplink</span>
+                            Let's <span className="text-white/20 italic font-light">Connect</span>
                             <motion.span
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
@@ -65,8 +65,8 @@ export default function ContactSection() {
                         className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
                     >
                         <div className="hidden md:block">
-                            <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Stability: 99.8%</div>
-                            <div className="text-xs font-mono text-theme-primary">NODE_SIGNAL_READY</div>
+                            <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">STATUS: ONLINE</div>
+                            <div className="text-xs font-mono text-theme-primary">REPLY TIME: 24 HOURS</div>
                         </div>
                         <Globe size={32} className="text-theme-primary/20" />
                     </motion.div>
@@ -81,14 +81,14 @@ export default function ContactSection() {
                             className="max-w-md"
                         >
                             <p className="text-xl text-white/50 leading-relaxed font-medium mb-12 text-center lg:text-left">
-                                Architecting high-performance digital futures. Select your preferred <span className="text-white">transmission protocol</span> to initiate synchronization.
+                                Whether you have a specific project in mind or just want to <span className="text-white">explore possibilities</span>, I'm always open to discussing new opportunities.
                             </p>
 
                             <div className="space-y-6">
                                 {[
-                                    { icon: Mail, label: "SECURE_CHANNEL", value: "info.buddhirangana@gmail.com", metric: "ENCRYPTED_V3", color: "text-theme-primary" },
-                                    { icon: MapPin, label: "BASE_ORIGIN", value: "Colombo, Sri Lanka", metric: "04° N, 79° E", color: "text-theme-secondary" },
-                                    { icon: Phone, label: "DIRECT_COMMS", value: "+94 75 647 7093", metric: "CARRIER_STABLE", color: "text-theme-accent" }
+                                    { icon: Mail, label: "Email Address", value: "info.buddhirangana@gmail.com", metric: "PRIMARY CONTACT", color: "text-theme-primary" },
+                                    { icon: MapPin, label: "Location", value: "Colombo, Sri Lanka", metric: "AVAILABLE WORLDWIDE", color: "text-theme-secondary" },
+                                    { icon: Phone, label: "Phone Number", value: "+94 75 647 7093", metric: "BUSINESS HOURS ONLY", color: "text-theme-accent" }
                                 ].map((item, i) => (
                                     <motion.div
                                         key={item.label}
@@ -103,7 +103,7 @@ export default function ContactSection() {
                                         </div>
                                         <div className="flex-1">
                                             <div className="flex justify-between items-center mb-1">
-                                                <span className="text-[8px] font-bold uppercase tracking-widest text-white/20">[{item.label}]</span>
+                                                <span className="text-[8px] font-bold uppercase tracking-widest text-white/20">{item.label}</span>
                                                 <span className="text-[7px] font-mono text-theme-primary/40">{item.metric}</span>
                                             </div>
                                             <p className="text-white font-bold tracking-tight text-base sm:text-lg break-all sm:break-normal">{item.value}</p>
@@ -126,11 +126,11 @@ export default function ContactSection() {
                                             />
                                         ))}
                                     </div>
-                                    <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Neural Link Optimized</span>
+                                    <span className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Available For Freelance Inquiries</span>
                                 </div>
                                 <div className="flex items-center gap-4 opacity-20 justify-center lg:justify-start">
-                                    <Cpu size={12} />
-                                    <span className="text-[8px] font-mono tracking-widest uppercase">Encryption_Cycle: 4096-BIT_STABLE</span>
+                                    <ShieldCheck size={12} />
+                                    <span className="text-[8px] font-mono tracking-widest uppercase">Privacy Status: Strictly Confidential</span>
                                 </div>
                             </div>
                         </div>
@@ -143,26 +143,13 @@ export default function ContactSection() {
                         className="lg:col-span-7"
                     >
                         <div className="glass-card-premium rounded-[3.5rem] p-12 border border-white/5 relative overflow-hidden group">
-                            {/* Terminal Top Decal */}
-                            <div className="flex justify-between items-center mb-12 py-4 px-8 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-md">
-                                <div className="flex gap-2.5">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-theme-primary/60 animate-pulse" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[9px] font-mono text-white/20 tracking-[0.4em] uppercase">Uplink_Console_V4.2.0</span>
-                                    <Activity size={10} className="text-theme-primary/40" />
-                                </div>
-                                <Wifi size={12} className="text-theme-primary animate-pulse" />
-                            </div>
                             <form action="https://formspree.io/f/xzbwjrvp" method="POST" className="space-y-6 relative z-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-3">
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                             <label className="text-white/30 flex items-center gap-2">
-                                                <Terminal size={10} className="text-theme-primary" />
-                                                Identity_Name
+                                                <User size={10} className="text-theme-primary" />
+                                                Full Name
                                             </label>
                                             {focusedField === 'name' && <span className="text-theme-primary animate-pulse">AWAITING_INPUT</span>}
                                         </div>
@@ -179,8 +166,8 @@ export default function ContactSection() {
                                     <div className="space-y-3">
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                             <label className="text-white/30 flex items-center gap-2">
-                                                <ShieldCheck size={10} className="text-theme-primary" />
-                                                Routing_Email
+                                                <Mail size={10} className="text-theme-primary" />
+                                                Email Address
                                             </label>
                                             {focusedField === 'email' && <span className="text-theme-primary animate-pulse">VALIDATING</span>}
                                         </div>
@@ -200,7 +187,7 @@ export default function ContactSection() {
                                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                         <label className="text-white/30 flex items-center gap-2">
                                             <Zap size={10} className="text-theme-primary" />
-                                            Subject_Line
+                                            Subject
                                         </label>
                                     </div>
                                     <input
@@ -218,7 +205,7 @@ export default function ContactSection() {
                                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
                                         <label className="text-white/30 flex items-center gap-2">
                                             <Activity size={10} className="text-theme-primary" />
-                                            Transmission_Data
+                                            Message
                                         </label>
                                     </div>
                                     <textarea
@@ -249,8 +236,8 @@ export default function ContactSection() {
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-theme-primary to-theme-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
                                     <span className="relative z-10 flex items-center justify-center gap-4">
-                                        Send Message
                                         <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        Send Message
                                     </span>
                                 </motion.button>
                             </form>
@@ -260,15 +247,15 @@ export default function ContactSection() {
                                 <div className="flex gap-10">
                                     <div className="flex items-center gap-3 text-[9px] font-mono font-bold tracking-widest">
                                         <ShieldCheck size={14} className="text-theme-primary" />
-                                        SSL_VERIFIED
+                                        SECURE FORM
                                     </div>
                                     <div className="flex items-center gap-3 text-[9px] font-mono font-bold tracking-widest">
                                         <Zap size={14} className="text-theme-primary" />
-                                        PRIORITY_ONE
+                                        FAST RESPONSE
                                     </div>
                                 </div>
                                 <div className="text-[9px] font-mono font-bold text-white/40">
-                                    TX_ID: {txId}
+                                    NO SPAM GUARANTEED
                                 </div>
                             </div>
 
