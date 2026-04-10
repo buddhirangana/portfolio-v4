@@ -75,11 +75,36 @@ export default function ChatBot() {
 
     const getBotResponse = (input: string): string => {
         const lower = input.toLowerCase();
-        if (lower.includes("who is buddhi rangana")) return "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger, and founder of DigiFox & TEC ROOM. Based in Colombo, Sri Lanka.";
-        if (lower.includes("skill")) return "Buddhi is a Lead Developer specializing in Full-Stack Engineering. His core stack includes React, Next.js, PHP (Laravel/Wordpress), and Python for AI/Data science.";
-        if (lower.includes("project")) return "He has built over 10+ major projects, including the DigiFox Agency Portal and TEC ROOM Blog. You can see his best work in the 'Technical Research' section!";
-        if (lower.includes("contact") || lower.includes("hire")) return "You can reach Buddhi via email at info.buddhirangana@gmail.com or use the 'Establish Uplink' form at the bottom of the page.";
-        return "Hmm 🤔, I'm not sure about that one. Try asking about Buddhi's skills, experience, projects, education, or contact details. You can also use the quick suggestions below!";
+        
+        if (lower.includes("who is") || lower.includes("buddhi rangana")) {
+            return "Buddhi Rangana is a multi-talented entrepreneur, Web Developer, and Founder of DigiFox Technologies & TEC ROOM. He specializes in building high-performance digital solutions and has a strong background in tech leadership and research.";
+        }
+        
+        if (lower.includes("skill") || lower.includes("technolog") || lower.includes("stack")) {
+            return "Buddhi's core expertise lies in Web Development. He's proficient in React, Next.js, and TypeScript for the frontend, combined with PHP (Laravel / WordPress) and Node.js for robust backends. He's also passionate about AI and Data Science integration.";
+        }
+        
+        if (lower.includes("project") || lower.includes("best work") || lower.includes("technical research")) {
+            return "He has completed over 10+ major projects. Notable ones include the Web based Hostel Management System and the NIIBS Campus Website. You can explore his latest work in the 'Featured Projects' section of this portfolio, featuring advanced designs and smooth interactions.";
+        }
+
+        if (lower.includes("security") || lower.includes("captcha") || lower.includes("recaptcha")) {
+            return "Great question! This portfolio features a highly secure 'Contact' form protected by Google reCAPTCHA v2. This ensures that all inquiries are verified and protected from automated spam while maintaining a premium user experience.";
+        }
+        
+        if (lower.includes("contact") || lower.includes("hire") || lower.includes("email") || lower.includes("reach")) {
+            return "You can reach Buddhi via email at info.buddhirangana@gmail.com, or directly through the 'Contact' section at the bottom of this page. He's available for worldwide freelance inquiries and project discussions.";
+        }
+
+        if (lower.includes("experience") || lower.includes("jobs") || lower.includes("background")) {
+            return "Buddhi has extensive experience in tech leadership, currently serving as a Lead Developer. He has a track record of building and scaling digital products for various industries. Check out the 'Career Timeline' for a detailed breakdown of his professional journey.";
+        }
+
+        if (lower.includes("education") || lower.includes("degree")) {
+            return "Buddhi is reading BSc (Hons.) in Information Technology at NIIBS. You can see his full academic background and specific certifications in the 'Education Qualifications section of this site.";
+        }
+
+        return "I'm still learning about specific details, but I can tell you about Buddhi's skills, projects, professional experience, education, or even the security features of this site! What else would you like to know?";
     };
 
     return (
