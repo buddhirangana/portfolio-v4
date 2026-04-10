@@ -7,6 +7,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactSection() {
     const [focusedField, setFocusedField] = useState<string | null>(null);
+    const [isCaptchaSolved, setIsCaptchaSolved] = useState<boolean>(false);
+    const [showCaptchaError, setShowCaptchaError] = useState<boolean>(false);
     // Generate TX_ID only on the client (after mount) to avoid SSR/client hydration mismatch
     const [txId, setTxId] = useState<string>("--------");
 
@@ -21,6 +23,15 @@ export default function ContactSection() {
 
     // Smooth reveal for technical decals
     const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !isCaptchaSolved) {
+            e.preventDefault();
+            setShowCaptchaError(true);
+            // Hide error after 3 seconds
+            setTimeout(() => setShowCaptchaError(false), 3000);
+        }
+    };
 
     return (
         <section id="contact" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
@@ -143,7 +154,7 @@ export default function ContactSection() {
                         className="lg:col-span-7"
                     >
                         <div className="glass-card-premium rounded-[3.5rem] p-12 border border-white/5 relative overflow-hidden group">
-                            <form action="https://formspree.io/f/xzbwjrvp" method="POST" className="space-y-6 relative z-10">
+                            <form action="https://formspree.io/f/xlgoykgj" method="POST" onSubmit={handleSubmit} className="space-y-6 relative z-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-3">
                                         <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] px-2">
@@ -221,11 +232,26 @@ export default function ContactSection() {
 
                                 {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
                                     <div className="flex justify-center py-4">
-                                        <ReCAPTCHA
-                                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                                            theme="dark"
-                                        />
+                                        <div className="rounded-xl overflow-hidden border border-white/5 bg-dark-400/50 p-[1px]">
+                                            <ReCAPTCHA
+                                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                                theme="dark"
+                                                onChange={(val) => setIsCaptchaSolved(!!val)}
+                                                onExpired={() => setIsCaptchaSolved(false)}
+                                            />
+                                        </div>
                                     </div>
+                                )}
+
+                                {showCaptchaError && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="text-center text-red-500 text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center justify-center gap-2"
+                                    >
+                                        <ShieldCheck size={12} />
+                                        Please complete the reCAPTCHA challenge
+                                    </motion.div>
                                 )}
 
                                 <motion.button

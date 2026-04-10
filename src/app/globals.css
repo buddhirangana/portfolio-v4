@@ -452,3 +452,22 @@ body {
 .hero-glitch-text:hover::after {
   opacity: 1;
 }
+
+/* =============================================
+   reCAPTCHA Fixes
+   ============================================= */
+/* Remove default borders/shadows from Google reCAPTCHA */
+.g-recaptcha,
+.g-recaptcha iframe,
+iframe[title="reCAPTCHA"],
+.rc-anchor-light,
+.rc-anchor-dark {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Force dark theme consistency for the container if needed */
+.rc-anchor-dark {
+  background: #222 !important;
+  border-color: #333 !important;
+}
