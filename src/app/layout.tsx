@@ -104,6 +104,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://buddhirangana.com" />
+        <meta name="google-site-verification" content="2UCDSEjh0XD-vjMkGe9VWWUHnYlKvnziBT2k3wBlObs" />
       </head>
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-dark-400 text-white overflow-x-hidden noise-overlay`}
