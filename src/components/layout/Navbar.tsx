@@ -109,7 +109,7 @@ export default function Navbar() {
                             <a href="https://www.linkedin.com/in/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
                         </div>
                         <motion.button
-                            onClick={() => window.open("#", "_blank")}
+                            onClick={() => window.open("/documents/Buddhi_Rangana_CV.pdf", "_blank")}
                             whileHover={{ scale: 1.05 }}
                             className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.4em] text-white whitespace-nowrap"
                         >
