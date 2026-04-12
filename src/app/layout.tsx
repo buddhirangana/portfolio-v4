@@ -9,6 +9,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import ChatBot from "@/components/ui/ChatBot";
+import Script from "next/script";
 
 // Load Inter and Poppins from Google Fonts with CSS variable exposure
 const inter = Inter({
@@ -126,6 +127,19 @@ export default function RootLayout({
             <ChatBot />
           </SmoothScrollProvider>
         </ThemeProvider>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-R5NV7LT3WN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R5NV7LT3WN');
+          `}
+        </Script>
       </body>
     </html>
   );
