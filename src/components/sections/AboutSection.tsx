@@ -166,7 +166,7 @@ export default function AboutSection() {
 
                                 <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 flex-1">
                                     <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Buddhi Rangana</h3>
-                                    <p className="text-sm md:text-md text-white/50 leading-relaxed mb-6 max-w-2xl">Entrepreneur • Founder @ DFox Technologies (Pvt) Ltd • Founder @ TEC ROOM • Aspiring Full-Stack Developer</p>
+                                    <p className="text-sm md:text-md text-white/50 leading-relaxed mb-6 max-w-2xl">Entrepreneur • Founder @ DFox Technologies (Pvt) Ltd • Founder @ TEC ROOM • Full-Stack Developer</p>
                                     <div className="flex justify-center lg:justify-start gap-4">
                                         <span className="text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-white/40">Freelancer</span>
                                         <span className="text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 bg-theme-primary/10 border border-theme-primary/20 rounded-full text-theme-primary">Available for Work</span>

@@ -28,7 +28,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://buddhirangana.com"),
   title: {
-    default: "Buddhi Rangana | Entrepreneur & Aspiring Full-Stack Developer",
+    default: "Buddhi Rangana | Entrepreneur & Full-Stack Developer",
     template: "%s | Buddhi Rangana",
   },
   description:
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   keywords: [
     "Buddhi Rangana",
     "Web Developer",
-    "Aspiring Full-Stack Developer",
+    "Full-Stack Developer",
     "AI/ML Enthusiast",
     "Full Stack Developer",
     "WordPress Expert",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://buddhirangana.com",
     siteName: "Buddhi Rangana Portfolio",
-    title: "Buddhi Rangana | Entrepreneur & Aspiring Full-Stack Developer",
+    title: "Buddhi Rangana | Entrepreneur & Full-Stack Developer",
     description: "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
     images: [
       {
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Buddhi Rangana | Entrepreneur & Aspiring Full-Stack Developer",
+    title: "Buddhi Rangana | Entrepreneur & Full-Stack Developer",
     description: "Buddhi Rangana is a multi-talented entrepreneur, web developer, tech blogger and founder of DigiFox Technologies & TEC ROOM.",
     images: ["/og-image.png"],
   },

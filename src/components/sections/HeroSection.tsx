@@ -30,7 +30,7 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
 // ── Typewriter roles ────────────────────────────────────────────────────────────
 const ROLES = [
     "Entrepreneur",
-    "Aspiring Full-Stack Developer",
+    "Full-Stack Developer",
     "Founder of DigiFox Technologies",
     "Founder of TEC ROOM",
     "Web Developer",
