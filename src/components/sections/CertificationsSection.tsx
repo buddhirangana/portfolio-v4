@@ -363,6 +363,7 @@ export default function CertificationsSection() {
 
 function Card({ cert, index, onImageClick }: { cert: any; index: number; onImageClick: (img: string) => void }) {
     const cardRef = useRef<HTMLDivElement>(null);
+    const rectRef = useRef<DOMRect | null>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -372,9 +373,18 @@ function Card({ cert, index, onImageClick }: { cert: any; index: number; onImage
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
+    const handleMouseEnter = () => {
+        if (cardRef.current) {
+            rectRef.current = cardRef.current.getBoundingClientRect();
+        }
+    };
+
     const handleMouseMove = (e: React.MouseEvent) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
+        if (!rectRef.current && cardRef.current) {
+            rectRef.current = cardRef.current.getBoundingClientRect();
+        }
+        if (!rectRef.current) return;
+        const rect = rectRef.current;
         const width = rect.width;
         const height = rect.height;
         const mouseX = e.clientX - rect.left;
@@ -386,6 +396,7 @@ function Card({ cert, index, onImageClick }: { cert: any; index: number; onImage
     };
 
     const handleMouseLeave = () => {
+        rectRef.current = null;
         x.set(0);
         y.set(0);
     };
@@ -393,6 +404,7 @@ function Card({ cert, index, onImageClick }: { cert: any; index: number; onImage
     return (
         <motion.div
             ref={cardRef}
+            onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}

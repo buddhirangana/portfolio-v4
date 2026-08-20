@@ -16,6 +16,16 @@ const nextConfig = {
   turbopack: {
     root: __dirname,
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'next/dist/build/polyfills/polyfill-module': path.resolve(__dirname, 'src/lib/empty-polyfill.js'),
+        'next/dist/build/polyfills/object-assign': path.resolve(__dirname, 'src/lib/empty-polyfill.js'),
+      };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

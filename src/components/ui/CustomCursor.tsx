@@ -21,24 +21,21 @@ export default function CustomCursor() {
             cursorY.set(e.clientY);
         };
 
-        const handleHoverStart = () => setIsHovering(true);
-        const handleHoverEnd = () => setIsHovering(false);
+        const handleMouseOver = (e: MouseEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (target && target.closest("a, button, [role='button'], input, textarea, select")) {
+                setIsHovering(true);
+            } else {
+                setIsHovering(false);
+            }
+        };
 
-        window.addEventListener("mousemove", moveCursor);
-
-        // Track links and buttons for hover effect
-        const interactables = document.querySelectorAll("a, button, [role='button']");
-        interactables.forEach((el) => {
-            el.addEventListener("mouseenter", handleHoverStart);
-            el.addEventListener("mouseleave", handleHoverEnd);
-        });
+        window.addEventListener("mousemove", moveCursor, { passive: true });
+        window.addEventListener("mouseover", handleMouseOver, { passive: true });
 
         return () => {
             window.removeEventListener("mousemove", moveCursor);
-            interactables.forEach((el) => {
-                el.removeEventListener("mouseenter", handleHoverStart);
-                el.removeEventListener("mouseleave", handleHoverEnd);
-            });
+            window.removeEventListener("mouseover", handleMouseOver);
         };
     }, [cursorX, cursorY]);
 
