@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Instagram, Facebook, ArrowRight, Figma } from "lucide-react";
+import { ResearchGateIcon, GoogleScholarIcon, OrcidIcon } from "@/components/sections/ResearchSection";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 16 }: { size?: number }) => (

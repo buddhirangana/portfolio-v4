@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, Facebook, ArrowUp, Terminal, Figma } from "lucide-react";
+import { ResearchGateIcon, GoogleScholarIcon, OrcidIcon } from "@/components/sections/ResearchSection";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 24 }: { size?: number }) => (
@@ -85,7 +86,7 @@ export default function Footer() {
                     <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
                         <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-10">[ Quick Links ]</h4>
                         <ul className="space-y-8">
-                            {["About", "Experience", "Education", "Projects", "Contact"].map((link, i) => (
+                            {["About", "Experience", "Education", "Projects", "Research", "Contact"].map((link, i) => (
                                 <li key={link}>
                                     <a
                                         href={`#${link.toLowerCase()}`}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { X, Github, Linkedin, Instagram, Facebook, Terminal, Satellite, Zap, User, Briefcase, GraduationCap, Database, Mail } from "lucide-react";
+import { X, Github, Linkedin, Instagram, Facebook, Terminal, Satellite, Zap, User, Briefcase, GraduationCap, Database, Mail, BookOpen } from "lucide-react";
 
 // ── Custom TikTok Icon ────────────────────────────────────────────────────────
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
@@ -32,6 +32,7 @@ const NAV_LINKS = [
     { name: "Experience", href: "#experience", icon: Briefcase },
     { name: "Education", href: "#education", icon: GraduationCap },
     { name: "Projects", href: "#projects", icon: Database },
+    { name: "Research", href: "#research", icon: BookOpen },
     { name: "Contact", href: "#contact", icon: Mail },
 ];
 

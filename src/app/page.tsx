@@ -4,6 +4,7 @@ import ToolsSection from "@/components/sections/ToolsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import ResearchSection from "@/components/sections/ResearchSection";
 import CertificationsSection from "@/components/sections/CertificationsSection";
 import GallerySection from "@/components/sections/GallerySection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -24,6 +25,7 @@ export default function Home() {
         <ExperienceSection />
         <EducationSection />
         <ProjectsSection />
+        <ResearchSection />
         <CertificationsSection />
         <GallerySection />
         <ContactSection />
