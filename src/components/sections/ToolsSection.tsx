@@ -3,14 +3,14 @@
 import React, { useRef } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform, type Variants } from "framer-motion";
 import { FaJava, FaCss3, FaPython, FaPhp, FaReact, FaNodeJs, FaWordpress, FaGitAlt } from "react-icons/fa";
-import { SiAndroidstudio, SiAngular, SiArduino, SiBootstrap, SiCanva, SiCloudflare, SiCplusplus, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGithub, SiGoogleanalytics, SiGooglechrome, SiGooglegemini, SiHeroku, SiHtml5, SiJavascript, SiJoomla, SiKotlin, SiLinux, SiMongodb, SiMysql, SiNextdotjs, SiNumpy, SiPandas, SiPostman, SiScikitlearn, SiShopify, SiStreamlit, SiSupabase, SiTailwindcss, SiTensorflow, SiTypescript, SiVercel, SiVirtualbox } from "react-icons/si";
+import { SiAndroidstudio, SiAngular, SiArduino, SiBootstrap, SiCanvas, SiCloudflare, SiCplusplus, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGithub, SiGoogleanalytics, SiGooglechrome, SiGooglegemini, SiHtml5, SiJavascript, SiJoomla, SiKotlin, SiLinux, SiMongodb, SiMysql, SiNextdotjs, SiNumpy, SiPandas, SiPostman, SiScikitlearn, SiShopify, SiStreamlit, SiSupabase, SiTailwindcss, SiTensorflow, SiTypescript, SiVercel, SiVirtualbox } from "react-icons/si";
 import { Code2, Database, Globe, Smartphone, Cloud, Palette, BrainCircuit, Wrench } from "lucide-react";
 import { BsFillBarChartFill } from "react-icons/bs";
 import { GrOracle } from "react-icons/gr";
 import { DiGhostSmall } from "react-icons/di";
-import { BiLogoNetlify } from "react-icons/bi";
+import { BiLogoNetlify, BiLogoHeroku } from "react-icons/bi";
 import { VscVscode } from "react-icons/vsc";
-import { TbBrandAdobeIllustrator, TbBrandAdobePhotoshop, TbBrandAdobePremier } from "react-icons/tb";
+import { TbBrandAdobeIllustrator, TbBrandAdobePhotoshop, TbBrandAdobePremiere } from "react-icons/tb";
 
 interface Skill {
     name: string;
@@ -110,7 +110,7 @@ const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "GitHub", icon: SiGithub, color: "#ffffff" },
             { name: "Vercel", icon: SiVercel, color: "#ffffff" },
             { name: "Netlify", icon: BiLogoNetlify, color: "#00C7B7" },
-            { name: "Heroku", icon: SiHeroku, color: "#9E70FF" },
+            { name: "Heroku", icon: BiLogoHeroku, color: "#9E70FF" },
             { name: "Linux", icon: SiLinux, color: "#FFCC33" },
             { name: "Oracle VirtualBox", icon: SiVirtualbox, color: "#FFD154" },
             { name: "Cloudflare", icon: SiCloudflare, color: "#F38020" },
@@ -139,8 +139,8 @@ const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "Figma", icon: SiFigma, color: "#F24E1E" },
             { name: "Adobe Illustrator", icon: TbBrandAdobeIllustrator, color: "#FF9A00" },
             { name: "Adobe Photoshop", icon: TbBrandAdobePhotoshop, color: "#31A8FF" },
-            { name: "Adobe Premiere Pro", icon: TbBrandAdobePremier, color: "#9999FF" },
-            { name: "Canva", icon: SiCanva, color: "#00C4CC" },
+            { name: "Adobe Premiere Pro", icon: TbBrandAdobePremiere, color: "#9999FF" },
+            { name: "Canva", icon: SiCanvas, color: "#00C4CC" },
         ],
     },
 ];
