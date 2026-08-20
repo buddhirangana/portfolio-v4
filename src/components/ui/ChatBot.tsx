@@ -111,6 +111,7 @@ export default function ChatBot() {
         <>
             {/* ── Trigger Button ── */}
             <motion.button
+                aria-label="Open AI Chatbot Assistant"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(true)}
@@ -160,12 +161,14 @@ export default function ChatBot() {
                             </div>
                             <div className="flex items-center gap-2">
                                 <button
+                                    aria-label={isMinimized ? "Maximize chatbot window" : "Minimize chatbot window"}
                                     onClick={() => setIsMinimized(!isMinimized)}
                                     className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white/80"
                                 >
                                     {isMinimized ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
                                 </button>
                                 <button
+                                    aria-label="Close chatbot window"
                                     onClick={() => setIsOpen(false)}
                                     className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
                                 >
@@ -250,6 +253,7 @@ export default function ChatBot() {
                                             </div>
                                             <button
                                                 type="submit"
+                                                aria-label="Send message"
                                                 className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white/40 flex items-center justify-center hover:text-theme-primary hover:border-theme-primary/30 hover:bg-theme-primary/5 active:scale-95 transition-all shadow-lg"
                                             >
                                                 <Send size={20} />

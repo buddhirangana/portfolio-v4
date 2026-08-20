@@ -1,0 +1,37 @@
+# Buddhi Rangana - Portfolio
+
+> Full-Stack Software Developer, Entrepreneur, and Founder of DigiFox Technologies & TEC ROOM based in Colombo, Sri Lanka.
+
+## Overview
+Buddhi Rangana is a Full-Stack Engineer and Tech Entrepreneur specializing in modern web applications, scalable cloud infrastructure, and AI integration. He is currently pursuing a BSc (Hons) in Information Technology at NIIBS Campus.
+
+## Core Capabilities & Tech Stack
+- **Frontend**: Next.js (App Router), React 19, TypeScript, Tailwind CSS, Framer Motion, HTML5, CSS3
+- **Backend**: Node.js, PHP (Laravel / WordPress), RESTful APIs, MySQL, PostgreSQL, Firebase
+- **Tooling & Cloud**: Git, GitHub, Vercel, Docker, Figma, Linux
+
+## Key Pages & Navigation
+- [Homepage](https://buddhirangana.com/): Executive summary, key metrics, and high-level portfolio overview.
+- [About & Tech Stack](https://buddhirangana.com/about): Complete biography, tech stack, leadership background, and photo gallery.
+- [Featured Projects](https://buddhirangana.com/projects): Showcase of web apps, mobile apps, GPA calculators, ML classifiers, and open-source repos.
+- [Research & Publications](https://buddhirangana.com/research): Peer-reviewed research papers, empirical studies on ChatGPT & Google Gemini, DOIs, and BibTeX citations.
+- [Work Experience](https://buddhirangana.com/experience): Software engineering career milestones, lead developer roles, and entrepreneurial ventures.
+- [Education & Credentials](https://buddhirangana.com/education): BSc (Hons) in IT degree details, academic qualifications, and professional certifications.
+- [Contact](https://buddhirangana.com/contact): Contact details, location, and inquiry form.
+
+## Academic Research
+- **Title**: A Quantitative Study on the Impact of the Use of ChatGPT and Google Gemini on the Academic Performance of IT Undergraduates at NIIBS Campus
+- **Authors**: Buddhi Rangana
+- **Journal**: Journal of Research Technology and Engineering (JRTE)
+- **DOI**: [10.5281/zenodo.21696248](https://doi.org/10.5281/zenodo.21696248)
+
+## Academic & Professional Profiles
+- **Google Scholar**: [https://scholar.google.com/citations?user=LoIBv4AAAAAJ](https://scholar.google.com/citations?user=LoIBv4AAAAAJ)
+- **ORCID iD**: [0009-0009-8555-171X](https://orcid.org/0009-0009-8555-171X)
+- **ResearchGate**: [https://www.researchgate.net/profile/Buddhi-Rangana](https://www.researchgate.net/profile/Buddhi-Rangana)
+- **GitHub**: [https://github.com/buddhirangana](https://github.com/buddhirangana)
+- **LinkedIn**: [https://www.linkedin.com/in/buddhirangana](https://www.linkedin.com/in/buddhirangana)
+
+## Contact Information
+- **Email**: info.buddhirangana@gmail.com
+- **Location**: Colombo, Sri Lanka
