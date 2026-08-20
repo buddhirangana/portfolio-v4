@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { Github, Linkedin, Instagram, Facebook, ArrowUp, Terminal, Figma } from "lucide-react";
 import { ResearchGateIcon, GoogleScholarIcon, OrcidIcon } from "@/components/sections/ResearchSection";
 
@@ -28,6 +29,7 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 export default function Footer() {
+    const pathname = usePathname();
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -89,7 +91,7 @@ export default function Footer() {
                             {["About", "Experience", "Education", "Projects", "Research", "Contact"].map((link, i) => (
                                 <li key={link}>
                                     <a
-                                        href={`#${link.toLowerCase()}`}
+                                        href={`/${link.toLowerCase()}`}
                                         className="group flex items-center justify-center md:justify-start gap-6 text-sm font-bold text-white/40 hover:text-white transition-all duration-300"
                                     >
                                         <div className="flex flex-col items-center md:items-start">

@@ -276,7 +276,7 @@ export default function HeroSection() {
                             className="flex flex-col sm:flex-row items-center lg:items-start sm:items-center gap-5 mb-14 w-full sm:w-auto"
                         >
                             <a
-                                href="#projects"
+                                href="/projects"
                                 className="group relative px-10 py-5 bg-theme-primary rounded-[1.75rem] text-xs font-bold uppercase tracking-[0.25em] text-white overflow-hidden shadow-[0_20px_50px_rgba(248,87,42,0.35)] hover:scale-105 active:scale-95 transition-transform duration-300"
                             >
                                 <span className="relative z-10 flex items-center gap-3">
@@ -286,7 +286,7 @@ export default function HeroSection() {
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                             </a>
                             <a
-                                href="#contact"
+                                href="/contact"
                                 className="flex items-center gap-3 px-10 py-5 rounded-[1.75rem] border border-white/10 bg-white/[0.03] hover:border-theme-primary/40 hover:bg-theme-primary/5 text-xs font-bold uppercase tracking-[0.25em] text-white/50 hover:text-white transition-all duration-400 group"
                             >
                                 <span className="w-1.5 h-1.5 rounded-full bg-theme-primary/40 group-hover:bg-theme-primary transition-colors" />

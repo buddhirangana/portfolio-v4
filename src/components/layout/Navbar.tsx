@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { X, Github, Linkedin, Instagram, Facebook, Terminal, Satellite, Zap, User, Briefcase, GraduationCap, Database, Mail, BookOpen } from "lucide-react";
 
@@ -28,15 +29,16 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 const NAV_LINKS = [
-    { name: "About", href: "#about", icon: User },
-    { name: "Experience", href: "#experience", icon: Briefcase },
-    { name: "Education", href: "#education", icon: GraduationCap },
-    { name: "Projects", href: "#projects", icon: Database },
-    { name: "Research", href: "#research", icon: BookOpen },
-    { name: "Contact", href: "#contact", icon: Mail },
+    { name: "About", href: "/about", icon: User },
+    { name: "Experience", href: "/experience", icon: Briefcase },
+    { name: "Education", href: "/education", icon: GraduationCap },
+    { name: "Projects", href: "/projects", icon: Database },
+    { name: "Research", href: "/research", icon: BookOpen },
+    { name: "Contact", href: "/contact", icon: Mail },
 ];
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
@@ -93,11 +95,11 @@ export default function Navbar() {
                                 href={link.href}
                                 className="px-4 py-2 group relative"
                             >
-                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 group-hover:text-white transition-colors">
+                                <span className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-colors ${pathname === link.href ? "text-theme-primary font-extrabold" : "text-white/30 group-hover:text-white"}`}>
                                     {link.name}
                                 </span>
                                 <motion.div
-                                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-theme-primary group-hover:w-full transition-all duration-500 rounded-full"
+                                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-theme-primary transition-all duration-500 rounded-full ${pathname === link.href ? "w-full" : "w-0 group-hover:w-full"}`}
                                 />
                             </motion.a>
                         ))}

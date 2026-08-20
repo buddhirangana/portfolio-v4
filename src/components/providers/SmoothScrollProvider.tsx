@@ -9,7 +9,7 @@ export default function SmoothScrollProvider({
     children: React.ReactNode;
 }) {
     return (
-        <ReactLenis root>
+        <ReactLenis root options={{ syncTouch: true }}>
             {children}
         </ReactLenis>
     );
