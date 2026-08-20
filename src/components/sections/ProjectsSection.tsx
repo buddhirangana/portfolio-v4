@@ -401,17 +401,17 @@ export default function ProjectsSection({ hideHeader = false }: { hideHeader?: b
                                         <div className="flex justify-end items-end">
                                             <div className="flex gap-2">
                                                 {project.github && (
-                                                    <a href={project.github} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
+                                                    <a href={project.github} aria-label={`View ${project.title} source code on GitHub`} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
                                                         <Github size={18} />
                                                     </a>
                                                 )}
                                                 {project.link && (
-                                                    <a href={project.link} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
+                                                    <a href={project.link} aria-label={`View live preview of ${project.title}`} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
                                                         <ExternalLink size={18} />
                                                     </a>
                                                 )}
                                                 {'figma' in project && (project as any).figma && (
-                                                    <a href={(project as any).figma} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
+                                                    <a href={(project as any).figma} aria-label={`View ${project.title} design on Figma`} className="p-3 bg-white/10 hover:bg-theme-primary rounded-xl transition-all border border-white/5" target="_blank" rel="noopener noreferrer">
                                                         <Figma size={18} />
                                                     </a>
                                                 )}

@@ -73,6 +73,7 @@ export default function Footer() {
                                     key={i}
                                     whileHover={{ y: -5, scale: 1.1 }}
                                     href={item.href}
+                                    aria-label={item.label}
                                     className="flex flex-col items-center gap-2 group"
                                 >
                                     <div className="w-12 h-12 rounded-2xl glass-card-premium border border-white/5 flex items-center justify-center text-white/30 group-hover:text-theme-primary group-hover:border-theme-primary/30 transition-all duration-500">

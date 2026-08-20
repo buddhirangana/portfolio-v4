@@ -320,6 +320,7 @@ export default function HeroSection() {
                                         key={label}
                                         whileHover={{ y: -6, scale: 1.15 }}
                                         href={href}
+                                        aria-label={label}
                                         className="w-9 h-9 rounded-xl glass-card-premium border border-white/5 hover:border-theme-primary/30 hover:bg-theme-primary/10 flex items-center justify-center text-white/25 hover:text-theme-primary transition-all duration-400"
                                     >
                                         <Icon size={16} />

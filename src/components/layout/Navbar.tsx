@@ -108,8 +108,8 @@ export default function Navbar() {
                     {/* Right Side Actions */}
                     <div className="hidden lg:flex items-center gap-6">
                         <div className="flex items-center gap-3 border-r border-white/5 pr-6">
-                            <a href="https://github.com/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={16} /></a>
-                            <a href="https://www.linkedin.com/in/buddhirangana" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
+                            <a href="https://github.com/buddhirangana" aria-label="GitHub Profile" className="text-white/20 hover:text-theme-primary transition-colors"><Github size={16} /></a>
+                            <a href="https://www.linkedin.com/in/buddhirangana" aria-label="LinkedIn Profile" className="text-white/20 hover:text-theme-primary transition-colors"><Linkedin size={16} /></a>
                         </div>
                         <motion.button
                             onClick={() => window.open("/documents/Buddhi_Rangana_CV.pdf", "_blank")}
@@ -131,6 +131,7 @@ export default function Navbar() {
 
                     {/* Mobile Toggle */}
                     <button
+                        aria-label="Toggle navigation menu"
                         className="lg:hidden w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
@@ -162,6 +163,7 @@ export default function Navbar() {
                                 </div>
                             </div>
                             <button
+                                aria-label="Close navigation menu"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-theme-primary transition-colors"
                             >
