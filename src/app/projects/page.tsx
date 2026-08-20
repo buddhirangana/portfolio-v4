@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import PageHeader from "@/components/ui/PageHeader";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 
 export const metadata: Metadata = {
@@ -16,8 +17,16 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-20">
-      <ProjectsSection />
+    <div>
+      <PageHeader
+        title="Featured"
+        highlightedText="Projects"
+        subtitle="A showcase of web applications, mobile apps, GPA calculators, ML tools, and digital platforms."
+        tag="WORKS & PRODUCTS"
+        decal="PROJECTS"
+        breadcrumbCurrent="Projects"
+      />
+      <ProjectsSection hideHeader={true} />
     </div>
   );
 }

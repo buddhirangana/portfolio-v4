@@ -220,7 +220,7 @@ const PROJECTS = [
 const PAGE_SIZE = 6;
 
 // ─── Main Section ──────────────────────────────────────────────────────────────
-export default function ProjectsSection() {
+export default function ProjectsSection({ hideHeader = false }: { hideHeader?: boolean }) {
     const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -248,54 +248,56 @@ export default function ProjectsSection() {
             {/* Background Architecture */}
             <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
             {/* Foundry Background Decals */}
-            <motion.div
+            {/* <motion.div
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
                 Portfolio
-            </motion.div>
+            </motion.div> */}
 
             <div className="section-container relative z-10">
 
                 {/* ── Header ── */}
-                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 md:gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="flex flex-col items-center md:items-start"
-                    >
-                        <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
-                            <Database size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Portfolio</span>
-                        </div>
-                        <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
-                            Featured <span className="text-white/20 italic font-light">Projects</span>
-                            <motion.span
-                                initial={{ scaleX: 0 }}
-                                whileInView={{ scaleX: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
-                            />
-                        </h2>
-
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
-                    >
-                        <div className="text-left md:text-right">
-                            <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">
-                                {filteredProjects.length} Projects Total
+                {!hideHeader && (
+                    <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 md:gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="flex flex-col items-center md:items-start"
+                        >
+                            <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
+                                <Database size={14} className="text-theme-primary" />
+                                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Portfolio</span>
                             </div>
-                            <div className="text-xs font-mono text-theme-primary">SELECTED WORKS</div>
-                        </div>
-                    </motion.div>
-                </div>
+                            <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
+                                Featured <span className="text-white/20 italic font-light">Projects</span>
+                                <motion.span
+                                    initial={{ scaleX: 0 }}
+                                    whileInView={{ scaleX: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                                />
+                            </h2>
+
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
+                        >
+                            <div className="text-left md:text-right">
+                                <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">
+                                    {filteredProjects.length} Projects Total
+                                </div>
+                                <div className="text-xs font-mono text-theme-primary">SELECTED WORKS</div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
 
                 {/* ── Filter Tabs ── */}
                 <motion.div

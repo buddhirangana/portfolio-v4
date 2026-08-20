@@ -72,7 +72,7 @@ const EXPERTISE = [
     }
 ];
 
-export default function AboutSection() {
+export default function AboutSection({ hideHeader = false }: { hideHeader?: boolean }) {
     const sectionRef = useRef<HTMLElement>(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
     const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
@@ -87,50 +87,40 @@ export default function AboutSection() {
             className="relative py-20 lg:py-32 overflow-hidden bg-dark-400"
         >
             {/* Foundry Background Decals */}
-            <motion.div
+            {/* <motion.div
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
                 About Me
-            </motion.div>
+            </motion.div> */}
 
             <div className="section-container relative z-10">
                 {/* Modernized Header */}
-                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 mb-12 lg:mb-24 text-center lg:text-left">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="max-w-2xl flex flex-col items-center lg:items-start"
-                    >
-                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 w-full">
-                            <span className="w-12 h-[1px] bg-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">About Me</span>
-                        </div>
-                        <h2 className="relative text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-8 pb-4">
-                            Engineering the <span className="italic font-light text-white/40">Digital Blueprint</span>
-                            <motion.span
-                                initial={{ scaleX: 0 }}
-                                whileInView={{ scaleX: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute bottom-0 left-0 lg:left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)] mx-auto lg:mx-0"
-                            />
-                        </h2>
-
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:text-right"
-                    >
-                        <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs ml-auto">
-                            Transforming complex ideas into scalable, high-performance digital systems through precision engineering and intelligent design.
-                        </p>
-                    </motion.div>
-                </div>
+                {!hideHeader && (
+                    <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 mb-12 lg:mb-24 text-center lg:text-left">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="max-w-2xl flex flex-col items-center lg:items-start"
+                        >
+                            <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 w-full">
+                                <span className="w-12 h-[1px] bg-theme-primary" />
+                                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">About Me</span>
+                            </div>
+                            <h2 className="relative text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-8 pb-4">
+                                Engineering the <span className="italic font-light text-white/40">Digital Blueprint</span>
+                                <motion.span
+                                    initial={{ scaleX: 0 }}
+                                    whileInView={{ scaleX: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                                />
+                            </h2>
+                        </motion.div>
+                    </div>
+                )}
 
                 {/* Asymmetrical Bento Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-32">

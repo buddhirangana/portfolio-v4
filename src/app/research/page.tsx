@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import PageHeader from "@/components/ui/PageHeader";
 import ResearchSection from "@/components/sections/ResearchSection";
 
 export const metadata: Metadata = {
@@ -16,8 +17,16 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
   return (
-    <div className="pt-20">
-      <ResearchSection />
+    <div>
+      <PageHeader
+        title="Research &"
+        highlightedText="Publications"
+        subtitle="Empirical research papers, academic publications, and contributions to AI and Software Engineering."
+        tag="PEER-REVIEWED PAPERS"
+        decal="RESEARCH"
+        breadcrumbCurrent="Research"
+      />
+      <ResearchSection hideHeader={true} />
     </div>
   );
 }

@@ -5,10 +5,18 @@ import { motion, useInView, useScroll, useSpring, useTransform } from "framer-mo
 import { Mail, Send, MapPin, Phone, MessageSquare, Terminal, Zap, Wifi, ShieldCheck, Activity, Globe, Cpu, User } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-export default function ContactSection() {
+export default function ContactSection({ hideHeader = false }: { hideHeader?: boolean }) {
     const [focusedField, setFocusedField] = useState<string | null>(null);
     const [isCaptchaSolved, setIsCaptchaSolved] = useState<boolean>(false);
     const [showCaptchaError, setShowCaptchaError] = useState<boolean>(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+    });
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
     // Generate TX_ID only on the client (after mount) to avoid SSR/client hydration mismatch
     const [txId, setTxId] = useState<string>("--------");
 
@@ -17,18 +25,44 @@ export default function ContactSection() {
     }, []);
 
     const sectionRef = useRef<HTMLElement>(null);
-    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
     const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
 
     // Smooth reveal for technical decals
     const decalX = useSpring(useTransform(scrollYProgress, [0, 1], [-100, 100]), { stiffness: 100, damping: 30 });
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !isCaptchaSolved) {
-            e.preventDefault();
-            setShowCaptchaError(true);
-            // Hide error after 3 seconds
-            setTimeout(() => setShowCaptchaError(false), 3000);
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+        setErrorMessage("");
+
+        try {
+            // Web3Forms API Endpoint
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: "ef9ca92e-b6d3-4874-[REDACTED]", // user access key
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject || "New Portfolio Contact Message",
+                    message: formData.message,
+                }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setStatus("success");
+                setFormData({ name: "", email: "", subject: "", message: "" });
+            } else {
+                setStatus("error");
+                setErrorMessage(result.message || "Failed to send message. Please try again.");
+            }
+        } catch (err) {
+            setStatus("error");
+            setErrorMessage("An unexpected error occurred. Please try again later.");
         }
     };
 
@@ -38,49 +72,50 @@ export default function ContactSection() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-theme-primary/5 blur-[180px] rounded-full pointer-events-none opacity-40" />
 
             {/* Foundry Background Decals */}
-            <motion.div
+            {/* <motion.div
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
                 Connect
-            </motion.div>
+            </motion.div> */}
 
             <div className="section-container relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="flex flex-col items-center md:items-start"
-                    >
-                        <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
-                            <MessageSquare size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Get In Touch</span>
-                        </div>
-                        <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
-                            Let's <span className="text-white/20 italic font-light">Connect</span>
-                            <motion.span
-                                initial={{ scaleX: 0 }}
-                                whileInView={{ scaleX: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
-                            />
-                        </h2>
+                {!hideHeader && (
+                    <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 mb-12 lg:mb-24 text-center md:text-left w-full">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="flex flex-col items-center md:items-start"
+                        >
+                            <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
+                                <MessageSquare size={14} className="text-theme-primary" />
+                                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">Get In Touch</span>
+                            </div>
+                            <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
+                                Let's <span className="text-white/20 italic font-light">Connect</span>
+                                <motion.span
+                                    initial={{ scaleX: 0 }}
+                                    whileInView={{ scaleX: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                                />
+                            </h2>
+                        </motion.div>
 
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
-                    >
-                        <div className="hidden md:block">
-                            <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">STATUS: ONLINE</div>
-                            <div className="text-xs font-mono text-theme-primary">REPLY TIME: 24 HOURS</div>
-                        </div>
-                        <Globe size={32} className="text-theme-primary/20" />
-                    </motion.div>
-                </div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-8 text-center md:text-right"
+                        >
+                            <div className="hidden md:block">
+                                <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">STATUS: ONLINE</div>
+                                <div className="text-xs font-mono text-theme-primary">REPLY TIME: 24 HOURS</div>
+                            </div>
+                            <Globe size={32} className="text-theme-primary/20" />
+                        </motion.div>
+                    </div>
+                )}
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                     {/* Info Sidebar (Span 5) */}

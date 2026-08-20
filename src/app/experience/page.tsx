@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import PageHeader from "@/components/ui/PageHeader";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 
 export const metadata: Metadata = {
@@ -16,8 +17,16 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="pt-20">
-      <ExperienceSection />
+    <div>
+      <PageHeader
+        title="Work"
+        highlightedText="Experience"
+        subtitle="Professional software engineering career milestones, leadership, and digital transformations."
+        tag="CAREER HISTORY"
+        decal="CAREER"
+        breadcrumbCurrent="Experience"
+      />
+      <ExperienceSection hideHeader={true} />
     </div>
   );
 }

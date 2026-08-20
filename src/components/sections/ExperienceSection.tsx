@@ -84,9 +84,8 @@ const EXPERIENCE = [
     }
 ];
 
-export default function ExperienceSection() {
+export default function ExperienceSection({ hideHeader = false }: { hideHeader?: boolean }) {
     const sectionRef = useRef<HTMLElement>(null);
-    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
     const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
 
     // Smooth reveal for technical decals
@@ -101,36 +100,38 @@ export default function ExperienceSection() {
     return (
         <section id="experience" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden bg-dark-400">
             {/* Foundry Background Decals */}
-            <motion.div
+            {/* <motion.div
                 style={{ x: decalX }}
                 className="absolute top-20 right-[-5%] text-[15rem] uppercase font-bold text-white/[0.02] select-none pointer-events-none whitespace-nowrap"
             >
                 Journey
-            </motion.div>
+            </motion.div> */}
 
             <div className="section-container relative z-10">
-                <div className="flex flex-col items-center lg:items-start text-center lg:text-left mb-12 lg:mb-24">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                    >
-                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
-                            <Terminal size={14} className="text-theme-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Journey</span>
-                        </div>
-                        <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
-                            Career <span className="text-white/20 italic font-light">Timeline</span>
-                            <motion.span
-                                initial={{ scaleX: 0 }}
-                                whileInView={{ scaleX: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
-                            />
-                        </h2>
+                {!hideHeader && (
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left mb-12 lg:mb-24">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                        >
+                            <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
+                                <Terminal size={14} className="text-theme-primary" />
+                                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-theme-primary">My Journey</span>
+                            </div>
+                            <h2 className="relative text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none pb-4">
+                                Career <span className="text-white/20 italic font-light">Timeline</span>
+                                <motion.span
+                                    initial={{ scaleX: 0 }}
+                                    whileInView={{ scaleX: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute bottom-0 left-0 h-[3px] w-full md:w-40 origin-left bg-gradient-to-r from-theme-primary via-theme-secondary to-transparent rounded-full shadow-[0_0_12px_rgba(248,87,42,0.8)]"
+                                />
+                            </h2>
 
-                    </motion.div>
-                </div>
+                        </motion.div>
+                    </div>
+                )}
 
                 <div className="relative">
                     {/* Industrial Data Bus Line */}
