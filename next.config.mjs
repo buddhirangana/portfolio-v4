@@ -12,6 +12,7 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
+    inlineCss: true,
   },
   turbopack: {
     root: __dirname,
