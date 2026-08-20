@@ -104,6 +104,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="canonical" href="https://buddhirangana.com" />
         <meta name="google-site-verification" content="2UCDSEjh0XD-vjMkGe9VWWUHnYlKvnziBT2k3wBlObs" />
         <meta name="msvalidate.01" content="6B3C3757D61122DCE8F56D40BC25961A" />
