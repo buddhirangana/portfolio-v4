@@ -17,6 +17,16 @@ const FILTERS: { key: FilterKey; label: string; tag: string; icon: React.Element
 // ─── Projects Data ─────────────────────────────────────────────────────────────
 const PROJECTS = [
     {
+        title: "NIIBS GPA Calculator | Calculate Your SGPA & CGPA",
+        desc: "NIIBS GPA Calculator is a free, online tool designed for students to easily calculate and track their semester and cumulative Grade Point Averages based on official university credit weightage.",
+        tech: ["React", "TypeScript", "Tailwind CSS", "PWA"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://niibsgpa.buddhirangana.com/",
+        github: "https://github.com/buddhirangana/niibs-gpa-calculator",
+        image: "/images/projects/niibs-gpa-calculator-img.webp"
+    },
+    {
         title: "Movie Search - Find Your Favorite Films",
         desc: "Movie Search is a web application that allows users to search for movies and get detailed information about them. This project uses the OMDB API to fetch movie data and display it in a user-friendly interface.",
         tech: ["HTML", "CSS", "JavaScript", "OMDB API"],
