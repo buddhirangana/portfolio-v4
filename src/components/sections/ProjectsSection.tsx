@@ -27,6 +27,16 @@ const PROJECTS = [
         image: "/images/projects/niibs-gpa-calculator-img.webp"
     },
     {
+        title: "IONIX Computers E-commerce Platform",
+        desc: "IONIX Computers, Sri Lanka's leading smart technology partner. This platform delivers a premium, highly responsive, and high-performance e-commerce user interface tailored for computer hardware, custom gaming rigs, and tech accessories.",
+        tech: ["React", "Node.js", "Express", "MongoDB", "Supabase"],
+        category: "WEB DEVELOPMENT",
+        filter: "web" as FilterKey,
+        link: "https://ionix-computers.vercel.app/",
+        github: "https://github.com/buddhirangana/i-computers-frontend",
+        image: "/images/projects/ionix-computers-img.webp"
+    },
+    {
         title: "Movie Search - Find Your Favorite Films",
         desc: "Movie Search is a web application that allows users to search for movies and get detailed information about them. This project uses the OMDB API to fetch movie data and display it in a user-friendly interface.",
         tech: ["HTML", "CSS", "JavaScript", "OMDB API"],
