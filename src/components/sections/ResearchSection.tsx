@@ -79,7 +79,7 @@ export interface Publication {
 
 const PUBLICATIONS: Publication[] = [
     {
-        id: "pub-1",
+        id: "pub-2",
         title: "A Quantitative Study on the Impact of the Use of ChatGPT and Google Gemini on the Academic Performance of IT Undergraduates at NIIBS Campus",
         authors: ["Buddhi Rangana"],
         journalOrConference: "Journal of Research Technology and Engineering (JRTE)",
@@ -95,6 +95,24 @@ const PUBLICATIONS: Publication[] = [
         abstract: "The introduction of generative Artificial Intelligence (AI) in education systems has changed the dynamics of the academic processes, particularly for technology-based courses. In this case, an exploratory study of the effects of the use of LLM tools (i.e., OpenAI's ChatGPT and Google Gemini) on the academic performance of Information Technology (IT) undergraduates at the Faculty of Computing and Information Technology (FCIT), NIIBS Campus. With the help of the scientific approach of empirical research, statistical data were collected through surveys conducted among 49 current undergraduates enrolled in the IT degree program. The research focuses on several important factors related to the penetration of AI tools, their usage frequency and overall effectiveness in terms of GPA achievement. From the study, it was found out that AI technology is widespread among IT students, as 65.3% of participants use both ChatGPT and Google Gemini in multiple platforms. Moreover, 57.1% use them often or very often. From descriptive statistical results, there is evidence of a clear demarcation between task optimization and academic performance. While students exhibit significant levels of operationally positive benefits from speedier completion of assignments (Mean = 3.98/5.00) and enhancement of their quality (Mean = 3.94/5.00), the level of direct impact on terminal GPA performance is notably conservative (Mean = 3.55/5.00). In terms of performance, the study reveals a bell-shaped curve distribution pattern for moderately proficient performance levels in grades (53.0% GPA from 2.5 - 3.0), despite an overwhelming majority perception (89.8%) that AI aids learning positively. There emerges an architectural design of “Academic Integrity Paradox” where efficient structure could induce dependency and ultimately skill degradation. The conclusions drawn by the paper include institutional recommendation for formal inclusion of AI literacy and assessment defense-based approaches.",
         tags: ["Academic Performance", "Artificial Intelligence (AI)", "ChatGPT", "Google Gemini", "Undergraduates"],
         bibtex: `@article{rangana2026quantitative,\n  title={A Quantitative Study on the Impact of the Use of ChatGPT and Google Gemini on the Academic Performance of IT Undergraduates at NIIBS Campus},\n  author={Rangana, Buddhi},\n  journal={Journal of Research Technology and Engineering (JRTE)},\n  year={2026}\n}`
+    },
+    {
+        id: "pub-1",
+        title: "Hostel Management System: A Web-based Solution for Efficient Hostel Operations (White Paper)",
+        authors: ["Buddhi Rangana", "Malaka Mithila", "Nadun Hirudika", "Kasun Kovida", "Ishara Pramudith", "Mahela Sandaruwan", "Ashinka Shanshini"],
+        journalOrConference: "ResearchGate Preprint",
+        publisher: "",
+        year: "2025",
+        date: "July 2025",
+        type: "Preprint",
+        doi: "10.13140/RG.2.2.24768.08966",
+        doiUrl: "https://doi.org/10.13140/RG.2.2.24768.08966",
+        researchGateUrl: "https://www.researchgate.net/publication/414330497_Hostel_Management_System_A_Web-based_Solution_for_Efficient_Hostel_Operations_White_Paper",
+        googleScholarUrl: "",
+        pdfUrl: "",
+        abstract: "Managing student accommodation in higher education through conventional, paper-based workflows frequently creates administrative overhead, double-booking errors, and delayed fee reconciliations. This white paper presents the architecture, implementation, and empirical evaluation of the Hostel Management System (HMS)—a secure, responsive web platform designed to streamline accommodation workflows in higher education institutions. Built on a modular three-tier architecture utilizing PHP 8.0+, MySQL 8.0, and Bootstrap 5, the system integrates dynamic room allocation, real-time interactive data analytics (ApexCharts.js), centralized complaint resolution tracking, and automated digital payments via the PayHere payment gateway SDK. The paper details key implementation mechanisms—including role-based access control (RBAC), secure session handling, and service worker registration for Progressive Web App (PWA) readiness. System evaluation and Google PageSpeed Insights benchmarks demonstrate sub-two-second page responses and exceptional client-side performance, proving the platform's viability as a cost-effective, scalable administrative tool.",
+        tags: [],
+        bibtex: `@article{rangana2025hostel,\n  title={Hostel Management System: A Web-based Solution for Efficient Hostel Operations (White Paper)},\n  author={Rangana, Buddhi and Mithila, Malaka and Hirudika, Nadun and Kovida, Kasun and Pramudith, Ishara and Sandaruwan, Mahela and Shanshini, Ashinka},\n year={2025}\n}`
     }
 ];
 
@@ -263,8 +281,8 @@ export default function ResearchSection({ hideHeader = false }: { hideHeader?: b
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setActiveFilter(key)}
                                 className={`group flex items-center gap-3 px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-500 ${activeFilter === key
-                                        ? "bg-theme-primary text-white shadow-[0_10px_30px_rgba(248,87,42,0.3)]"
-                                        : "bg-white/[0.03] text-white/40 hover:text-white border border-white/5 hover:border-white/20"
+                                    ? "bg-theme-primary text-white shadow-[0_10px_30px_rgba(248,87,42,0.3)]"
+                                    : "bg-white/[0.03] text-white/40 hover:text-white border border-white/5 hover:border-white/20"
                                     }`}
                             >
                                 {label}
